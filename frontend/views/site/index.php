@@ -1827,6 +1827,15 @@
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1.2">OFF</span></div>
                                             </div>
                                         </div>
+                                        <div class="col-xs-12 col-md-3 p-t-10" data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0">
+                                            <div style="display:inline-block;vertical-align:top;"
+                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1">
+                                                <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1">
+                                                    <a href="#" class="btn btn-primary">aaaaa</a>
+                                                    <a href="#" class="btn btn-primary">bbbbb</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div data-reactid=".0.6.1.0.0.0.1.0.1.0:2">
                                         <div data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0">
@@ -1835,7 +1844,9 @@
                                                     <div class="offer-cell device"
                                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.0"></div>
                                                     <div class="offer-cell ads"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.1"></div>
+                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.1">
+                                                        <input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" />
+                                                    </div>
                                                     <div class="offer-cell title"
                                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.2">Title
                                                     </div>
@@ -1864,7 +1875,9 @@
                                                             class="fa fa-apple"
                                                             data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.0.0"></span></div>
                                                     <div class="offer-cell ads"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.1"></div>
+                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.1">
+                                                        <input type="checkbox" name="selected[]" value="">
+                                                    </div>
                                                     <div class="offer-cell title"
                                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.2"><a
                                                             href="/offer/7f169a5e13d5abb9a3648091e9bf4f5b/"
@@ -1907,7 +1920,9 @@
                                                             class="fa fa-android"
                                                             data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$1.0.0"></span></div>
                                                     <div class="offer-cell ads"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$1.1"></div>
+                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$1.1">
+                                                        <input type="checkbox" name="selected[]" value="">
+                                                    </div>
                                                     <div class="offer-cell title"
                                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$1.2"><a
                                                             href="/offer/011232b30744799a235b323f77b0b074/"
