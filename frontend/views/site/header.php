@@ -398,32 +398,32 @@
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
                                 class="fa fa-archive" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
-                                                                                                   data-reactid=".0.0.3.0.4.1"><span
+                                                                                                  data-reactid=".0.0.3.0.4.1"><span
                                 class="title" data-reactid=".0.0.3.0.4.1.0">GLISPA</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
                                 class="fa fa-cloud-upload" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
-                                                                                                   data-reactid=".0.0.3.0.4.1"><span
+                                                                                                       data-reactid=".0.0.3.0.4.1"><span
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Global Wide Media</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
                                 class="fa fa-desktop" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
-                                                                                                   data-reactid=".0.0.3.0.4.1"><span
+                                                                                                  data-reactid=".0.0.3.0.4.1"><span
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Matomy</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
                                 class="fa fa-eye" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
-                                                                                                   data-reactid=".0.0.3.0.4.1"><span
+                                                                                              data-reactid=".0.0.3.0.4.1"><span
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Mundo Media</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
                                 class="fa fa-cube" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
-                                                                                                   data-reactid=".0.0.3.0.4.1"><span
+                                                                                               data-reactid=".0.0.3.0.4.1"><span
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Offer Sever</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.6"><span class="icon-thumbnail" data-reactid=".0.0.3.0.6.0"><i
                                 class="fa fa-cogs" data-reactid=".0.0.3.0.6.0.0"></i></span><a href="/support/"
-                                                                                                    data-reactid=".0.0.3.0.6.1"><span
+                                                                                               data-reactid=".0.0.3.0.6.1"><span
                                 class="title" data-reactid=".0.0.3.0.6.1.0">Setting</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.5"><span class="icon-thumbnail" data-reactid=".0.0.3.0.5.0"><i
@@ -444,8 +444,6 @@
         <div data-reactid=".0.5"></div>
         <!--BEGIN CONTENT-->
 
-
-    <?php include ("hasOffer.php");?>
 
     </div>
 

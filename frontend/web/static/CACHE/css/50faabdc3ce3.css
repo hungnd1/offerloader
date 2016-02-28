@@ -16799,3 +16799,11 @@ body.menu-pin .page-container .page-content-wrapper .content {
 .flag-icon-zw.flag-icon-squared {
     background-image: url('/static/flags/1x1/zw.svg?23788631fe10');
 }
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
