@@ -2139,8 +2139,8 @@ body.dashboard .page-container {
     display: inline-block;
     padding: 0 3px;
     padding-left: 32px;
-    min-height: 40px;
-    line-height: 40px;
+    min-height: 20px;
+    line-height: 30px;
     font-size: 14px;
     clear: both;
 }
@@ -2281,9 +2281,9 @@ body.dashboard .page-container {
 .icon-thumbnail {
     display: inline-block;
     background: #21252d;
-    height: 40px;
+    height: 20px;
     width: 40px;
-    line-height: 40px;
+    line-height: 30px;
     text-align: center;
     vertical-align: middle;
     position: relative;
@@ -14774,8 +14774,8 @@ body.menu-pin .page-container .page-content-wrapper .footer {
 }
 
 .sidebar-user {
-    margin-top: 10px;
-    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
 .sidebar-user .user-left {
@@ -15117,8 +15117,8 @@ body.menu-pin .page-container .page-content-wrapper .content {
 */
 .page-sidebar .sidebar-header {
     text-align: center;
-    height: 150px;
-    padding: 20px;
+    height: 120px;
+    padding: 0px;
 }
 
 .page-sidebar a:visited, .page-sidebar button:visited, .page-sidebar a:focus, .page-sidebar button:focus {

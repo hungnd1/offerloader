@@ -385,32 +385,52 @@
                     <li class="m-t-10 active" data-reactid=".0.0.3.0.1"><span class="icon-thumbnail"
                                                                               data-reactid=".0.0.3.0.1.0">
                     <i class="fa fa-money" data-reactid=".0.0.3.0.1.0.0"></i></span>
-                        <a href="/" data-reactid=".0.0.3.0.1.1"><span class="title" data-reactid=".0.0.3.0.1.1.0">Latest Offers</span></a>
+                        <a href="/" data-reactid=".0.0.3.0.1.1"><span class="title" data-reactid=".0.0.3.0.1.1.0">Has Offer</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.2"><span class="icon-thumbnail" data-reactid=".0.0.3.0.2.0"><i
                                 class="fa fa-file-code-o" data-reactid=".0.0.3.0.2.0.0"></i></span>
                         <a href="/affiliate-lander/" data-reactid=".0.0.3.0.2.1"><span class="title"
-                                                                                       data-reactid=".0.0.3.0.2.1.0">Affiliate Landers</span></a>
+                                                                                       data-reactid=".0.0.3.0.2.1.0">ArtOfClick</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.3"><span class="icon-thumbnail" data-reactid=".0.0.3.0.3.0"><i
                                 class="fa fa-group" data-reactid=".0.0.3.0.3.0.0"></i></span><a href="/affiliate-network/"
                                                                                                 data-reactid=".0.0.3.0.3.1"><span
-                                class="title" data-reactid=".0.0.3.0.3.1.0">Affiliate Networks</span></a>
+                                class="title" data-reactid=".0.0.3.0.3.1.0">ClickSmob</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
-                                class="fa fa-exchange" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
+                                class="fa fa-archive" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
                                                                                                    data-reactid=".0.0.3.0.4.1"><span
-                                class="title" data-reactid=".0.0.3.0.4.1.0">Traffic Sources</span></a>
+                                class="title" data-reactid=".0.0.3.0.4.1.0">GLISPA</span></a>
                     </li>
-                    <li class="" data-reactid=".0.0.3.0.5"><span class="icon-thumbnail" data-reactid=".0.0.3.0.5.0"><i
-                                class="fa fa-life-ring" data-reactid=".0.0.3.0.5.0.0"></i></span><a href="/help/"
-                                                                                                    data-reactid=".0.0.3.0.5.1"><span
-                                class="title" data-reactid=".0.0.3.0.5.1.0">Help</span></a>
+                    <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
+                                class="fa fa-cloud-upload" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
+                                                                                                   data-reactid=".0.0.3.0.4.1"><span
+                                class="title" data-reactid=".0.0.3.0.4.1.0">Global Wide Media</span></a>
+                    </li>
+                    <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
+                                class="fa fa-desktop" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
+                                                                                                   data-reactid=".0.0.3.0.4.1"><span
+                                class="title" data-reactid=".0.0.3.0.4.1.0">Matomy</span></a>
+                    </li>
+                    <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
+                                class="fa fa-eye" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
+                                                                                                   data-reactid=".0.0.3.0.4.1"><span
+                                class="title" data-reactid=".0.0.3.0.4.1.0">Mundo Media</span></a>
+                    </li>
+                    <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
+                                class="fa fa-cube" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
+                                                                                                   data-reactid=".0.0.3.0.4.1"><span
+                                class="title" data-reactid=".0.0.3.0.4.1.0">Offer Sever</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.6"><span class="icon-thumbnail" data-reactid=".0.0.3.0.6.0"><i
-                                class="fa fa-comment-o" data-reactid=".0.0.3.0.6.0.0"></i></span><a href="/support/"
+                                class="fa fa-cogs" data-reactid=".0.0.3.0.6.0.0"></i></span><a href="/support/"
                                                                                                     data-reactid=".0.0.3.0.6.1"><span
-                                class="title" data-reactid=".0.0.3.0.6.1.0">Support</span></a>
+                                class="title" data-reactid=".0.0.3.0.6.1.0">Setting</span></a>
+                    </li>
+                    <li class="" data-reactid=".0.0.3.0.5"><span class="icon-thumbnail" data-reactid=".0.0.3.0.5.0"><i
+                                class="fa fa-paperclip" data-reactid=".0.0.3.0.5.0.0"></i></span><a href="/help/"
+                                                                                                    data-reactid=".0.0.3.0.5.1"><span
+                                class="title" data-reactid=".0.0.3.0.5.1.0">About</span></a>
                     </li>
                 </ul>
                 <div class="clearfix" data-reactid=".0.0.3.1"></div>
