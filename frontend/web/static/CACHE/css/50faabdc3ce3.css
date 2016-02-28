@@ -93,7 +93,7 @@
 @font-face {
     font-family: 'FontAwesome';
     src: url('static/assets/plugins/font-awesome/fonts/fontawesome-webfont.eot?v=4.2.0&23788631fe10');
-    src: url('static/assets/plugins/font-awesome/fonts/fontawesome-webfont.eot?&23788631fe10#iefix&v=4.2.0') format('embedded-opentype'), url('http://localhost:8080/example/static/assets/plugins/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0&23788631fe10') format('woff'), url('http://localhost:8080/example/static/assets/plugins/font-awesome/fonts/fontawesome-webfont.ttf?v=4.2.0&23788631fe10') format('truetype'), url('http://localhost:8080/example/static/assets/plugins/font-awesome/fonts/fontawesome-webfont.svg?v=4.2.0&23788631fe10#fontawesomeregular') format('svg');
+    src: url('static/assets/plugins/font-awesome/fonts/fontawesome-webfont.eot?&23788631fe10#iefix&v=4.2.0') format('embedded-opentype'), url('../../assets/plugins/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0&23788631fe10') format('woff'), url('../../assets/plugins/font-awesome/fonts/fontawesome-webfont.ttf?v=4.2.0&23788631fe10') format('truetype'), url('../../assets/plugins/font-awesome/fonts/fontawesome-webfont.svg?v=4.2.0&23788631fe10#fontawesomeregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -1880,7 +1880,7 @@ body.dashboard .page-container {
     -webkit-animation: none;
     animation: none;
     top: 73px;
-    background: url('http://localhost:8080/example/static/pages/img/progress/progress-circle-success.svg?23788631fe10') no-repeat top left;
+    background: url('../../pages/img/progress/progress-circle-success.svg?23788631fe10') no-repeat top left;
     background-size: 100% auto;
     margin: 0 auto;
     border-width: 0;
