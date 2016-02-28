@@ -1810,24 +1810,6 @@
                                     </div>
                                     <div class="m-b-20 row" data-reactid=".0.6.1.0.0.0.1.0.1.0:1">
                                         <div class="col-xs-12 col-md-3 p-t-10" data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0">
-                                            <div style="display:inline-block;padding-right:10px;"
-                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.0"><span
-                                                    style="font-size:60px;color:#E6E6E6;cursor:ponter;" class="fa fa-image"
-                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.0.0"></span></div>
-                                            <div style="display:inline-block;vertical-align:top;"
-                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1">
-                                                <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.0">Only offers with ads &amp;
-                                                    landers
-                                                </div>
-                                                <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1"><span
-                                                        style="color:#E6E6E6;cursor:pointer;"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1.0">ON</span><span
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1.1"> | </span><span
-                                                        style="font-weight:bold;color:#10CFBD;cursor:pointer;"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1.2">OFF</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-md-3 p-t-10" data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0">
                                             <div style="display:inline-block;vertical-align:top;"
                                                  data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1">
                                                 <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1">
