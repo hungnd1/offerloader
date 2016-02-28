@@ -874,7 +874,7 @@
                                                         </option>
                                                         <option value="GW" data-alternative-spellings="GW"
                                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.0.1:$93">
-                                                            Guinea-bissau (284)
+                                                            Guinea-bis sau (284)
                                                         </option>
                                                         <option value="GY" data-alternative-spellings="GY"
                                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.0.1:$94">Guyana (331)
