@@ -23,8 +23,8 @@ class ApiHelper
      */
 
     const API_OFFER_HASH = "offer/get-list-has-offer";
-
-
+    const API_GET_LIST_GLISPAS = 'offer/get-list-glispas';
+    const API_GET_DETAIL_GLISPAS = 'offer/get-detail-glispas';
 
 
     /**
@@ -33,11 +33,11 @@ class ApiHelper
      */
     public static function isResultSuccess($apiResults) {
         /* @var $urlManager UrlManager */
-        if($apiResults['success'] == false){
-            header(\frontend\helpers\CConstant::host_name."site/index.php");
-        }else {
+//        if($apiResults['success'] == false){
+//            header("http://localhost:8080/offerloader/frontend/web/index.php?r=site%2Ferror");
+//        }else {
             return ($apiResults != null) && ($apiResults['success'] == true);
-        }
+//        }
     }
 
     public static function getResultMessage($apiResults) {

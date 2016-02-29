@@ -6,8 +6,9 @@
  * Time: 5:46 PM
  */
 namespace frontend\models;
-use \yii\base;
-class HasOffer extends base\Model{
+use yii\base\Model;
+
+class HasOffer extends Model{
     public $id = 0;
     public $name = "";
     public $incent = 0;

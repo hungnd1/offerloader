@@ -2,6 +2,7 @@
 namespace api\controllers;
 use common\models\Application;
 use common\models\ArtOfClickModels;
+use common\models\Glispas;
 
 /**
  * Created by PhpStorm.
@@ -23,8 +24,9 @@ class OfferController extends \api\controllers\ApiController{
         $behaviors['authenticator']['except'] = [
             //'list-comment',
             'get-list-has-offer',
-            'test'
-
+            'test',
+            'get-list-glispas',
+            'get-detail-glispas'
         ];
 
         return $behaviors;
@@ -38,5 +40,19 @@ class OfferController extends \api\controllers\ApiController{
     }
     public function  actionGetListHasOffer(){
         return ArtOfClickModels::getListHasOffer();
+    }
+    public function actionGetListGlispas(){
+        return Glispas::getListGlispas();
+    }
+    public function actionGetDetailGlispas(){
+        $id = $this->getParameter('id', 0);
+        $glispas = Glispas::getDetailById($id);
+        if(!empty($glispas)){
+            return $glispas;
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
+
     }
 }

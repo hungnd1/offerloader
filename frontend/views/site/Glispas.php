@@ -44,42 +44,7 @@
             <div data-reactid=".0.6.1.0.0">
                 <div data-reactid=".0.6.1.0.0.0">
                     <div class="container-fluid  sm-p-l-20 sm-p-r-20" data-reactid=".0.6.1.0.0.0.0">
-                        <!--<div class="inner" data-reactid=".0.6.1.0.0.0.0.0">-->
-                        <!--<ul class="breadcrumb" data-reactid=".0.6.1.0.0.0.0.0.0">-->
-                        <!--<li data-reactid=".0.6.1.0.0.0.0.0.0.$1"><p data-reactid=".0.6.1.0.0.0.0.0.0.$1.0"><a-->
-                        <!--href="/" class="" data-reactid=".0.6.1.0.0.0.0.0.0.$1.0.0">Home</a></p></li>-->
-                        <!--</ul>-->
-                        <!--<div class="row" data-reactid=".0.6.1.0.0.0.0.0.1">-->
-                        <!--<div class="col-lg-5 col-md-8 " data-reactid=".0.6.1.0.0.0.0.0.1.0">-->
-                        <!--<div class="panel panel-transparent" data-reactid=".0.6.1.0.0.0.0.0.1.0.0">-->
-                        <!--<div style="padding-top:0px;" class="panel-body"-->
-                        <!--data-reactid=".0.6.1.0.0.0.0.0.1.0.0.0"><h3-->
-                        <!--data-reactid=".0.6.1.0.0.0.0.0.1.0.0.0.0">Make Massive</h3>-->
-                        <!--<p data-reactid=".0.6.1.0.0.0.0.0.1.0.0.0.1">The most comprehensive-->
-                        <!--affiliate intelligence platform in the world. Discover the latest-->
-                        <!--affiliate offers from the best networks and see how top online marketers-->
-                        <!--are using ads and traffic sources to make huge profits.</p></div>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="col-lg-7 col-md-4 hidden" data-reactid=".0.6.1.0.0.0.0.0.1.1">-->
-                        <!--<div class="full-height" data-reactid=".0.6.1.0.0.0.0.0.1.1.0">-->
-                        <!--<div style="max-width:400px;" class="panel m-t-20"-->
-                        <!--data-reactid=".0.6.1.0.0.0.0.0.1.1.0.0">-->
-                        <!--<div class="panel-heading" data-reactid=".0.6.1.0.0.0.0.0.1.1.0.0.0">-->
-                        <!--<div class="panel-title" data-reactid=".0.6.1.0.0.0.0.0.1.1.0.0.0.0">-->
-                        <!--What is Make Massive?-->
-                        <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="panel-body" data-reactid=".0.6.1.0.0.0.0.0.1.1.0.0.1"><span-->
-                        <!--data-reactid=".0.6.1.0.0.0.0.0.1.1.0.0.1.0">Discover how Make Massive can help you take your affiliate business to the next level.</span>-->
-                        <!--<div class="m-t-20" data-reactid=".0.6.1.0.0.0.0.0.1.1.0.0.1.1"><a-->
-                        <!--href="/help/" data-reactid=".0.6.1.0.0.0.0.0.1.1.0.0.1.1.0">Learn-->
-                        <!--more</a></div>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                        <!--</div>-->
+
                     </div>
                 </div>
                 <div class="container-fluid" data-reactid=".0.6.1.0.0.0.1">
@@ -1381,23 +1346,26 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th><input type="checkbox" id="checkAll" style="margin-left: -10px;"></th>
+                                    <th>GlispaID</th>
                                     <th>Name</th>
+                                    <th>Country</th>
                                     <th>Payout</th>
-                                    <th>CurrenCy</th>
-                                    <th>Payout Type</th>
+                                    <th>Category</th>
                                 </tr>
                                 </thead>
                                 <tbody class="searchable">
-                                <?php if (!empty($listHasOffer) && null != $listHasOffer) {
-                                    foreach ($listHasOffer->items as $hasOffer) {
+                                <?php if (!empty($listGlispas) && null != $listGlispas) {
+                                    foreach ($listGlispas->items as $glispas) {
                                         ?>
                                         <tr>
-                                            <td><?= $hasOffer->id ?></td>
-                                            <td><?= $hasOffer->name ?></td>
-                                            <td><?= $hasOffer->payout ?></td>
-                                            <td><?= $hasOffer->currency ?></td>
-                                            <td><?= $hasOffer->payoutType ?></td>
+                                            <td><input type="checkbox" class="chk" /></td>
+                                            <td><?= $glispas->glispaID ?></td>
+                                            <td><a onclick="getDetail(<?= $glispas->glispaID ?>);"  ><?= $glispas->name ?></a></td>
+                                            <td><?= $glispas->countries ?></td>
+                                            <td><?= $glispas->payout ?></td>
+                                            <td><?= $glispas->category ?></td>
+
                                         </tr>
                                     <?php }
                                 } ?>
@@ -1421,4 +1389,101 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="width: 500px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Imformation Detail <h3 id="msg"></h3></h4>
+                </div>
+                <div class="modal-body" style="width: 100%">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td><b>GlispaId</b></td>
+                            <td id="msg1"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Name</b></td>
+                            <td id="msg2"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Category</b></td>
+                            <td id="msg3"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Countries</b></td>
+                            <td id="msg4"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Summary</b></td>
+                            <td id="msg5"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Acquisition</b></td>
+                            <td id="msg6"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Target</b></td>
+                            <td id="msg7"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Rules</b></td>
+                            <td id="msg8"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Payout</b></td>
+                            <td id="msg9"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script>
+    function getDetail(id) {
+        var id = id
+        var url = '<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-detail"]) ?>';
+        $.ajax({
+            url: url,
+            type: "GET",
+            data: {id:id},
+            crossDomain: true,
+            dataType: "text",
+            success: function(result){
+                var data = JSON.parse(result);
+
+                if(null != result && data['success']) {
+                    //alert(data.detail.name);
+                    $('#msg').html(data.detail.name);
+                    $('#msg1').html(data.detail.glispaID);
+                    $('#msg2').html(data.detail.name);
+                    $('#msg3').html(data.detail.category);
+                    $('#msg4').html(data.detail.countries);
+                    $('#msg5').html(data.detail.summary);
+                    $('#msg6').html(data.detail.acquisition);
+                    $('#msg7').html(data.detail.target);
+                    $('#msg8').html(data.detail.rules);
+                    $('#msg9').html(data.detail.payout);
+
+                }
+                return;
+            },
+            error: function(result) {
+                $('#msg2').html('Không thành công. Quý khách vui lòng thử lại sau ít phút.');
+            }
+        });//end jQuery.ajax
+        jQuery.noConflict();
+        $('#myModal').modal('show');
+    }
+</script>
 <?php include("footer.php"); ?>

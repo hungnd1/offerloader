@@ -2,8 +2,10 @@
 namespace frontend\controllers;
 
 use frontend\helpers\ApiHelper;
+use frontend\models\ListGlispas;
 use frontend\models\ListHasOffer;
 use Yii;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -20,15 +22,15 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup','art-of-click'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup','art-of-click'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','art-of-click'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -72,15 +74,48 @@ class SiteController extends Controller
             $listHasOffer = new ListHasOffer();
             $listHasOffer->setAttribute($listHasOffer_);
             $pagination = new \yii\data\Pagination(['totalCount' =>$response_offer['data']['_meta']['totalCount'], 'pageSize'=>$response_offer['data']['_meta']['perPage']]);
-            return $this->render('hasOffer',['listHasOffer'=>$listHasOffer,'pagination'=>$pagination]);
+            return $this->render('ArtOfClick',['listHasOffer'=>$listHasOffer,'pagination'=>$pagination]);
         }
+
 
     }
 
+  public function actionArtOfClick(){
+      $response_offer =  ApiHelper::apiQuery(ApiHelper::API_OFFER_HASH,null,false);
+      if( ApiHelper::isResultSuccess($response_offer)){
+          $listHasOffer_ = $response_offer['data']['items'];
+          $listHasOffer = new ListHasOffer();
+          $listHasOffer->setAttribute($listHasOffer_);
+          $pagination = new \yii\data\Pagination(['totalCount' =>$response_offer['data']['_meta']['totalCount'], 'pageSize'=>$response_offer['data']['_meta']['perPage']]);
+          return $this->render('artofclick',['listHasOffer'=>$listHasOffer,'pagination'=>$pagination]);
+      }
+  }
+
+    public function actionGlispas(){
+        $response_glispas = ApiHelper::apiQuery(ApiHelper::API_GET_LIST_GLISPAS,null,false);
+        if(ApiHelper::isResultSuccess($response_glispas)){
+            $glispas = $response_glispas['data']['items'];
+            $listGlispas = new ListGlispas();
+            $listGlispas->setAttribute($glispas);
+            $pagination = new \yii\data\Pagination(['totalCount' =>$response_glispas['data']['_meta']['totalCount'], 'pageSize'=>$response_glispas['data']['_meta']['perPage']]);
+            return $this->render('glispas',['listGlispas'=>$listGlispas,'pagination'=>$pagination]);
+        }
+    }
+    public function actionGetDetail(){
+        $id = $this->getParameter('id', 0);
+        $response_detail = ApiHelper::apiQuery([ApiHelper::API_GET_DETAIL_GLISPAS,'id'=>$id]);
+        if(ApiHelper::isResultSuccess($response_detail)){
+            $detail = $response_detail['data'];
+            return Json::encode(['success'=>$response_detail['success'],'detail'=>$detail]);
+        }
+    }
     /**
      * Logs in a user.
      *
      * @return mixed
      */
+    public function getParameter($param_name, $default = null) {
+        return \Yii::$app->request->get($param_name, $default);
+    }
 
 }

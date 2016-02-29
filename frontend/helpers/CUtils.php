@@ -1,6 +1,6 @@
 <?php
 
-namespace app\helpers;
+namespace frontend\helpers;
 define('secret_key', 's3cr3t_k3y');
 /**
  * Description of CUtils

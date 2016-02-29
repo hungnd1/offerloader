@@ -46,12 +46,8 @@
 
 
 <!-- BEGIN VENDOR JS -->
-<script src="static/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
-<script src="static/js/jquery-2.1.3.min.js" type="text/javascript"></script>
-<script src="static/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<!-- <script src="/static/assets/plugins/modernizr.custom.js" type="text/javascript"></script> -->
-<!-- <script src="/static/assets/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script> -->
-<script src="static/bootstrap-3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+<!--<script src="static/assets/plugins/pace/pace.min.js" type="text/javascript"></script>-->
+
 
 <script>
     $(document).ready(function () {
@@ -71,7 +67,23 @@
         }(jQuery));
 
     });
+
 </script>
-<script src="static/js/main.js"></script>
+
+<script type="text/javascript">
+
+    $('#checkAll').change(function(){
+        $('.chk').prop('checked',this.checked);
+    });
+
+    $(".chk").change(function () {
+        if ($(".chk:checked").length == $(".chk").length) {
+            $('#checkAll').prop('checked','checked');
+        }else{
+            $('#checkAll').prop('checked',false);
+        }
+    });
+</script>
+<!--<script src="static/js/main.js"></script>-->
 </body>
 </html>
