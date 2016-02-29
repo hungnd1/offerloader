@@ -49,8 +49,8 @@ $config = [
         ],
         'urlManagerApi' => [
             'class' => 'yii\web\UrlManager',
-            'scriptUrl' => "http://localhost:8080/offerloader/api/web/",
-            'baseUrl' => "http://localhost:8080/offerloader/api/web/",
+            'scriptUrl' => "http://localhost/offerloader.git/api/web/",
+            'baseUrl' => "http://localhost/offerloader.git/api/web/",
 //            'scriptUrl' => "http://localhost/vgame-web/api/web/",
 //            'baseUrl' => "http://localhost/vgame-web/api/web/",
         ],

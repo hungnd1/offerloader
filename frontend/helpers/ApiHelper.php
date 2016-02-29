@@ -67,7 +67,10 @@ class ApiHelper
     public static function apiQuery($params, $postParams = null, $throwExceptionOnFailure = false) {
         /* @var $urlManager UrlManager */
         $urlManager = Yii::$app->urlManagerApi;
-        $url = $urlManager->createAbsoluteUrl($params);
+//        var_dump(Yii::$app);exit;
+      $url = $urlManager->createAbsoluteUrl($params);
+//        var_dump($url);exit;
+        //$url= 'http://192.168.1.97:8088/public/hasoffers/listAll?function=artofclick';
         Yii::info("API Url: " . $url);
         Yii::info("Post param: ");
         Yii::info($postParams);
