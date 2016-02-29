@@ -1,3 +1,4 @@
+<?php include ("header.php");?>
 <div class="page-container" style="background-color:rgb(250, 250, 250);" data-reactid=".0.6">
     <div class="header" data-reactid=".0.6.0">
         <div class="pull-left full-height visible-sm visible-xs" data-reactid=".0.6.0.0">
@@ -1373,97 +1374,143 @@
                                     </div>
                                 </div>
                             </div>
-                            <div data-reactid=".0.6.1.0.0.0.1.0.1.0:2">
-                                <div data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0">
-                                    <div class="offer-table" data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0">
-                                        <div class="offer-header" data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0">
-                                            <div class="offer-cell device"
-                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.0"></div>
-                                            <div class="offer-cell ads"
-                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.1">
-                                                <input type="checkbox"
-                                                       onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"/>
-                                            </div>
-                                            <div class="offer-cell title"
-                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.2">ID
-                                            </div>
-                                            <div class="offer-cell payout-amount"
-                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.3">NAME
-                                            </div>
-                                            <div class="offer-cell payout-type"
-                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.4">PAYOUT
-                                            </div>
-                                            <div class="offer-cell countries"
-                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.5">CURRENCY
-                                            </div>
-                                            <div class="offer-cell category"
-                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.6">PAYOUT TYPE
-                                            </div>
-                                        </div>
-                                        <?php if(!empty($listHasOffer) && null != $listHasOffer){
-                                            foreach($listHasOffer->items as $hasOffer){
-                                                ?>
-                                                <div class="offer-row" data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0">
-                                                    <div class="offer-cell device"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.0"><span
-                                                            class="fa fa-apple"
-                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.0.0"></span></div>
-                                                    <div class="offer-cell ads"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.1">
-                                                        <input type="checkbox" name="selected[]" value="">
-                                                    </div>
-                                                    <div class="offer-cell countries"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.5"><span
-                                                            class="hint-text small"
-                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.5.0"><?= $hasOffer->id ?></span>
-                                                    </div>
-                                                    <div class="offer-cell title"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.2"><a
-                                                            href="/offer/7f169a5e13d5abb9a3648091e9bf4f5b/"
-                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.2.0"><?= $hasOffer->name ?></a></div>
-                                                    <div class="offer-cell payout-amount"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.3"><span
-                                                            class="font-montserrat fs-18"
-                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.3.0"><?= $hasOffer->payout ?></span>
-                                                    </div>
-                                                    <div class="offer-cell payout-type"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.4"><span
-                                                            class="hint-text small"
-                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.4.0"><?= $hasOffer->currency ?></span>
-                                                    </div>
 
-<!--                                                    <div class="offer-cell category"-->
-<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.6"><span-->
-<!--                                                            class="hint-text small"-->
-<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.6.0">MOBILE APP,IOS,NON INCENT,SHOPPING</span>-->
+<!--                            <div data-reactid=".0.6.1.0.0.0.1.0.1.0:2">-->
+<!---->
+<!--                                <div data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0">-->
+<!--                                    <table id="example" class="display" cellspacing="0" width="100%">-->
+<!--                                    <div class="offer-table" data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0">-->
+<!--                                        <div class="offer-header" data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0">-->
+<!--                                            <div class="offer-cell device"-->
+<!--                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.0"></div>-->
+<!--                                            <div class="offer-cell ads"-->
+<!--                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.1">-->
+<!--                                                <input type="checkbox"-->
+<!--                                                       onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"/>-->
+<!--                                            </div>-->
+<!--                                            <div class="offer-cell title"-->
+<!--                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.2">ID-->
+<!--                                            </div>-->
+<!--                                            <div class="offer-cell payout-amount"-->
+<!--                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.3">NAME-->
+<!--                                            </div>-->
+<!--                                            <div class="offer-cell payout-type"-->
+<!--                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.4">PAYOUT-->
+<!--                                            </div>-->
+<!--                                            <div class="offer-cell countries"-->
+<!--                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.5">CURRENCY-->
+<!--                                            </div>-->
+<!--                                            <div class="offer-cell category"-->
+<!--                                                 data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.0.6">PAYOUT TYPE-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        --><?php //if(!empty($listHasOffer) && null != $listHasOffer){
+//                                            foreach($listHasOffer->items as $hasOffer){
+//                                                ?>
+<!--                                                <div class="offer-row" data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0">-->
+<!--                                                    <div class="offer-cell device"-->
+<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.0"><span-->
+<!--                                                            class="fa fa-apple"-->
+<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.0.0"></span></div>-->
+<!--                                                    <div class="offer-cell ads"-->
+<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.1">-->
+<!--                                                        <input type="checkbox" name="selected[]" value="">-->
 <!--                                                    </div>-->
-                                                    <div class="offer-cell network"
-                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.7"><a
-                                                            href="/affiliate-network/d75b8c071b3b0579a3d2d2a6959e6719/"
-                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.7.0"><?= $hasOffer->payoutType ?></a>
-                                                    </div>
-<!--                                                    <div class="offer-cell date-added"-->
-<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.8"><span-->
+<!--                                                    <div class="offer-cell countries"-->
+<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.5"><span-->
 <!--                                                            class="hint-text small"-->
-<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.8.0">2/27/2016</span>-->
+<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.5.0">--><?//= $hasOffer->id ?><!--</span>-->
 <!--                                                    </div>-->
-                                                </div>
-                                        <?php } } ?>
-<!--                                       -->
-                                    </div>
-                                </div>
-                                <?php
-//                                $pagination = new \yii\data\Pagination(['totalCount' =>100, 'pageSize'=>30]);
-                                if (isset($pagination) && !empty($pagination)) { ?>
-                                    <div>
-                                        <?=
-                                        \yii\widgets\LinkPager::widget([
-                                            'pagination' => $pagination,
-                                        ]);
-                                        ?>
-                                    </div>
-                                <?php } ?>
+<!--                                                    <div class="offer-cell title"-->
+<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.2"><a-->
+<!--                                                            href="/offer/7f169a5e13d5abb9a3648091e9bf4f5b/"-->
+<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.2.0">--><?//= $hasOffer->name ?><!--</a></div>-->
+<!--                                                    <div class="offer-cell payout-amount"-->
+<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.3"><span-->
+<!--                                                            class="font-montserrat fs-18"-->
+<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.3.0">--><?//= $hasOffer->payout ?><!--</span>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="offer-cell payout-type"-->
+<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.4"><span-->
+<!--                                                            class="hint-text small"-->
+<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.4.0">--><?//= $hasOffer->currency ?><!--</span>-->
+<!--                                                    </div>-->
+<!---->
+<!--<!--                                                    <div class="offer-cell category"-->-->
+<!--<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.6"><span-->-->
+<!--<!--                                                            class="hint-text small"-->-->
+<!--<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.6.0">MOBILE APP,IOS,NON INCENT,SHOPPING</span>-->-->
+<!--<!--                                                    </div>-->-->
+<!--                                                    <div class="offer-cell network"-->
+<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.7"><a-->
+<!--                                                            href="/affiliate-network/d75b8c071b3b0579a3d2d2a6959e6719/"-->
+<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.7.0">--><?//= $hasOffer->payoutType ?><!--</a>-->
+<!--                                                    </div>-->
+<!--<!--                                                    <div class="offer-cell date-added"-->-->
+<!--<!--                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.8"><span-->-->
+<!--<!--                                                            class="hint-text small"-->-->
+<!--<!--                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:2.0.0.1:$0.8.0">2/27/2016</span>-->-->
+<!--<!--                                                    </div>-->-->
+<!--                                                </div>-->
+<!--                                        --><?php //} } ?>
+<!--<!--                                       -->-->
+<!--                                    </div></table>-->
+<!--                                </div>-->
+<!---->
+<!--                                --><?php
+////                                $pagination = new \yii\data\Pagination(['totalCount' =>100, 'pageSize'=>30]);
+//                                if (isset($pagination) && !empty($pagination)) { ?>
+<!--                                    <div>-->
+<!--                                        --><?//=
+//                                        \yii\widgets\LinkPager::widget([
+//                                            'pagination' => $pagination,
+//                                        ]);
+//                                        ?>
+<!--                                    </div>-->
+<!--                                --><?php //} ?>
+<!--                            </div>-->
+                            <div class="input-group"> <span class="input-group-addon">Filter</span>
+
+                                <input id="filter" type="text" class="form-control" placeholder="Type here...">
                             </div>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>Default</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody class="searchable">
+                                <tr>
+                                    <td>EUR</td>
+                                    <td>EURO</td>
+                                    <td></td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>GBP</td>
+                                    <td>Pound</td>
+                                    <td></td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>GEL</td>
+                                    <td>Georgian Lari</td>
+                                    <td><span class="glyphicon glyphicon-ok"></span>
+                                    </td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>USD</td>
+                                    <td>US Dollar</td>
+                                    <td></td>
+                                    <td>Active</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
                             <div class="clearfix" data-reactid=".0.6.1.0.0.0.1.0.1.1"></div>
                         </div>
                     </div>
@@ -1471,21 +1518,4 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid  footer" data-reactid=".0.6.1.1">
-        <div class="copyright sm-text-center" data-reactid=".0.6.1.1.0"><p
-                class="small no-margin pull-left sm-pull-reset" data-reactid=".0.6.1.1.0.0"><span class="hint-text"
-                                                                                                  data-reactid=".0.6.1.1.0.0.0">Copyright © 2015 </span><span
-                    class="font-montserrat" data-reactid=".0.6.1.1.0.0.1">Make Massive</span><span
-                    data-reactid=".0.6.1.1.0.0.2">.&nbsp;</span><span class="hint-text" data-reactid=".0.6.1.1.0.0.3">All rights reserved.</span><span
-                    class="sm-block hidden" data-reactid=".0.6.1.1.0.0.4"><a href="#" class="m-l-10 m-r-10"
-                                                                             data-reactid=".0.6.1.1.0.0.4.0">Terms of
-                        use</a><span data-reactid=".0.6.1.1.0.0.4.1"> | </span><a href="#" class="m-l-10"
-                                                                                  data-reactid=".0.6.1.1.0.0.4.2">Privacy
-                        Policy</a></span></p>
-            <p class="small no-margin pull-right sm-pull-reset" data-reactid=".0.6.1.1.0.1">Where discovery meets
-                opportunity</p>
-            <div class="clearfix" data-reactid=".0.6.1.1.0.2"></div>
-        </div>
-    </div>
-    <div data-reactid=".0.6.1.2"></div>
-</div>
+<?php include ("footer.php");?>

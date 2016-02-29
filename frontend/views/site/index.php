@@ -192,6 +192,7 @@
     <meta content="" name="author"/>
     <!-- BEGIN Vendor CSS-->
     <link rel="stylesheet" href="static/CACHE/css/50faabdc3ce3.css" type="text/css"/>
+    <link rel="stylesheet" href="static/CACHE/css/jquery.dataTables.min.css" type="text/css"/>
     <!--[if lte IE 9]>
     <link href="pages/css/ie9.css" rel="stylesheet" type="text/css"/>
     <![endif]-->
@@ -443,65 +444,3 @@
         <div data-reactid=".0.4"></div>
         <div data-reactid=".0.5"></div>
         <!--BEGIN CONTENT-->
-
-
-    <?php include ("hasOffer.php");?>
-
-    </div>
-
-
-    <!--ENDCONTENT-->
-</div>
-<!-- END class Full Height -->
-<!-- END PAGE CONTENT WRAPPER -->
-</div>
-<!-- END PAGE CONTAINER -->
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-59080413-2', 'auto');
-    ga('send', 'pageview');
-
-</script>
-
-
-<!-- BEGIN VENDOR JS -->
-<script src="static/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
-<script src="static/js/jquery-2.1.3.min.js" type="text/javascript"></script>
-<!-- <script src="/static/assets/plugins/modernizr.custom.js" type="text/javascript"></script> -->
-<!-- <script src="/static/assets/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script> -->
-<script src="static/bootstrap-3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
-<!-- <script src="/static/assets/plugins/jquery/jquery-easy.js" type="text/javascript"></script> -->
-<!-- <script src="/static/assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> -->
-<!-- <script src="/static/assets/plugins/jquery-bez/jquery.bez.min.js"></script> -->
-<!-- <script src="/static/assets/plugins/jquery-ios-list/jquery.ioslist.min.js" type="text/javascript"></script> -->
-<!-- <script src="/static/assets/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script> -->
-<!-- <script src="/static/assets/plugins/jquery-actual/jquery.actual.min.js"></script> -->
-<!-- <script src="/static/assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script> -->
-<!-- <script src="/static/js/jquery.sticky-kit.min.js"></script> -->
-<!-- END VENDOR JS -->
-<!-- START DATATABLES -->
-<!-- <script src="/static/assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js" type="text/javascript"></script> -->
-<!-- <script src="/static/assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script> -->
-<!-- <script src="/static/assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script> -->
-<!-- <script src="/static/assets/plugins/datatables-responsive/js/lodash.min.js" type="text/javascript"></script> -->
-
-<!-- BEGIN CORE TEMPLATE JS -->
-<!--<script src="/static/pages/js/pages.js" type="text/javascript"></script>-->
-<!-- END CORE TEMPLATE JS -->
-
-<script src="static/js/main.js"></script>
-
-</body>
-</html>

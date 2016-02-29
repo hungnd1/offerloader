@@ -72,7 +72,7 @@ class SiteController extends Controller
             $listHasOffer = new ListHasOffer();
             $listHasOffer->setAttribute($listHasOffer_);
             $pagination = new \yii\data\Pagination(['totalCount' =>$response_offer['data']['_meta']['totalCount'], 'pageSize'=>$response_offer['data']['_meta']['perPage']]);
-            return $this->render('index',['listHasOffer'=>$listHasOffer,'pagination'=>$pagination]);
+            return $this->render('hasOffer',['listHasOffer'=>$listHasOffer,'pagination'=>$pagination]);
         }
 
     }

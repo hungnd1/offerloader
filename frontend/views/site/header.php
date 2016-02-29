@@ -192,8 +192,17 @@
     <meta content="" name="author"/>
     <!-- BEGIN Vendor CSS-->
     <link rel="stylesheet" href="static/CACHE/css/50faabdc3ce3.css" type="text/css"/>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" type="text/css"/>
+<!--    <link rel="stylesheet" href="static/CACHE/css/jquery.dataTables.min.css" type="text/css"/>-->
     <!--[if lte IE 9]>
     <link href="pages/css/ie9.css" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+    <script src="static/js/main.js"></script>
+
     <![endif]-->
     <script type="text/javascript">
         window.onload = function () {
@@ -202,6 +211,7 @@
                 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="pages/css/windows.chrome.fix.css" />'
         }
     </script>
+
 
     <script>
         var _user = false;
@@ -348,6 +358,7 @@
             s.parentNode.insertBefore(p, s);
         })();
     </script>
+<!--    <script src="static/js/jquery.dataTables.min.js" type="text/javascript"></script>-->
 
 </head>
 
@@ -392,9 +403,9 @@
                                                                                        data-reactid=".0.0.3.0.2.1.0">ArtOfClick</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.3"><span class="icon-thumbnail" data-reactid=".0.0.3.0.3.0"><i
-                                class="fa fa-group" data-reactid=".0.0.3.0.3.0.0"></i></span><a href="/affiliate-network/"
-                                                                                                data-reactid=".0.0.3.0.3.1"><span
-                                class="title" data-reactid=".0.0.3.0.3.1.0">ClickSmob</span></a>
+                                class="fa fa-group" data-reactid=".0.0.3.0.3.0.0"></i></span>
+                        <a href="/affiliate-network/" data-reactid=".0.0.3.0.3.1">
+                            <span class="title" data-reactid=".0.0.3.0.3.1.0">ClickSmob</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
                                 class="fa fa-archive" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
