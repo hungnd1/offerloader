@@ -81,7 +81,9 @@ class SiteController extends Controller
     }
 
   public function actionArtOfClick(){
-      $response_offer =  ApiHelper::apiQuery(ApiHelper::API_OFFER_HASH,null,false);
+      $page = \Yii::$app->request->get('page', 1);
+      $per_page = \Yii::$app->request->get('per_page', 20);
+      $response_offer =  ApiHelper::apiQuery([ApiHelper::API_OFFER_HASH,'page'=>$page,'$per_page'=>$per_page],null,false);
       if( ApiHelper::isResultSuccess($response_offer)){
           $listHasOffer_ = $response_offer['data']['items'];
           $listHasOffer = new ListHasOffer();
@@ -92,7 +94,9 @@ class SiteController extends Controller
   }
 
     public function actionGlispas(){
-        $response_glispas = ApiHelper::apiQuery(ApiHelper::API_GET_LIST_GLISPAS,null,false);
+        $page = \Yii::$app->request->get('page', 1);
+        $per_page = \Yii::$app->request->get('per_page', 20);
+        $response_glispas = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_GLISPAS,'page'=>$page,'$per_page'=>$per_page],null,false);
         if(ApiHelper::isResultSuccess($response_glispas)){
             $glispas = $response_glispas['data']['items'];
             $listGlispas = new ListGlispas();
@@ -106,6 +110,7 @@ class SiteController extends Controller
         $response_detail = ApiHelper::apiQuery([ApiHelper::API_GET_DETAIL_GLISPAS,'id'=>$id]);
         if(ApiHelper::isResultSuccess($response_detail)){
             $detail = $response_detail['data'];
+            $link = $response_detail['data']['link'];
             return Json::encode(['success'=>$response_detail['success'],'detail'=>$detail]);
         }
     }

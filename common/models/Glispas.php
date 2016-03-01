@@ -84,7 +84,7 @@ class Glispas extends \yii\db\ActiveRecord
         return $provider;
     }
     public static function getDetailById($id = 0){
-        $detail = Glispas::findOne(['glispaID'=>$id]);
+        $detail = \api\models\Glispas::findOne(['glispaID'=>$id]);
         return $detail;
     }
 }

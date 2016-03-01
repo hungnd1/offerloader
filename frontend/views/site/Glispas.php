@@ -1372,7 +1372,6 @@
                                 </tbody>
                             </table>
                             <?php
-                            $pagination = new \yii\data\Pagination(['totalCount' => 100, 'pageSize' => 30]);
                             if (isset($pagination) && !empty($pagination)) { ?>
                                 <div>
                                     <?=
@@ -1394,49 +1393,37 @@
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content" style="width: 500px;">
+            <div class="modal-content" style="width: 800px;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Imformation Detail <h3 id="msg"></h3></h4>
                 </div>
                 <div class="modal-body" style="width: 100%">
-                    <table class="table">
+                    <table class="table" style="">
                         <tbody>
                         <tr>
                             <td><b>GlispaId</b></td>
                             <td id="msg1"></td>
-                        </tr>
-                        <tr>
                             <td><b>Name</b></td>
                             <td id="msg2"></td>
                         </tr>
                         <tr>
                             <td><b>Category</b></td>
                             <td id="msg3"></td>
-                        </tr>
-                        <tr>
                             <td><b>Countries</b></td>
                             <td id="msg4"></td>
                         </tr>
                         <tr>
                             <td><b>Summary</b></td>
                             <td id="msg5"></td>
-                        </tr>
-                        <tr>
                             <td><b>Acquisition</b></td>
                             <td id="msg6"></td>
                         </tr>
                         <tr>
-                            <td><b>Target</b></td>
-                            <td id="msg7"></td>
-                        </tr>
-                        <tr>
                             <td><b>Rules</b></td>
-                            <td id="msg8"></td>
-                        </tr>
-                        <tr>
+                            <td id="msg7"></td>
                             <td><b>Payout</b></td>
-                            <td id="msg9"></td>
+                            <td id="msg8"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -1461,7 +1448,7 @@
             dataType: "text",
             success: function(result){
                 var data = JSON.parse(result);
-
+                    alert(data.detail.link[0].link);
                 if(null != result && data['success']) {
                     //alert(data.detail.name);
                     $('#msg').html(data.detail.name);
@@ -1471,9 +1458,8 @@
                     $('#msg4').html(data.detail.countries);
                     $('#msg5').html(data.detail.summary);
                     $('#msg6').html(data.detail.acquisition);
-                    $('#msg7').html(data.detail.target);
-                    $('#msg8').html(data.detail.rules);
-                    $('#msg9').html(data.detail.payout);
+                    $('#msg7').html(data.detail.rules);
+                    $('#msg8').html(data.detail.payout);
 
                 }
                 return;
