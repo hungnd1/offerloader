@@ -78,7 +78,7 @@ class Glispas extends \yii\db\ActiveRecord
             ],
 //            'pagination' => false
             'pagination' => [
-            'defaultPageSize' => 20,
+            'defaultPageSize' => 30,
         ],
         ]);
         return $provider;

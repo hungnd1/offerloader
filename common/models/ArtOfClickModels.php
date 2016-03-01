@@ -99,7 +99,7 @@ class ArtOfClickModels extends \yii\db\ActiveRecord
                 ]
             ],
             'pagination' => [
-                'defaultPageSize' => 20,
+                'defaultPageSize' => 30,
             ],
         ]);
         return $provider;

@@ -1399,34 +1399,35 @@
                     <h4 class="modal-title">Imformation Detail <h3 id="msg"></h3></h4>
                 </div>
                 <div class="modal-body" style="width: 100%">
-                    <table class="table" style="">
-                        <tbody>
-                        <tr>
-                            <td><b>GlispaId</b></td>
-                            <td id="msg1"></td>
-                            <td><b>Name</b></td>
-                            <td id="msg2"></td>
-                        </tr>
-                        <tr>
-                            <td><b>Category</b></td>
-                            <td id="msg3"></td>
-                            <td><b>Countries</b></td>
-                            <td id="msg4"></td>
-                        </tr>
-                        <tr>
-                            <td><b>Summary</b></td>
-                            <td id="msg5"></td>
-                            <td><b>Acquisition</b></td>
-                            <td id="msg6"></td>
-                        </tr>
-                        <tr>
-                            <td><b>Rules</b></td>
-                            <td id="msg7"></td>
-                            <td><b>Payout</b></td>
-                            <td id="msg8"></td>
-                        </tr>
-                        </tbody>
+                    <table class="table table-bordered" style="">
+                            <tbody>
+                            <tr>
+                                <td><b>GlispaId</b></td>
+                                <td id="msg1"></td>
+                                <td><b>Name</b></td>
+                                <td id="msg2"></td>
+                            </tr>
+                            <tr>
+                                <td><b>Category</b></td>
+                                <td id="msg3"></td>
+                                <td><b>Countries</b></td>
+                                <td id="msg4"></td>
+                            </tr>
+                            <tr>
+                                <td><b>Summary</b></td>
+                                <td id="msg5"></td>
+                                <td><b>Acquisition</b></td>
+                                <td id="msg6"></td>
+                            </tr>
+                            <tr>
+                                <td><b>Rules</b></td>
+                                <td id="msg7"></td>
+                                <td><b>Payout</b></td>
+                                <td id="msg8"></td>
+                            </tr>
+                            </tbody>
                     </table>
+                    <div id="test"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1448,7 +1449,7 @@
             dataType: "text",
             success: function(result){
                 var data = JSON.parse(result);
-                    alert(data.detail.link[0].link);
+//                    alert(data.detail.link[0].link);
                 if(null != result && data['success']) {
                     //alert(data.detail.name);
                     $('#msg').html(data.detail.name);
@@ -1460,6 +1461,7 @@
                     $('#msg6').html(data.detail.acquisition);
                     $('#msg7').html(data.detail.rules);
                     $('#msg8').html(data.detail.payout);
+                    $('#test').html(getTable(data.detail.link));
 
                 }
                 return;
@@ -1470,6 +1472,18 @@
         });//end jQuery.ajax
         jQuery.noConflict();
         $('#myModal').modal('show');
+    }
+    function getTable(data){
+
+        var html = "";
+        html +="<table class='table table-bordered'><caption><h3>Creative Glispas<h3></caption><thead><tr><td><h4>Link</h4></td><td><h4>Description</h4></td></tr></thead><tbody>";
+        for(var i =0 ;i< data.length ;i ++){
+            html += "<tr>";
+            html += "<td>" + data[i].link + "</td>";
+            html += "<td>" + data[i].description + "</td></tr>";
+        }
+        html += "</tbody></table>";
+        return html;
     }
 </script>
 <?php include("footer.php"); ?>
