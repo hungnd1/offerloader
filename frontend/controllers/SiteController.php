@@ -8,6 +8,7 @@ use frontend\models\ListClickSmobs;
 use frontend\models\ListGlispas;
 use frontend\models\ListHasOffer;
 use frontend\models\ListMatomies;
+use frontend\models\ListOfferSeven;
 use Yii;
 use yii\helpers\Json;
 use yii\web\Controller;
@@ -87,9 +88,10 @@ class SiteController extends Controller
 
     public function actionArtOfClick()
     {
+        $sort = $this->getParameter('id','id');
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 20);
-        $response_offer = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_ARTOFCLICK, 'page' => $page, '$per_page' => $per_page], null, false);
+        $response_offer = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_ARTOFCLICK, 'page' => $page, 'per_page' => $per_page,'sort'=>$sort], null, false);
         if (ApiHelper::isResultSuccess($response_offer)) {
             $listHasOffer_ = $response_offer['data']['items'];
             $listHasOffer = new ListArt();
@@ -266,6 +268,85 @@ class SiteController extends Controller
     {
         $id = $this->getParameter('id');
         $response_export = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_HASOFFER_EXPORT, 'id' => $id]);
+        if (ApiHelper::isResultSuccess($response_export)) {
+            $detail = $response_export['data'];
+            $filename = "website_data_" . date('Ymd') . ".xls";
+
+            header("Content-Disposition: attachment; filename=\"$filename\"");
+            header("Content-Type: application/vnd.ms-excel");
+            header("Pragma: no-cache");
+            header("Expires: 0");
+            $de = $detail;
+            $flag = false;
+            $out = fopen("php://output", 'w');
+            foreach ($de as $data) {
+                fputcsv($out, $data, "\t");
+            }
+            fclose($out);
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionGetDetailHasoffer()
+    {
+        $id = $this->getParameter('id', 0);
+        $response_detail = ApiHelper::apiQuery([ApiHelper::API_GET_DETAIL_HASOFFER, 'id' => $id]);
+        if (ApiHelper::isResultSuccess($response_detail)) {
+            $detail = $response_detail['data'];
+            return Json::encode(['success' => $response_detail['success'], 'detail' => $detail]);
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionGetDetailArtofclick()
+    {
+        $id = $this->getParameter('id', 0);
+        $response_detail = ApiHelper::apiQuery([ApiHelper::API_GET_DETAIL_ART, 'id' => $id]);
+        if (ApiHelper::isResultSuccess($response_detail)) {
+            $detail = $response_detail['data'];
+            return Json::encode(['success' => $response_detail['success'], 'detail' => $detail]);
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionOfferSeven()
+    {
+        $page = \Yii::$app->request->get('page', 1);
+        $per_page = \Yii::$app->request->get('per_page', 20);
+        $sort = Yii::$app->request->get('id', 'ID');
+
+        $response_seven = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_SEVEN, 'page' => $page, 'per_page' => $per_page, 'sort' => $sort], null, false);
+        if (ApiHelper::isResultSuccess($response_seven)) {
+            $seven = $response_seven['data']['items'];
+            $listSeven = new ListOfferSeven();
+            $listSeven->setAttribute($seven);
+            $pagination = new \yii\data\Pagination(['totalCount' => $response_seven['data']['_meta']['totalCount'], 'pageSize' => $response_seven['data']['_meta']['perPage']]);
+            return $this->render('offerseven', ['listSeven' => $listSeven, 'pagination' => $pagination]);
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionGetDetailOfferseven()
+    {
+        $id = $this->getParameter('id', 0);
+        $response_detail = ApiHelper::apiQuery([ApiHelper::API_GET_DETAIL_SEVEN, 'id' => $id]);
+        if (ApiHelper::isResultSuccess($response_detail)) {
+            $detail = $response_detail['data'];
+            $link = $response_detail['data']['link'];
+            return Json::encode(['success' => $response_detail['success'], 'detail' => $detail]);
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionGetSevenExport()
+    {
+        $id = $this->getParameter('id');
+        $response_export = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_SEVEN_EXPORT, 'id' => $id]);
         if (ApiHelper::isResultSuccess($response_export)) {
             $detail = $response_export['data'];
             $filename = "website_data_" . date('Ymd') . ".xls";

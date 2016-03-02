@@ -144,4 +144,8 @@ class Hasoffers extends \yii\db\ActiveRecord
             return $e;
         }
     }
+
+    public static function getDetailHasoffer($id){
+        return Hasoffers::findOne(['id'=>$id]);
+    }
 }

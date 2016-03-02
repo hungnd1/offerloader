@@ -33,6 +33,11 @@ class ApiHelper
     const API_GET_DETAIL_CLICL_SMOBS = "offer/get-detail-clicksmobs";
     const API_GET_LIST_CLICK_EXPORT = 'offer/get-list-clicksmobs-export';
     const API_GET_LIST_HASOFFER_EXPORT = 'offer/get-list-hasoffer-export';
+    const API_GET_DETAIL_HASOFFER = 'offer/get-detail-hasoffer';
+    const API_GET_DETAIL_ART = 'offer/get-detail-artofclick';
+    const API_GET_LIST_SEVEN = 'offer/get-list-seven';
+    const API_GET_DETAIL_SEVEN = 'offer/get-detail-seven';
+    const API_GET_LIST_SEVEN_EXPORT = 'offer/get-list-seven-export';
     /**
      * @param $apiResults - array (json decoded from api result)
      * @return bool

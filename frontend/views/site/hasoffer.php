@@ -156,27 +156,27 @@
                     <table class="table table-bordered" style="">
                         <tbody>
                         <tr>
-                            <td><b>GlispaId</b></td>
+                            <td><b>ID</b></td>
                             <td id="msg1"></td>
-                            <td><b>Name</b></td>
+                            <td><b>description</b></td>
                             <td id="msg2"></td>
                         </tr>
                         <tr>
-                            <td><b>Category</b></td>
+                            <td><b>Name</b></td>
                             <td id="msg3"></td>
-                            <td><b>Countries</b></td>
+                            <td><b>preview_url</b></td>
                             <td id="msg4"></td>
                         </tr>
                         <tr>
-                            <td><b>Summary</b></td>
+                            <td><b>default_payout</b></td>
                             <td id="msg5"></td>
-                            <td><b>Acquisition</b></td>
+                            <td><b>currency</b></td>
                             <td id="msg6"></td>
                         </tr>
                         <tr>
-                            <td><b>Rules</b></td>
+                            <td><b>payout_type</b></td>
                             <td id="msg7"></td>
-                            <td><b>Payout</b></td>
+                            <td><b>status</b></td>
                             <td id="msg8"></td>
                         </tr>
                         </tbody>
@@ -193,7 +193,7 @@
     <script>
         function getDetail(id) {
             var id = id
-            var url = '<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-detail"]) ?>';
+            var url = '<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-detail-hasoffer"]) ?>';
             $.ajax({
                 url: url,
                 type: "GET",
@@ -206,15 +206,15 @@
                     if (null != result && data['success']) {
                         //alert(data.detail.name);
                         $('#msg').html(data.detail.name);
-                        $('#msg1').html(data.detail.glispaID);
-                        $('#msg2').html(data.detail.name);
-                        $('#msg3').html(data.detail.category);
-                        $('#msg4').html(data.detail.countries);
-                        $('#msg5').html(data.detail.summary);
-                        $('#msg6').html(data.detail.acquisition);
-                        $('#msg7').html(data.detail.rules);
-                        $('#msg8').html(data.detail.payout);
-                        $('#test').html(getTable(data.detail.link));
+                        $('#msg1').html(data.detail.id);
+                        $('#msg2').html(data.detail.description);
+                        $('#msg3').html(data.detail.name);
+                        $('#msg4').html(data.detail.preview_url);
+                        $('#msg5').html(data.detail.default_payout);
+                        $('#msg6').html(data.detail.currency);
+                        $('#msg7').html(data.detail.payout_type);
+                        $('#msg8').html(data.detail.status);
+//                        $('#test').html(getTable(data.detail.link));
 
                     }
                     return;

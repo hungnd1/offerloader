@@ -90,12 +90,13 @@ class ArtOfClickModels extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getListArtOfClick(){
+    public static function getListArtOfClick($sort){
         $query = ArtOfClickModels::find();
         $provider = new ActiveDataProvider([
            'query' =>$query,
             'sort'=>[
                 'defaultOrder' => [
+                    $sort=>SORT_DESC
                 ]
             ],
             'pagination' => [
@@ -104,5 +105,7 @@ class ArtOfClickModels extends \yii\db\ActiveRecord
         ]);
         return $provider;
     }
-
+    public static function getDetailArtOfClick($id){
+        return ArtOfClickModels::findOne(['id'=>$id]);
+    }
 }

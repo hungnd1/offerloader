@@ -298,7 +298,7 @@
             if(vals == ''){
                 alert('You must choose checkbox to export');
             }else{
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-hasoofer-export&id='+vals;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-glispas-export&id='+vals;
             }
 
         }

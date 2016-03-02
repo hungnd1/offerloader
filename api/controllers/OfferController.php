@@ -8,6 +8,8 @@ use common\models\Glispas;
 use common\models\Hasoffers;
 use common\models\Matomies;
 use common\models\OfferpayoutsClicksmobs;
+use common\models\Offersevens;
+use frontend\models\Art;
 
 /**
  * Created by PhpStorm.
@@ -40,7 +42,12 @@ class OfferController extends \api\controllers\ApiController{
             'get-list-click-smobs',
             'get-detail-clicksmobs',
             'get-list-clicksmobs-export',
-            'get-list-hasoffer-export'
+            'get-list-hasoffer-export',
+            'get-detail-hasoffer',
+            'get-detail-artofclick',
+            'get-list-seven-export',
+            'get-list-seven',
+            'get-detail-seven'
         ];
 
         return $behaviors;
@@ -53,7 +60,8 @@ class OfferController extends \api\controllers\ApiController{
         ];
     }
     public function  actionGetListArtofclick(){
-        $check  = ArtOfClickModels::getListArtOfClick();
+        $sort = $this->getParameter('sort','id');
+        $check  = ArtOfClickModels::getListArtOfClick($sort);
         if(!empty($check)){
             return $check;
         }else{
@@ -165,6 +173,57 @@ class OfferController extends \api\controllers\ApiController{
     public function actionGetListHasofferExport(){
         $id = $this->getParameter('id');
         $export = Hasoffers::getListOfferExport($id);
+        return $export;
+    }
+
+    public function actionGetDetailHasoffer(){
+        $id = $this->getParameter('id', 0);
+        $hasoffer = Hasoffers::getDetailHasoffer($id);
+        if(!empty($hasoffer)){
+            return $hasoffer;
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
+    }
+
+
+    public function actionGetDetailArtofclick(){
+        $id = $this->getParameter('id', 0);
+        $art = ArtOfClickModels::getDetailArtOfClick($id);
+        if(!empty($art)){
+            return $art;
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
+    }
+
+    public function actionGetListSeven(){
+        $sort = $this->getParameter('sort', 'ID');
+        $status = Offersevens::getListSevens($sort);
+        if(!empty($status)){
+            return $status;
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>"Page not found"];
+        }
+
+    }
+    public function actionGetDetailSeven(){
+        $id = $this->getParameter('id', 0);
+        $glispas = Offersevens::getDetailById($id);
+        if(!empty($glispas)){
+            return $glispas;
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
+    }
+
+    public function actionGetListSevenExport(){
+        $id = $this->getParameter('id');
+        $export = Offersevens::getListSevenExport($id);
         return $export;
     }
 }

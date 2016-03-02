@@ -66,7 +66,8 @@
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Mundo Media</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
-                                class="fa fa-cube" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
+                                class="fa fa-cube" data-reactid=".0.0.3.0.4.0.0"></i></span>
+                        <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/offer-seven']) ?>"
                                                                                                data-reactid=".0.0.3.0.4.1"><span
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Offer Seven</span></a>
                     </li>
