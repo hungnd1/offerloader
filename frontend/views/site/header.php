@@ -1,52 +1,5 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 
-    <meta charset="utf-8"/>
-    <title>MakeMassive.com</title>
-    <link rel="shortcut icon" href="static/favicon.ico">
-    <script src="static/js/jquery-2.1.3.min.js" type="text/javascript"></script>
-    <script src="static/js/lazysizes.min.js" async></script>
-<!--    <link rel="stylesheet" href="http://www.formmail-maker.com/var/demo/jquery-popup-form/colorbox.css" />-->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>-->
-<!--    <script src="static/js/jquery.colorbox.js"></script>-->
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta content="" name="description"/>
-    <meta content="" name="author"/>
-    <!-- BEGIN Vendor CSS-->
-    <link rel="stylesheet" href="static/CACHE/css/50faabdc3ce3.css" type="text/css"/>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" type="text/css"/>
-
-<!--    <script src="static/js/main.js"></script>-->
-    <script type="text/javascript">
-        window.onload = function () {
-            // fix for windows 8
-            if (navigator.appVersion.indexOf("Windows NT 6.2") != -1)
-                document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="pages/css/windows.chrome.fix.css" />'
-        }
-    </script>
-<!--    <script type="text/javascript">-->
-<!--        $(document).ready(function(){-->
-<!--            $("#iframe").colorbox({iframe:true, fastIframe:false, width:"700px", height:"480px", transition:"fade", scrolling   : false});-->
-<!--        });-->
-<!--    </script>-->
-<!---->
-<!---->
-<!--    <style>-->
-<!--        #cboxOverlay{ background:#666666; }-->
-<!--    </style>-->
-
-<!--    <script src="static/js/jquery.dataTables.min.js" type="text/javascript"></script>-->
-
-</head>
-
-<body class="fixed-header menu-pin"
 <!-- END SIDEBAR -->
 <!-- START PAGE-CONTAINER -->
 <div id="app" class="full-height">
@@ -76,19 +29,19 @@
                             <div data-reactid=".0.0.3.0.0.1.1">Guest</div>
                         </div>
                     </li>
-                    <li class="m-t-10 active" data-reactid=".0.0.3.0.1"><span class="icon-thumbnail"
+                    <li onclick="display('test',$(this));" class="m-t-10 active" data-reactid=".0.0.3.0.1"><span class="icon-thumbnail"
                                                                               data-reactid=".0.0.3.0.1.0">
                     <i class="fa fa-money" data-reactid=".0.0.3.0.1.0.0"></i></span>
-                        <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/art-of-click']) ?>" data-reactid=".0.0.3.0.1.1"><span class="title" data-reactid=".0.0.3.0.1.1.0">Has Offer</span></a>
+                        <a  href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/art-of-click']) ?>" data-reactid=".0.0.3.0.1.1"><span class="title" data-reactid=".0.0.3.0.1.1.0">Has Offer</span></a>
                     </li>
-                    <li class="" data-reactid=".0.0.3.0.2"><span class="icon-thumbnail" data-reactid=".0.0.3.0.2.0"><i
+                    <li onclick="display('test1',$(this));" class="" data-reactid=".0.0.3.0.2"><span class="icon-thumbnail" data-reactid=".0.0.3.0.2.0"><i
                                 class="fa fa-file-code-o" data-reactid=".0.0.3.0.2.0.0"></i></span>
                         <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/art-of-click']) ?>" data-reactid=".0.0.3.0.2.1"><span class="title"
                                                                                        data-reactid=".0.0.3.0.2.1.0">ArtOfClick</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.3"><span class="icon-thumbnail" data-reactid=".0.0.3.0.3.0"><i
                                 class="fa fa-group" data-reactid=".0.0.3.0.3.0.0"></i></span>
-                        <a href="/affiliate-network/" data-reactid=".0.0.3.0.3.1">
+                        <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/clicksmobs']) ?>" data-reactid=".0.0.3.0.3.1">
                             <span class="title" data-reactid=".0.0.3.0.3.1.0">ClickSmob</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
@@ -102,7 +55,8 @@
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Global Wide Media</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
-                                class="fa fa-desktop" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
+                                class="fa fa-desktop" data-reactid=".0.0.3.0.4.0.0"></i></span>
+                        <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/matomies']) ?>"
                                                                                                   data-reactid=".0.0.3.0.4.1"><span
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Matomy</span></a>
                     </li>
@@ -175,6 +129,15 @@
 <script src="static/bootstrap-3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="static/bootstrap-3.3.4/js/bootstrap.js" type="text/javascript"></script>
 <script src="static/js/main.js"></script>
-
+<script src="jquery.tableCheckbox.js"></script>
+<!--<script type="text/javascript">-->
+<!--    window.onload = function() {-->
+<!--    $('.menu-items li').click(function() {-->
+<!--        alert('1');-->
+<!--        $('.menu-items li.active').removeClass('active');-->
+<!--        $(this).addClass('active');-->
+<!--    });-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>

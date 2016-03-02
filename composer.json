@@ -2,7 +2,7 @@
     "name": "yiisoft/yii2-app-advanced",
     "description": "Yii 2 Advanced Project Template",
     "keywords": ["yii2", "framework", "advanced", "project template"],
-    "homepage": "http://www.yiiframework.com/",
+    "homepage": "https://github.com/Yarisrespect/yii2-excel",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
@@ -23,7 +23,8 @@
         "yiisoft/yii2-codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-faker": "*",
+        "arturoliveira/yii2-excelview": "*"
     },
     "config": {
         "process-timeout": 1800

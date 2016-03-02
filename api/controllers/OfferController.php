@@ -2,8 +2,11 @@
 namespace api\controllers;
 use common\models\Application;
 use common\models\ArtOfClickModels;
+use common\models\Clicksmobs;
 use common\models\Countries;
 use common\models\Glispas;
+use common\models\Matomies;
+use common\models\OfferpayoutsClicksmobs;
 
 /**
  * Created by PhpStorm.
@@ -28,7 +31,13 @@ class OfferController extends \api\controllers\ApiController{
             'test',
             'get-list-glispas',
             'get-detail-glispas',
-            'get-country-name'
+            'get-country-name',
+            'get-list-glispas-export',
+            'get-list-matomies',
+            'get-detail-matomies',
+            'get-list-click-smobs',
+            'get-detail-clicksmobs',
+            'get-list-clicksmobs-export'
         ];
 
         return $behaviors;
@@ -44,7 +53,12 @@ class OfferController extends \api\controllers\ApiController{
         return ArtOfClickModels::getListHasOffer();
     }
     public function actionGetListGlispas(){
-        return Glispas::getListGlispas();
+        $sort = $this->getParameter('sort', 'name');
+        $status = Glispas::getListGlispas($sort);
+        if(!empty($status)){
+            return $status;
+        }
+
     }
     public function actionGetDetailGlispas(){
         $id = $this->getParameter('id', 0);
@@ -66,5 +80,61 @@ class OfferController extends \api\controllers\ApiController{
             $this->setStatusCode(404);
             return ['message' => "Not found value"];
         }
+    }
+
+    public function actionGetListGlispasExport(){
+        $id = $this->getParameter('id');
+        $export = Glispas::getListGlispasExport($id);
+        return $export;
+    }
+
+    public function actionGetListMatomies(){
+        $matomies = Matomies::getListMatomies();
+        if(!empty($matomies)){
+            return $matomies;
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>"Page not found"];
+        }
+    }
+
+    public function actionGetDetailMatomies(){
+        $id = $this->getParameter('id', 0);
+        $matomies = Matomies::getDetailMatomies($id);
+        if(!empty($matomies)){
+            return $matomies;
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
+    }
+    public function actionGetListClickSmobs(){
+        $page = $this->getParameter('page',1);
+        $rows_per_page = $this->getParameter('rows_per_page',50);
+        $list = OfferpayoutsClicksmobs::getListClickSmobs($page,$rows_per_page);
+        if(!empty($list)){
+            return ['items'=>$list,'totalCount'=>OfferpayoutsClicksmobs::getCount()];
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
+    }
+    public function actionGetDetailClicksmobs(){
+        $id = $this->getParameter('id', 0);
+        $payout = $this->getParameter('payout',0);
+        $clickSmobs = OfferpayoutsClicksmobs::getDetailClickSmobs($id,$payout);
+        if(!empty($clickSmobs)){
+            return ['items'=>$clickSmobs,'general'=>OfferpayoutsClicksmobs::getDetailClick($id,$payout)];
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
+
+    }
+
+    public function actionGetListClicksmobsExport(){
+        $id = $this->getParameter('id');
+        $export = OfferpayoutsClicksmobs::getClickSmobsExport($id);
+        return $export;
     }
 }

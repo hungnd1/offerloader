@@ -8,7 +8,7 @@
 namespace frontend\models;
 use yii\base\Model;
 
-class HasOffer extends Model{
+class Art extends Model{
     public $id = 0;
     public $name = "";
     public $incent = 0;

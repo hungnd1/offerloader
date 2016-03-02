@@ -25,8 +25,12 @@ class ApiHelper
     const API_OFFER_HASH = "offer/get-list-has-offer";
     const API_GET_LIST_GLISPAS = 'offer/get-list-glispas';
     const API_GET_DETAIL_GLISPAS = 'offer/get-detail-glispas';
-
-
+    const API_GET_LIST_GLISPAS_EXPORT = 'offer/get-list-glispas-export';
+    const API_GET_LIST_MATOMIES = 'offer/get-list-matomies';
+    const API_GET_DETAIL_MATOMIES = 'offer/get-detail-matomies';
+    const API_GET_LIST_CLICK_SMOBS = "offer/get-list-click-smobs";
+    const API_GET_DETAIL_CLICL_SMOBS = "offer/get-detail-clicksmobs";
+    const API_GET_LIST_CLICK_EXPORT = 'offer/get-list-clicksmobs-export';
     /**
      * @param $apiResults - array (json decoded from api result)
      * @return bool

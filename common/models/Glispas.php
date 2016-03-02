@@ -3,7 +3,9 @@
 namespace common\models;
 
 use Yii;
+use yii\base\Exception;
 use yii\data\ActiveDataProvider;
+use yii\db\Query;
 
 /**
  * This is the model class for table "glispas".
@@ -68,12 +70,13 @@ class Glispas extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getListGlispas(){
+    public static function getListGlispas($sort){
         $query = Glispas::find();
         $provider = new ActiveDataProvider([
             'query' =>$query,
             'sort'=>[
                 'defaultOrder' => [
+                    $sort=>SORT_DESC
                 ]
             ],
 //            'pagination' => false
@@ -82,6 +85,18 @@ class Glispas extends \yii\db\ActiveRecord
         ],
         ]);
         return $provider;
+    }
+
+    public static function getListGlispasExport($array){
+        $query = "select * from glispas where glispaID in (".$array.")";
+        try{
+            $command = Yii::$app->db->createCommand($query);
+            $rowCount = $command->execute();
+            $row = $command->queryAll();
+            return $row;
+        }catch(Exception $e){
+            return $e;
+        }
     }
     public static function getDetailById($id = 0){
         $detail = \api\models\Glispas::findOne(['glispaID'=>$id]);
