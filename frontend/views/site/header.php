@@ -14,19 +14,19 @@
             <div class="sidebar-menu" data-reactid=".0.0.3">
                 <ul class="menu-items" data-reactid=".0.0.3.0">
                     <li class="sidebar-user" data-reactid=".0.0.3.0.0">
-                        <div class="user-left" data-reactid=".0.0.3.0.0.0">
-                            <a style="cursor:pointer;" data-reactid=".0.0.3.0.0.0.0">
-                                <img src="static/images/profile.png" alt=""
-                                     class="user-photo img-circle" data-reactid=".0.0.3.0.0.0.0.0"></a></div>
+<!--                        <div class="user-left" data-reactid=".0.0.3.0.0.0">-->
+<!--                            <a style="cursor:pointer;" data-reactid=".0.0.3.0.0.0.0">-->
+<!--                                <img src="static/images/profile.png" alt=""-->
+<!--                                     class="user-photo img-circle" data-reactid=".0.0.3.0.0.0.0.0"></a></div>-->
                         <div class="user-right" data-reactid=".0.0.3.0.0.1">
                             <div data-reactid=".0.0.3.0.0.1.0">
-                                <a class="user-widget-link" data-reactid=".0.0.3.0.0.1.0.0">
-                                    <h5 style="cursor:pointer;display:inline-block;" data-reactid=".0.0.3.0.0.1.0.0.0">
-                                        Login</h5></a>
-                                <a class="m-l-20 user-widget-link" data-reactid=".0.0.3.0.0.1.0.1"><h5
-                                        style="cursor:pointer;display:inline-block;" data-reactid=".0.0.3.0.0.1.0.1.0">
-                                        Signup</h5></a></div>
-                            <div data-reactid=".0.0.3.0.0.1.1">Guest</div>
+<!--                                <a class="user-widget-link" data-reactid=".0.0.3.0.0.1.0.0">-->
+<!--                                    <h5 style="cursor:pointer;display:inline-block;" data-reactid=".0.0.3.0.0.1.0.0.0">-->
+<!--                                        Login</h5></a>-->
+<!--                                <a class="m-l-20 user-widget-link" data-reactid=".0.0.3.0.0.1.0.1"><h5-->
+<!--                                        style="cursor:pointer;display:inline-block;" data-reactid=".0.0.3.0.0.1.0.1.0">-->
+<!--                                        Signup</h5></a></div>-->
+<!--                            <div data-reactid=".0.0.3.0.0.1.1">Guest</div>-->
                         </div>
                     </li>
                     <li onclick="display('test',$(this));" class="m-t-10 active" data-reactid=".0.0.3.0.1"><span class="icon-thumbnail"
@@ -68,7 +68,7 @@
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
                                 class="fa fa-cube" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
                                                                                                data-reactid=".0.0.3.0.4.1"><span
-                                class="title" data-reactid=".0.0.3.0.4.1.0">Offer Sever</span></a>
+                                class="title" data-reactid=".0.0.3.0.4.1.0">Offer Seven</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.6"><span class="icon-thumbnail" data-reactid=".0.0.3.0.6.0"><i
                                 class="fa fa-cogs" data-reactid=".0.0.3.0.6.0.0"></i></span><a href="/support/"
