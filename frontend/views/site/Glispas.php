@@ -85,7 +85,6 @@
                                     <div style="display:inline-block;vertical-align:top;"
                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1">
                                         <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1">
-                                            <a href="#" class="btn btn-primary">Import</a>
                                             <a href="#" onclick="fnExcelReport1();" class="btn btn-primary">Export</a>
                                         </div>
                                     </div>
@@ -297,7 +296,11 @@
                 }
             }
             if (vals) vals = vals.substring(1);
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-glispas-export&id='+vals;
+            if(vals == ''){
+                alert('You must choose checkbox to export');
+            }else{
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-hasoofer-export&id='+vals;
+            }
 
         }
     </script>

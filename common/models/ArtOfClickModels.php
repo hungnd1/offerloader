@@ -90,7 +90,7 @@ class ArtOfClickModels extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getListHasOffer(){
+    public static function getListArtOfClick(){
         $query = ArtOfClickModels::find();
         $provider = new ActiveDataProvider([
            'query' =>$query,

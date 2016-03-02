@@ -50,12 +50,10 @@
                 <div class="container-fluid" data-reactid=".0.6.1.0.0.0.1">
                     <div class="panel panel-transparent" data-reactid=".0.6.1.0.0.0.1.0">
                         <div class="panel-heading" data-reactid=".0.6.1.0.0.0.1.0.0">
-                            <div class="panel-title" data-reactid=".0.6.1.0.0.0.1.0.0.0">Sort</div>
+                            <div class="panel-title" data-reactid=".0.6.1.0.0.0.1.0.0.0">Sort </div>
                         </div>
                         <div class="panel-body" data-reactid=".0.6.1.0.0.0.1.0.1">
                             <div class="row" data-reactid=".0.6.1.0.0.0.1.0.1.0:0">
-
-
                                 <div class="col-md-3" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3">
                                     <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1">
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0"><select
@@ -68,8 +66,7 @@
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Name
                                                 </option>
                                                 <option value="payout"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: high to
-                                                    low
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout low to high
                                                 </option>
 
                                             </select>
@@ -87,7 +84,7 @@
                                     <div style="display:inline-block;vertical-align:top;"
                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1">
                                         <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1">
-                                            <a href="#" onclick="fnExcelReport();" class="btn btn-primary">Export</a>
+                                            <a href="#" onclick="fnExcelReport1();" class="btn btn-primary">Export</a>
                                         </div>
                                     </div>
                                 </div>
@@ -103,40 +100,25 @@
                                     <th><input type="checkbox" id="checkAll" style="margin-left: -10px;"></th>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Program name</th>
-                                    <th>Program id</th>
-                                    <th>Type</th>
-                                    <th>Country</th>
-                                    <th>Association</th>
-                                    <th>CateID</th>
-                                    <th>Media</th>
-                                    <th>payout</th>
-                                    <th>Currency</th>
-                                    <th>Commission</th>
+                                    <th>Payout</th>
+                                    <th>Type payout</th>
+                                    <th>Description</th>
                                 </tr>
                                 </thead>
                                 <tbody class="searchable">
-                                <?php if (!empty($listMatomies) && null != $listMatomies) {
-                                    foreach ($listMatomies->items as $matomies) {
+                                <?php if (!empty($listOffer) && null != $listOffer) {
+                                    foreach ($listOffer->items as $offer) {
                                         ?>
                                         <tr>
                                             <td><input type="checkbox" class="chk" name="glispas[]"
-                                                       value="<?= $matomies->id ?>"/></td>
-                                            <td><?= $matomies->id ?></td>
+                                                       value="<?= $offer->id ?>"/></td>
+                                            <td><?= $offer->id ?></td>
                                             <td>
-                                                <a onclick="getDetail(<?= $matomies->id ?>);"><?= $matomies->name ?></a>
+                                                <a onclick="getDetail(<?= $offer->id ?>);"><?= $offer->name ?></a>
                                             </td>
-                                            <td><a onclick="getDetail(<?= $matomies->id ?>);"><?= $matomies->program_name ?></a></td>
-                                            <td><?= $matomies->program_id ?></td>
-                                            <td><?= $matomies->type ?></td>
-                                            <td><?= $matomies->country ?></td>
-                                            <td><?= $matomies->association_status ?></td>
-                                            <td><?= $matomies->category_ids ?></td>
-                                            <td><?= $matomies->media_types ?></td>
-                                            <td><?= $matomies->payout ?></td>
-                                            <td><?= $matomies->payout_currency ?></td>
-                                            <td><?= $matomies->commission_approval ?></td>
-
+                                            <td><?= $offer->default_payout ?></td>
+                                            <td><?= $offer->payout_type ?></td>
+                                            <td><?= $offer->description ?></td>
                                         </tr>
                                     <?php }
                                 } ?>
@@ -174,40 +156,28 @@
                     <table class="table table-bordered" style="">
                         <tbody>
                         <tr>
-                            <td><b>Matomies ID</b></td>
+                            <td><b>GlispaId</b></td>
                             <td id="msg1"></td>
-                            <td><b>Matomies Name</b></td>
+                            <td><b>Name</b></td>
                             <td id="msg2"></td>
                         </tr>
                         <tr>
-                            <td><b>Program_id</b></td>
+                            <td><b>Category</b></td>
                             <td id="msg3"></td>
-                            <td><b>Program_name</b></td>
+                            <td><b>Countries</b></td>
                             <td id="msg4"></td>
                         </tr>
                         <tr>
-                            <td><b>Type</b></td>
+                            <td><b>Summary</b></td>
                             <td id="msg5"></td>
-                            <td><b>Country</b></td>
+                            <td><b>Acquisition</b></td>
                             <td id="msg6"></td>
                         </tr>
                         <tr>
-                            <td><b>Association_status</b></td>
+                            <td><b>Rules</b></td>
                             <td id="msg7"></td>
-                            <td><b>Category_ids</b></td>
-                            <td id="msg8"></td>
-                        </tr>
-                        <tr>
-                            <td><b>Media_types</b></td>
-                            <td id="msg9"></td>
                             <td><b>Payout</b></td>
-                            <td id="msg10"></td>
-                        </tr>
-                        <tr>
-                            <td><b>Payout_currency</b></td>
-                            <td id="msg11"></td>
-                            <td><b>Commission_approval</b></td>
-                            <td id="msg12"></td>
+                            <td id="msg8"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -223,7 +193,7 @@
     <script>
         function getDetail(id) {
             var id = id
-            var url = '<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-detail-matomies"]) ?>';
+            var url = '<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-detail"]) ?>';
             $.ajax({
                 url: url,
                 type: "GET",
@@ -236,18 +206,15 @@
                     if (null != result && data['success']) {
                         //alert(data.detail.name);
                         $('#msg').html(data.detail.name);
-                        $('#msg1').html(data.detail.id);
+                        $('#msg1').html(data.detail.glispaID);
                         $('#msg2').html(data.detail.name);
-                        $('#msg3').html(data.detail.program_id);
-                        $('#msg4').html(data.detail.program_name);
-                        $('#msg5').html(data.detail.type);
-                        $('#msg6').html(data.detail.country);
-                        $('#msg7').html(data.detail.association_status);
-                        $('#msg8').html(data.detail.category_ids);
-                        $('#msg9').html(data.detail.media_types);
-                        $('#msg10').html(data.detail.payout);
-                        $('#msg11').html(data.detail.payout_currency);
-                        $('#msg12').html(data.detail.commission_approval);
+                        $('#msg3').html(data.detail.category);
+                        $('#msg4').html(data.detail.countries);
+                        $('#msg5').html(data.detail.summary);
+                        $('#msg6').html(data.detail.acquisition);
+                        $('#msg7').html(data.detail.rules);
+                        $('#msg8').html(data.detail.payout);
+                        $('#test').html(getTable(data.detail.link));
 
                     }
                     return;
@@ -259,6 +226,18 @@
             jQuery.noConflict();
             $('#myModal').modal('show');
         }
+        function getTable(data) {
+
+            var html = "";
+            html += "<table class='table table-bordered'><caption><h3>Creative Glispas<h3></caption><thead><tr><td><h4>Link</h4></td><td><h4>Description</h4></td></tr></thead><tbody>";
+            for (var i = 0; i < data.length; i++) {
+                html += "<tr>";
+                html += "<td>" + data[i].link + "</td>";
+                html += "<td>" + data[i].description + "</td></tr>";
+            }
+            html += "</tbody></table>";
+            return html;
+        }
 
     </script>
     <script type="text/javascript">
@@ -266,11 +245,11 @@
             var sort = document.getElementById("sort");
             var strUser = sort.options[sort.selectedIndex].value;
             if (strUser == 'payout') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/glispas", 'id' => 'payout']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-list-has-offer", 'id' => 'default_payout']) ?>');
             } else if (strUser == 'name') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/glispas", 'id' => 'name']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-list-has-offer", 'id' => 'name']) ?>');
             } else {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/glispas", 'id' => 'glispaID']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-list-has-offer", 'id' => 'id']) ?>');
             }
 
         }
@@ -279,7 +258,6 @@
             var textRange;
             var j = 0;
             tab = document.getElementById('datatable'); // id of table
-
             for (j = 0; j < tab.rows.length; j++) {
                 tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
                 //tab_text=tab_text+"</tr>";
@@ -316,26 +294,10 @@
                 }
             }
             if (vals) vals = vals.substring(1);
-            if (vals == '') {
-                alert("Bạn cần chọn giá trị để export");
+            if(vals == ''){
+                alert('You must choose checkbox to export');
             }else{
-                var url = '<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-glispas-export"]) ?>';
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    data: {id: vals},
-                    crossDomain: true,
-                    dataType: "text",
-                    success: function (result) {
-                        var data = JSON.parse(result);
-                        alert(data.detail[0].name);
-//                        window.location.href = ("http://localhost:8080/offerloader/frontend/web/?r=site%2Fexport"+"&data="+data.detail);
-                        window.location.href = '<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/export"]) ?>';
-                        return;
-                    },
-                    error: function (result) {
-                    }
-                });//end jQuery.ajax
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-hasoffer-export&id='+vals;
             }
 
         }

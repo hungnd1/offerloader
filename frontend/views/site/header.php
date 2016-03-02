@@ -32,7 +32,7 @@
                     <li onclick="display('test',$(this));" class="m-t-10 active" data-reactid=".0.0.3.0.1"><span class="icon-thumbnail"
                                                                               data-reactid=".0.0.3.0.1.0">
                     <i class="fa fa-money" data-reactid=".0.0.3.0.1.0.0"></i></span>
-                        <a  href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/art-of-click']) ?>" data-reactid=".0.0.3.0.1.1"><span class="title" data-reactid=".0.0.3.0.1.1.0">Has Offer</span></a>
+                        <a  href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/get-list-has-offer']) ?>" data-reactid=".0.0.3.0.1.1"><span class="title" data-reactid=".0.0.3.0.1.1.0">Has Offer</span></a>
                     </li>
                     <li onclick="display('test1',$(this));" class="" data-reactid=".0.0.3.0.2"><span class="icon-thumbnail" data-reactid=".0.0.3.0.2.0"><i
                                 class="fa fa-file-code-o" data-reactid=".0.0.3.0.2.0.0"></i></span>

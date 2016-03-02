@@ -89,7 +89,7 @@ class SiteController extends Controller
     {
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 20);
-        $response_offer = ApiHelper::apiQuery([ApiHelper::API_OFFER_HASH, 'page' => $page, '$per_page' => $per_page], null, false);
+        $response_offer = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_ARTOFCLICK, 'page' => $page, '$per_page' => $per_page], null, false);
         if (ApiHelper::isResultSuccess($response_offer)) {
             $listHasOffer_ = $response_offer['data']['items'];
             $listHasOffer = new ListArt();
@@ -161,8 +161,6 @@ class SiteController extends Controller
                 fputcsv($out, $data, "\t");
             }
             fclose($out);
-//            $this->redirect("http://localhost:8080/offerloader/frontend/web/?r=site%2Fget-glispas-export&id=88007");
-//            return Json::encode(['success' => $response_export['success'], 'detail' => $detail]);
         } else {
             return $this->render('error');
         }
@@ -247,6 +245,41 @@ class SiteController extends Controller
             fclose($out);
 //            $this->redirect("http://localhost:8080/offerloader/frontend/web/?r=site%2Fget-glispas-export&id=88007");
 //            return Json::encode(['success' => $response_export['success'], 'detail' => $detail]);
+        } else {
+            return $this->render('error');
+        }
+    }
+    public function actionGetListHasOffer(){
+        $sort = $this->getParameter('id');
+        $response_offer = ApiHelper::apiQuery([ApiHelper::API_OFFER_HASH,'sort'=>$sort]);
+        if(ApiHelper::isResultSuccess($response_offer)){
+            $detail = $response_offer['data']['items'];
+            $listOffer = new ListHasOffer();
+            $listOffer->setAttribute($detail);
+            $pagination = new \yii\data\Pagination(['totalCount' => $response_offer['data']['_meta']['totalCount'], 'pageSize' => $response_offer['data']['_meta']['perPage']]);
+            return $this->render('hasoffer',['listOffer'=>$listOffer,'pagination'=>$pagination]);
+        }
+    }
+
+    public function actionGetHasofferExport()
+    {
+        $id = $this->getParameter('id');
+        $response_export = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_HASOFFER_EXPORT, 'id' => $id]);
+        if (ApiHelper::isResultSuccess($response_export)) {
+            $detail = $response_export['data'];
+            $filename = "website_data_" . date('Ymd') . ".xls";
+
+            header("Content-Disposition: attachment; filename=\"$filename\"");
+            header("Content-Type: application/vnd.ms-excel");
+            header("Pragma: no-cache");
+            header("Expires: 0");
+            $de = $detail;
+            $flag = false;
+            $out = fopen("php://output", 'w');
+            foreach ($de as $data) {
+                fputcsv($out, $data, "\t");
+            }
+            fclose($out);
         } else {
             return $this->render('error');
         }

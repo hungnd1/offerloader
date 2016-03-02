@@ -5,6 +5,7 @@ use common\models\ArtOfClickModels;
 use common\models\Clicksmobs;
 use common\models\Countries;
 use common\models\Glispas;
+use common\models\Hasoffers;
 use common\models\Matomies;
 use common\models\OfferpayoutsClicksmobs;
 
@@ -27,6 +28,7 @@ class OfferController extends \api\controllers\ApiController{
         $behaviors = parent::behaviors();
         $behaviors['authenticator']['except'] = [
             //'list-comment',
+            'get-list-artofclick',
             'get-list-has-offer',
             'test',
             'get-list-glispas',
@@ -37,7 +39,8 @@ class OfferController extends \api\controllers\ApiController{
             'get-detail-matomies',
             'get-list-click-smobs',
             'get-detail-clicksmobs',
-            'get-list-clicksmobs-export'
+            'get-list-clicksmobs-export',
+            'get-list-hasoffer-export'
         ];
 
         return $behaviors;
@@ -49,14 +52,24 @@ class OfferController extends \api\controllers\ApiController{
             'test'=>['GET']
         ];
     }
-    public function  actionGetListHasOffer(){
-        return ArtOfClickModels::getListHasOffer();
+    public function  actionGetListArtofclick(){
+        $check  = ArtOfClickModels::getListArtOfClick();
+        if(!empty($check)){
+            return $check;
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>"Page not found"];
+        }
+
     }
     public function actionGetListGlispas(){
         $sort = $this->getParameter('sort', 'name');
         $status = Glispas::getListGlispas($sort);
         if(!empty($status)){
             return $status;
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>"Page not found"];
         }
 
     }
@@ -135,6 +148,21 @@ class OfferController extends \api\controllers\ApiController{
     public function actionGetListClicksmobsExport(){
         $id = $this->getParameter('id');
         $export = OfferpayoutsClicksmobs::getClickSmobsExport($id);
+        return $export;
+    }
+    public function actionGetListHasOffer(){
+        $sort = $this->getParameter('sort','id');
+        $check = Hasoffers::getListHasOffer($sort);
+        if(!empty($check)){
+            return $check;
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
+    }
+    public function actionGetListHasofferExport(){
+        $id = $this->getParameter('id');
+        $export = Hasoffers::getListOfferExport($id);
         return $export;
     }
 }
