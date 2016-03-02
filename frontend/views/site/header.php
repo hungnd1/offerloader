@@ -50,8 +50,8 @@
                             <span class="title" data-reactid=".0.0.3.0.4.1.0">GLISPA</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
-                                class="fa fa-cloud-upload" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
-                                                                                                       data-reactid=".0.0.3.0.4.1"><span
+                                class="fa fa-cloud-upload" data-reactid=".0.0.3.0.4.0.0"></i></span>
+                        <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/error']) ?>" data-reactid=".0.0.3.0.4.1"><span
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Global Wide Media</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
@@ -61,7 +61,8 @@
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Matomy</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.4"><span class="icon-thumbnail" data-reactid=".0.0.3.0.4.0"><i
-                                class="fa fa-eye" data-reactid=".0.0.3.0.4.0.0"></i></span><a href="/traffic-source/"
+                                class="fa fa-eye" data-reactid=".0.0.3.0.4.0.0"></i></span>
+                        <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/error']) ?>"
                                                                                               data-reactid=".0.0.3.0.4.1"><span
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Mundo Media</span></a>
                     </li>
