@@ -168,9 +168,10 @@ class SiteController extends Controller
 
     public function actionMatomies()
     {
+        $sort = $this->getParameter('id','id');
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 20);
-        $response_matomies = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_MATOMIES, 'page' => $page, 'per_page' => $per_page]);
+        $response_matomies = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_MATOMIES, 'page' => $page, 'per_page' => $per_page,'sort'=>$sort]);
         if (ApiHelper::isResultSuccess($response_matomies)) {
             $matomies = $response_matomies['data']['items'];
             $listMatomies = new ListMatomies();
@@ -195,10 +196,10 @@ class SiteController extends Controller
     }
 
     public function actionClicksmobs(){
-
+        $sort = $this->getParameter('id');
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 50);
-        $response_click = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_CLICK_SMOBS, 'page' => $page, 'rows_per_page' => $per_page]);
+        $response_click = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_CLICK_SMOBS, 'page' => $page, 'rows_per_page' => $per_page,'sort'=>$sort]);
         if (ApiHelper::isResultSuccess($response_click)) {
             $clicksmobs = $response_click['data']['items'];
             $listClick = new ListClickSmobs();

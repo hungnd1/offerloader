@@ -102,7 +102,8 @@ class OfferController extends \api\controllers\ApiController{
     }
 
     public function actionGetListMatomies(){
-        $matomies = Matomies::getListMatomies();
+        $sort = $this->getParameter('sort','id');
+        $matomies = Matomies::getListMatomies($sort);
         if(!empty($matomies)){
             return $matomies;
         }else{
@@ -122,9 +123,10 @@ class OfferController extends \api\controllers\ApiController{
         }
     }
     public function actionGetListClickSmobs(){
+        $sort = $this->getParameter('sort','offer_id');
         $page = $this->getParameter('page',1);
         $rows_per_page = $this->getParameter('rows_per_page',50);
-        $list = OfferpayoutsClicksmobs::getListClickSmobs($page,$rows_per_page);
+        $list = OfferpayoutsClicksmobs::getListClickSmobs($page,$rows_per_page,$sort);
         if(!empty($list)){
             return ['items'=>$list,'totalCount'=>OfferpayoutsClicksmobs::getCount()];
         }else{

@@ -68,8 +68,7 @@
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Name
                                                 </option>
                                                 <option value="payout"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: high to
-                                                    low
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: Low to high
                                                 </option>
 
                                             </select>
@@ -106,7 +105,6 @@
                                     <th>Program name</th>
                                     <th>Program id</th>
                                     <th>Type</th>
-                                    <th>Country</th>
                                     <th>Association</th>
                                     <th>CateID</th>
                                     <th>Media</th>
@@ -129,7 +127,6 @@
                                             <td><a onclick="getDetail(<?= $matomies->id ?>);"><?= $matomies->program_name ?></a></td>
                                             <td><?= $matomies->program_id ?></td>
                                             <td><?= $matomies->type ?></td>
-                                            <td><?= $matomies->country ?></td>
                                             <td><?= $matomies->association_status ?></td>
                                             <td><?= $matomies->category_ids ?></td>
                                             <td><?= $matomies->media_types ?></td>
@@ -266,11 +263,11 @@
             var sort = document.getElementById("sort");
             var strUser = sort.options[sort.selectedIndex].value;
             if (strUser == 'payout') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/glispas", 'id' => 'payout']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/matomies", 'id' => 'payout']) ?>');
             } else if (strUser == 'name') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/glispas", 'id' => 'name']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/matomies", 'id' => 'name']) ?>');
             } else {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/glispas", 'id' => 'glispaID']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/matomies", 'id' => 'id']) ?>');
             }
 
         }

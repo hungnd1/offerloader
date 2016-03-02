@@ -75,7 +75,7 @@
                                             </select>
                                             <span class="input-group-btn"
                                                   data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1"><button
-                                                    onclick="alert('chua nang cap chuc nang');" type="submit"
+                                                    onclick="sortGlispas();" type="submit"
                                                     class="btn btn-default"
                                                     data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1.0">Sort
                                                 </button></span></div>
@@ -258,11 +258,11 @@
             var sort = document.getElementById("sort");
             var strUser = sort.options[sort.selectedIndex].value;
             if (strUser == 'payout') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/glispas", 'id' => 'payout']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/clicksmobs", 'id' => 'payout']) ?>');
             } else if (strUser == 'name') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/glispas", 'id' => 'name']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/clicksmobs", 'id' => 'offerName']) ?>');
             } else {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/glispas", 'id' => 'glispaID']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/clicksmobs", 'id' => 'offer_id']) ?>');
             }
 
         }

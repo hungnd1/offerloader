@@ -66,8 +66,7 @@
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Name
                                                 </option>
                                                 <option value="payout"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: high to
-                                                    low
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: Low to high
                                                 </option>
 
                                             </select>

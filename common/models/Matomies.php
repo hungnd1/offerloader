@@ -90,12 +90,13 @@ class Matomies extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
-    public static function getListMatomies(){
+    public static function getListMatomies($sort){
         $query = Matomies::find();
         $provider = new ActiveDataProvider([
             'query' =>$query,
             'sort'=>[
                 'defaultOrder' => [
+                    $sort=>SORT_DESC
                 ]
             ],
             'pagination' => [

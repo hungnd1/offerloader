@@ -56,13 +56,14 @@ class OfferpayoutsClicksmobs extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getListClickSmobs($page, $rows_per_page)
+    public static function getListClickSmobs($page, $rows_per_page,$sort)
     {
         $page_start = ($page - 1) * $rows_per_page;
         $page_end = $rows_per_page;
 
         $query = "SELECT * FROM hasoffer.clicksmobs
         inner join offerpayouts_clicksmobs on offerpayouts_clicksmobs.offer_id = clicksmobs.id ";
+        $query .= " order by ".$sort." desc";
         $query .= " limit " . $page_start . "," . $page_end;
         try {
             $command = Yii::$app->db->createCommand($query);
