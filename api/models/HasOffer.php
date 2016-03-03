@@ -32,10 +32,7 @@ class HasOffer extends Hasoffers
             $country = Countryhasoffers::getCountryCode($model->id);
             $i = 0;
             $code = '';
-            foreach ($country as $val) {
-                $code .= $val['updated_at'] . ',';
-            }
-            return trim($code,",");
+           return $country[0]['updated_at'];
         };
         return $fields;
     }
