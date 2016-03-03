@@ -111,30 +111,30 @@
     function submit(){
         var api = document.getElementById('api').value;
         var network = document.getElementById('network').value;
-        window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/add-key&api='+api+"&network="+network);
+        window.location.assign('http://45.32.54.195/frontend/web/?r=site/add-key&api='+api+"&network="+network);
     }
     function updateArt(id){
         var api = document.getElementById('art').value;
-        window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-art&api='+api+"&id="+id);
+        window.location.assign('http://45.32.54.195/frontend/web/?r=site/update-art&api='+api+"&id="+id);
     }
     function updateClick(id){
         var api = document.getElementById('clickId').value;
         var network = document.getElementById('clickToken').value;
-        window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-click&userid='+api+"&id="+id+"&usertoken="+network);
+        window.location.assign('http://45.32.54.195/frontend/web/?r=site/update-click&userid='+api+"&id="+id+"&usertoken="+network);
     }
     function updateGlispas(id){
         var api = document.getElementById('glispasToken').value;
         var network = document.getElementById('glispasCD').value;
-            window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-glispas&api='+api+"&id="+id+"&cd="+network);
+            window.location.assign('http://45.32.54.195/frontend/web/?r=site/update-glispas&api='+api+"&id="+id+"&cd="+network);
     }
     function updateSeven(id){
         var api = document.getElementById('seven').value;
-        window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-seven&token='+api+"&id="+id);
+        window.location.assign('http://45.32.54.195/frontend/web/?r=site/update-seven&token='+api+"&id="+id);
     }
     function updateMatomies(id){
         var api = document.getElementById('matomiesKey').value;
         var network = document.getElementById('matomiesAccount').value;
-        window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-matomy&key='+api+"&id="+id+"&account="+network);
+        window.location.assign('http://45.32.54.195/frontend/web/?r=site/update-matomy&key='+api+"&id="+id+"&account="+network);
     }
 </script>
 <?php include("footer.php"); ?>
