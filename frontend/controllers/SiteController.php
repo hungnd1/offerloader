@@ -327,8 +327,8 @@ class SiteController extends Controller
 
 //        return $this->redirect('index.xlsx');
         $objWriter = new \PHPExcel_Writer_Excel2007($objPHPExcel);
-        $objWriter->save('index.xlsx');
-        return $this->redirect("index.xlsx");
+        $objWriter->save('download.xlsx');
+        return $this->redirect("download.xlsx");
     }
 
     public function actionGetDetailHasoffer()
