@@ -100,10 +100,11 @@
                                 <tr>
                                     <th><input type="checkbox" id="checkAll" style="margin-left: -10px;"></th>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Title</th>
                                     <th>Payout</th>
-                                    <th>Type payout</th>
-                                    <th>Description</th>
+                                    <th>Country</th>
+                                    <th>Type</th>
+                                    <th>Date Added</th>
                                 </tr>
                                 </thead>
                                 <tbody class="searchable">
@@ -117,9 +118,10 @@
                                             <td>
                                                 <a onclick="getDetail(<?= $offer->id ?>);"><?= $offer->name ?></a>
                                             </td>
-                                            <td><?= $offer->default_payout ?></td>
+                                            <td>$<?= $offer->default_payout ?></td>
+                                            <td>$<?= $offer->country ?></td>
                                             <td><?= $offer->payout_type ?></td>
-                                            <td><?= $offer->description ?></td>
+                                            <td><?= $offer->date_add ?></td>
                                         </tr>
                                     <?php }
                                 } ?>

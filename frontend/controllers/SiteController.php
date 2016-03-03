@@ -263,7 +263,9 @@ class SiteController extends Controller
     public function actionGetListHasOffer()
     {
         $sort = $this->getParameter('id');
-        $response_offer = ApiHelper::apiQuery([ApiHelper::API_OFFER_HASH, 'sort' => $sort]);
+        $page = \Yii::$app->request->get('page', 1);
+        $per_page = \Yii::$app->request->get('per_page', 50);
+        $response_offer = ApiHelper::apiQuery([ApiHelper::API_OFFER_HASH, 'sort' => $sort,'page' => $page, 'rows_per_page' => $per_page]);
         if (ApiHelper::isResultSuccess($response_offer)) {
             $detail = $response_offer['data']['items'];
             $listOffer = new ListHasOffer();

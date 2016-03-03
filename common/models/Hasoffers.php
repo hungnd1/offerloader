@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use api\models\HasOffer;
 use Yii;
 use yii\data\ActiveDataProvider;
 
@@ -114,7 +115,7 @@ class Hasoffers extends \yii\db\ActiveRecord
     }
 
     public static function getListHasOffer($sort){
-        $query = Hasoffers::find();
+        $query = HasOffer::find();
         $provider = new ActiveDataProvider([
             'query'=>$query,
             'sort'=>[

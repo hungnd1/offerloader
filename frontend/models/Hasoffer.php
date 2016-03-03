@@ -27,4 +27,6 @@ class Hasoffer extends Model
     public $payout_type;
     public $percent_payout;
     public $payout_cap;
+    public $country;
+    public $date_add;
 }
