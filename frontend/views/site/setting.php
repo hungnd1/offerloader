@@ -52,7 +52,7 @@
                         <div class="panel-body" data-reactid=".0.6.1.0.0.0.1.0.1">
                             <div><h2>HasOffer</h2></div>
 
-                                API Key: <input type="text" title="API KEY" id="api">
+                                API Key: <input type="text" style="width: 400px;" title="API KEY" id="api">
                                 Network ID:<input type="text" title="Network ID" id="network">
                                 <input type="button" onclick="submit();"  class="btn btn-primary" value="Add">
                             <table class="table table-bordered">
@@ -82,18 +82,18 @@
                                 </tbody>
                             </table>
                             <div><h2>ArtOfClick</h2></div>
-                            API Key : <input type="text" id="art" value="<?= $art['0']['api_key']?>">
+                            API Key : <input type="text" id="art" style="width: 600px;" value="<?= $art['0']['api_key']?>">
                             <input type="button" onclick="updateArt(<?= $art['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div><h2>ClickSmobs</h2></div>
-                            User ID : <input type="text" id="clickId" value="<?= $click['0']['user_id']?>">
-                            User Token: <input type="text" id="clickToken" value="<?= $click['0']['user_token']?>">
+                            User ID : <input type="text" id="clickId" style="width: 120px;" value="<?= $click['0']['user_id']?>">
+                            User Token: <input type="text" id="clickToken" style="width: 400px;" value="<?= $click['0']['user_token']?>">
                             <input type="button" onclick="updateClick(<?= $click['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div><h2>Glispas</h2></div>
-                            API Token : <input type="text" id="glispasToken" value="<?= $glispas['0']['api_token']?>">
-                            CD Number : <input type="text" id="glispasCD" value="<?= $glispas['0']['cd_number']?>">
+                            CD Number : <input type="text" id="glispasCD" style="width: 100px;" value="<?= $glispas['0']['cd_number']?>">
+                            API Token : <input type="text" id="glispasToken" style="width: 400px;" value="<?= $glispas['0']['api_token']?>">
                             <input type="button" onclick="updateGlispas(<?= $glispas['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div><h2>OfferSeven</h2></div>
-                            Token : <input type="text" id="seven" value="<?= $seven['0']['token']?>">
+                            Token : <input type="text" id="seven" style="width: 600px;" value="<?= $seven['0']['token']?>">
                             <input type="button" onclick="updateSeven(<?= $seven['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div><h2>Matomy</h2></div>
                             Key : <input type="text" id="matomiesKey" value="<?= $matomies['0']['key']?>">
