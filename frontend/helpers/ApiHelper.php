@@ -46,6 +46,7 @@ class ApiHelper
     const API_UDPATE_GLISPAS = 'offer/update-glispas';
     const API_UDPATE_MATOMY = 'offer/update-matomy';
     const API_UDPATE_SEVEN = 'offer/update-seven';
+    const API_GET_ALL_COUNTRY = 'offer/get-all-country';
     /**
      * @param $apiResults - array (json decoded from api result)
      * @return bool

@@ -57,25 +57,88 @@
                         <div class="panel-body" data-reactid=".0.6.1.0.0.0.1.0.1">
                             <div class="row" data-reactid=".0.6.1.0.0.0.1.0.1.0:0">
 
+                                <div class="col-md-3" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0"><h5
+                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.0">Filter by country</h5>
+                                    <div id="country-selector" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1">
+                                        <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0">
+                                            <select id="mySelect" onchange="Myfunction();"
+                                                class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.0">
+                                                <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.0.0">Select
+                                                    Country
+                                                </option>
+                                                <?php foreach ($listCountries->items as $countries) { ?>
+                                                    <option value="<?= $countries->code ?>"><?= $countries->name ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select>
+                                            <span class="input-group-btn"
+                                                  data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.1">
+                                                <button onclick="reset();"
+                                                    class="btn btn-default"
+                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.1.0">Reset
+                                                </button></span></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1"><h5
+                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.0">Filter by device</h5>
+                                    <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1">
+                                        <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0">
+                                            <select id="Deviceselect" onchange="Myfunction();"
+                                                class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0">
+                                                <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Select
+                                                    Device
+                                                </option>
+                                                <option value="iPad" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$0">
+                                                    iPad (598)
+                                                </option>
+                                                <option value="Mobile"
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$1">Mobile
+                                                    (11461)
+                                                </option>
+                                                <option value="iOS" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$2">
+                                                    iOS (3887)
+                                                </option>
+                                                <option value="Desktop"
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$3">Desktop
+                                                    (16919)
+                                                </option>
+                                                <option value="iPhone"
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$4">iPhone (719)
+                                                </option>
+                                                <option value="Android"
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$5">Android
+                                                    (4711)
+                                                </option>
+                                            </select><span class="input-group-btn"
+                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.1">
+                                                <button onclick="reset();"
+                                                    class="btn btn-default"
+                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.1.0">Reset
+                                                </button></span></div>
+                                    </div>
+                                </div>
                                 <div class="col-md-3" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3">
+                                    <h5 data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.0">Sort</h5>
                                     <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1">
-                                        <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0"><select
+                                        <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0">
+                                            <select onchange="sortGlispas();"
                                                 id="sort"
                                                 class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0">
-                                                <option value="glispaID"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$0">ID
+                                                <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Sort By
                                                 </option>
-                                                <option value="name"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Name
+                                                <option value="desc"
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Payout: High to low
                                                 </option>
-                                                <option value="payout"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: Low to high
+                                                <option value="asc"
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: Low to
+                                                    high
                                                 </option>
                                             </select><span class="input-group-btn"
                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1"><button
-                                                    class="btn btn-default" onclick="sortGlispas();" type="submit"
-                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1.0">Sort
+                                                    class="btn btn-default"  type="submit" onclick="reset();"
+                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1.0">Reset
                                                 </button></span></div>
+
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +147,7 @@
                                     <div style="display:inline-block;vertical-align:top;"
                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1">
                                         <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1">
-                                            <a href="#" class="btn btn-primary">Export</a>
+                                            <a href="#" onclick="fnExcelReport1();" class="btn btn-primary">Export</a>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +164,10 @@
                                     <th>Name</th>
                                     <th>Payout</th>
                                     <th>CurrenCy</th>
-                                    <th>Payout Type</th>
+                                    <th>Type</th>
+                                    <th>Device</th>
+                                    <th>Country</th>
+
                                 </tr>
                                 </thead>
                                 <tbody class="searchable">
@@ -109,24 +175,28 @@
                                     foreach ($listHasOffer->items as $hasOffer) {
                                         ?>
                                         <tr>
-                                            <td><input type="checkbox" class="chk" name="glispas[]"  value="<?= $hasOffer->id ?>" /></td>
+                                            <td><input type="checkbox" class="chk" name="glispas[]"
+                                                       value="<?= $hasOffer->id ?>"/></td>
                                             <td><?= $hasOffer->id ?></td>
-                                            <td><a onclick="getDetail(<?= $hasOffer->id ?>);"><?= $hasOffer->name ?></a></td>
+                                            <td><a onclick="getDetail(<?= $hasOffer->id ?>);"><?= $hasOffer->name ?></a>
+                                            </td>
                                             <td><?= $hasOffer->payout ?></td>
                                             <td><?= $hasOffer->currency ?></td>
                                             <td><?= $hasOffer->payoutType ?></td>
+                                            <td><?= $hasOffer->device ?></td>
+                                            <td><?= $hasOffer->countries ?></td>
+
                                         </tr>
                                     <?php }
                                 } ?>
                                 </tbody>
                             </table>
                             <?php
-                            $pagination = new \yii\data\Pagination(['totalCount' => 100, 'pageSize' => 30]);
-                            if (isset($pagination) && !empty($pagination)) { ?>
+                            if (isset($pagination_) && !empty($pagination_)) { ?>
                                 <div>
                                     <?=
                                     \yii\widgets\LinkPager::widget([
-                                        'pagination' => $pagination,
+                                        'pagination' => $pagination_,
                                     ]);
                                     ?>
                                 </div>
@@ -241,12 +311,10 @@
         function sortGlispas() {
             var sort = document.getElementById("sort");
             var strUser = sort.options[sort.selectedIndex].value;
-            if (strUser == 'payout') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/art-of-click", 'id' => 'payout']) ?>');
-            } else if (strUser == 'name') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/art-of-click", 'id' => 'name']) ?>');
+            if (strUser == 'desc') {
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/art-of-click"]) ?>');
             } else {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/art-of-click", 'id' => 'id']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/art-of-click",'id' => 'payout']) ?>');
             }
 
         }
@@ -293,27 +361,20 @@
             }
             if (vals) vals = vals.substring(1);
             if (vals == '') {
-                alert("Bạn cần chọn giá trị để export");
-            }else{
-                var url = '<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-glispas-export"]) ?>';
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    data: {id: vals},
-                    crossDomain: true,
-                    dataType: "text",
-                    success: function (result) {
-                        var data = JSON.parse(result);
-                        alert(data.detail[0].name);
-//                        window.location.href = ("http://localhost:8080/offerloader/frontend/web/?r=site%2Fexport"+"&data="+data.detail);
-                        window.location.href = '<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/export"]) ?>';
-                        return;
-                    },
-                    error: function (result) {
-                    }
-                });//end jQuery.ajax
+                alert("Please choose checkbox to export");
+            } else {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-artofclick-export&id='+vals;
             }
 
+        }
+        function Myfunction(){
+            var x = document.getElementById("mySelect").value;
+            var y = document.getElementById("Deviceselect").value;
+            window.location.href = 'http://45.32.54.195/frontend/web/?r=site/art-of-click&countries='+x+'&device='+y;
+
+        }
+        function reset(){
+            $('select').prop('selectedIndex', 0);
         }
     </script>
 <?php include("footer.php"); ?>

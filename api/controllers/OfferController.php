@@ -60,7 +60,8 @@ class OfferController extends \api\controllers\ApiController{
             'update-glispas',
             'update-click',
             'update-matomy',
-            'update-seven'
+            'update-seven',
+            'get-all-country'
         ];
 
         return $behaviors;
@@ -73,8 +74,10 @@ class OfferController extends \api\controllers\ApiController{
         ];
     }
     public function  actionGetListArtofclick(){
-        $sort = $this->getParameter('sort','id');
-        $check  = ArtOfClickModels::getListArtOfClick($sort);
+        $countries = $this->getParameter('countries','');
+        $device = $this->getParameter('device','');
+        $sort = $this->getParameter('sort','');
+        $check  = ArtOfClickModels::getListArtOfClick($sort,$countries,$device);
         if(!empty($check)){
             return $check;
         }else{
@@ -333,5 +336,9 @@ class OfferController extends \api\controllers\ApiController{
             $this->setStatusCode(404);
             return ['message'=>'That bai'];
         }
+    }
+
+    public function actionGetAllCountry(){
+        return Countries::getAllCountry();
     }
 }

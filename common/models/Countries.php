@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 
 /**
  * This is the model class for table "countries".
@@ -51,5 +52,18 @@ class Countries extends \yii\db\ActiveRecord
     }
     public static function getCountryName($code){
         return $country = Countries::findOne(['upper(code)'=>$code]);
+    }
+    public static function getAllCountry(){
+        $query = Countries::find();
+        $provider = new ActiveDataProvider([
+            'query' =>$query,
+            'sort'=>[
+                'defaultOrder' => [
+                    'name'=>SORT_DESC
+                ]
+            ],
+            'pagination' => false
+        ]);
+        return $provider;
     }
 }

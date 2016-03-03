@@ -90,22 +90,50 @@ class ArtOfClickModels extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getListArtOfClick($sort){
+    public static function getListArtOfClick($sort, $countries, $device)
+    {
         $query = ArtOfClickModels::find();
-        $provider = new ActiveDataProvider([
-           'query' =>$query,
-            'sort'=>[
-                'defaultOrder' => [
-                    $sort=>SORT_DESC
-                ]
-            ],
-            'pagination' => [
-                'defaultPageSize' => 30,
-            ],
-        ]);
+        if (!empty($countries)) {
+            $query->andWhere("countries like '%" . $countries . "%'");
+        }
+        if (!empty($device)) {
+            $query->andWhere("device like '%" . $device . "%'");
+        }
+        if ($sort != '') {
+            $provider = new ActiveDataProvider([
+                'query' => $query,
+                'sort' => ['defaultOrder' => ['payout' => 'DESC']],
+                'pagination' => [
+                    'defaultPageSize' => 30,
+                ],
+            ]);
+        } else {
+            $provider = new ActiveDataProvider([
+                'query' => $query,
+                'sort' => ['defaultOrder' => ['payout' => 'ASC']],
+                'pagination' => [
+                    'defaultPageSize' => 30,
+                ],
+            ]);
+        }
+
         return $provider;
     }
-    public static function getDetailArtOfClick($id){
-        return ArtOfClickModels::findOne(['id'=>$id]);
+
+    public static function getDetailArtOfClick($id)
+    {
+        return ArtOfClickModels::findOne(['id' => $id]);
+    }
+
+    public static function getListArtofclickExport($id){
+        $query = "SELECT * FROM art_of_click_models where id in (".$id.")";
+        try{
+            $command = Yii::$app->db->createCommand($query);
+            $rowCount = $command->execute();
+            $row = $command->queryAll();
+            return $row;
+        }catch(Exception $e){
+            return $e;
+        }
     }
 }
