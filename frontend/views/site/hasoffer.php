@@ -300,7 +300,7 @@
             if(vals == ''){
                 alert('You must choose checkbox to export');
             }else{
-                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-hasoffer-export&id='+vals;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-hasoffer-export&id='+vals;
             }
 
         }
