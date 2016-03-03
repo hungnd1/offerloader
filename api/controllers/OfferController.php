@@ -6,6 +6,12 @@ use common\models\Clicksmobs;
 use common\models\Countries;
 use common\models\Glispas;
 use common\models\Hasoffers;
+use common\models\KeyArtofclicks;
+use common\models\KeyClickSmobs;
+use common\models\KeyGlispas;
+use common\models\KeyHasoffers;
+use common\models\KeyMatomies;
+use common\models\KeyOffersevens;
 use common\models\Matomies;
 use common\models\OfferpayoutsClicksmobs;
 use common\models\Offersevens;
@@ -32,7 +38,7 @@ class OfferController extends \api\controllers\ApiController{
             //'list-comment',
             'get-list-artofclick',
             'get-list-has-offer',
-            'test',
+            'del',
             'get-list-glispas',
             'get-detail-glispas',
             'get-country-name',
@@ -47,7 +53,9 @@ class OfferController extends \api\controllers\ApiController{
             'get-detail-artofclick',
             'get-list-seven-export',
             'get-list-seven',
-            'get-detail-seven'
+            'get-detail-seven',
+            'get-key',
+            'add-new'
         ];
 
         return $behaviors;
@@ -225,5 +233,37 @@ class OfferController extends \api\controllers\ApiController{
         $id = $this->getParameter('id');
         $export = Offersevens::getListSevenExport($id);
         return $export;
+    }
+
+    public function actionGetKey(){
+        $keyHasoffer = KeyHasoffers::getKey();
+        $keyart = KeyArtofclicks::getkey();
+        $keyclick = KeyClickSmobs::getkey();
+        $keyglispa = KeyGlispas::getkey();
+        $keyseven = KeyOffersevens::getkey();
+        return ['hasoffer'=>$keyHasoffer,'art'=>$keyart,
+            'click'=>$keyclick,'glispa'=>$keyglispa,'seven'=>$keyseven,'matomies'=>KeyMatomies::getkey()];
+    }
+    public function actionDel(){
+        $id = $this->getParameter('id',0);
+        $status = KeyHasoffers::deleteAll(['id'=>$id]);
+        if($status){
+            return ['success'=>'success'];
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>'That bai'];
+        }
+    }
+
+    public function actionAddNew(){
+        $api = $this->getParameter('api','');
+        $network = $this->getParameter('network','');
+        $check = KeyHasoffers::addnew($api,$network);
+        if($check){
+            return ['success'=>'success'];
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>'That bai'];
+        }
     }
 }

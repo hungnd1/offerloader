@@ -7,6 +7,7 @@ use frontend\models\ListArt;
 use frontend\models\ListClickSmobs;
 use frontend\models\ListGlispas;
 use frontend\models\ListHasOffer;
+use frontend\models\ListKeyHasOffer;
 use frontend\models\ListMatomies;
 use frontend\models\ListOfferSeven;
 use Yii;
@@ -88,10 +89,10 @@ class SiteController extends Controller
 
     public function actionArtOfClick()
     {
-        $sort = $this->getParameter('id','id');
+        $sort = $this->getParameter('id', 'id');
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 20);
-        $response_offer = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_ARTOFCLICK, 'page' => $page, 'per_page' => $per_page,'sort'=>$sort], null, false);
+        $response_offer = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_ARTOFCLICK, 'page' => $page, 'per_page' => $per_page, 'sort' => $sort], null, false);
         if (ApiHelper::isResultSuccess($response_offer)) {
             $listHasOffer_ = $response_offer['data']['items'];
             $listHasOffer = new ListArt();
@@ -144,6 +145,11 @@ class SiteController extends Controller
         return \Yii::$app->request->get($param_name, $default);
     }
 
+    public function getParameterPost($param_name, $default = null)
+    {
+        return \Yii::$app->request->post($param_name, $default);
+    }
+
     public function actionGetGlispasExport()
     {
         $id = $this->getParameter('id');
@@ -170,10 +176,10 @@ class SiteController extends Controller
 
     public function actionMatomies()
     {
-        $sort = $this->getParameter('id','id');
+        $sort = $this->getParameter('id', 'id');
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 20);
-        $response_matomies = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_MATOMIES, 'page' => $page, 'per_page' => $per_page,'sort'=>$sort]);
+        $response_matomies = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_MATOMIES, 'page' => $page, 'per_page' => $per_page, 'sort' => $sort]);
         if (ApiHelper::isResultSuccess($response_matomies)) {
             $matomies = $response_matomies['data']['items'];
             $listMatomies = new ListMatomies();
@@ -197,16 +203,17 @@ class SiteController extends Controller
         }
     }
 
-    public function actionClicksmobs(){
+    public function actionClicksmobs()
+    {
         $sort = $this->getParameter('id');
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 50);
-        $response_click = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_CLICK_SMOBS, 'page' => $page, 'rows_per_page' => $per_page,'sort'=>$sort]);
+        $response_click = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_CLICK_SMOBS, 'page' => $page, 'rows_per_page' => $per_page, 'sort' => $sort]);
         if (ApiHelper::isResultSuccess($response_click)) {
             $clicksmobs = $response_click['data']['items'];
             $listClick = new ListClickSmobs();
             $listClick->setAttribute($clicksmobs);
-            $pagination = new \yii\data\Pagination(['totalCount' => $response_click['data']['totalCount'],'pageSize'=>50]);
+            $pagination = new \yii\data\Pagination(['totalCount' => $response_click['data']['totalCount'], 'pageSize' => 50]);
             return $this->render('clicksmobs', ['listClick' => $listClick, 'pagination' => $pagination]);
         } else {
             return $this->render('error');
@@ -216,12 +223,12 @@ class SiteController extends Controller
     public function actionGetDetailClicksmobs()
     {
         $id = $this->getParameter('id', 0);
-        $payout = $this->getParameter('payout',0);
-        $response_detail = ApiHelper::apiQuery([ApiHelper::API_GET_DETAIL_CLICL_SMOBS, 'id' => $id,'payout'=>$payout]);
+        $payout = $this->getParameter('payout', 0);
+        $response_detail = ApiHelper::apiQuery([ApiHelper::API_GET_DETAIL_CLICL_SMOBS, 'id' => $id, 'payout' => $payout]);
         if (ApiHelper::isResultSuccess($response_detail)) {
             $detail = $response_detail['data']['items'];
             $link = $response_detail['data']['general'];
-            return Json::encode(['success' => $response_detail['success'], 'detail' => $detail,'link'=>$link]);
+            return Json::encode(['success' => $response_detail['success'], 'detail' => $detail, 'link' => $link]);
         } else {
             return $this->render('error');
         }
@@ -252,15 +259,17 @@ class SiteController extends Controller
             return $this->render('error');
         }
     }
-    public function actionGetListHasOffer(){
+
+    public function actionGetListHasOffer()
+    {
         $sort = $this->getParameter('id');
-        $response_offer = ApiHelper::apiQuery([ApiHelper::API_OFFER_HASH,'sort'=>$sort]);
-        if(ApiHelper::isResultSuccess($response_offer)){
+        $response_offer = ApiHelper::apiQuery([ApiHelper::API_OFFER_HASH, 'sort' => $sort]);
+        if (ApiHelper::isResultSuccess($response_offer)) {
             $detail = $response_offer['data']['items'];
             $listOffer = new ListHasOffer();
             $listOffer->setAttribute($detail);
             $pagination = new \yii\data\Pagination(['totalCount' => $response_offer['data']['_meta']['totalCount'], 'pageSize' => $response_offer['data']['_meta']['perPage']]);
-            return $this->render('hasoffer',['listOffer'=>$listOffer,'pagination'=>$pagination]);
+            return $this->render('hasoffer', ['listOffer' => $listOffer, 'pagination' => $pagination]);
         }
     }
 
@@ -363,6 +372,52 @@ class SiteController extends Controller
             }
             fclose($out);
         } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionSetting()
+    {
+        $response_key = ApiHelper::apiQuery([ApiHelper::API_GET_KEY]);
+        if (ApiHelper::isResultSuccess($response_key)) {
+            $hasoffer = $response_key['data']['hasoffer'];
+            $listhas = new ListKeyHasOffer();
+            $listhas->setAttribute($hasoffer);
+            $art = $response_key['data']['art'];
+            $click = $response_key['data']['click'];
+            $glispas = $response_key['data']['glispa'];
+            $matomies = $response_key['data']['matomies'];
+            $seven = $response_key['data']['seven'];
+        }
+        return $this->render('setting', ['listhas' => $listhas, 'art' => $art,
+                'click' => $click, 'glispas' => $glispas, 'matomies' => $matomies, 'seven' => $seven]
+        );
+    }
+
+    public function actionDelete()
+    {
+        $id = $this->getParameter('id', 0);
+        $response = ApiHelper::apiQuery([ApiHelper::API_DEL_HASOFFER, 'id' => $id]);
+        if (ApiHelper::isResultSuccess($response)) {
+            return $this->redirect('?r=site/setting');
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionForm()
+    {
+        $this->render('form');
+    }
+
+    public function actionAddKey()
+    {
+        $api = $this->getParameter('api','');
+        $network = $this->getParameter('network','');
+        $response = ApiHelper::apiQuery([ApiHelper::API_ADD_HASOFFER,'api'=>$api,'network'=>$network]);
+        if(ApiHelper::isResultSuccess($response)){
+            return $this->redirect('?r=site/setting');
+        }else {
             return $this->render('error');
         }
     }

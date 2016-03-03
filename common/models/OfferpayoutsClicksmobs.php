@@ -61,7 +61,7 @@ class OfferpayoutsClicksmobs extends \yii\db\ActiveRecord
         $page_start = ($page - 1) * $rows_per_page;
         $page_end = $rows_per_page;
 
-        $query = "SELECT * FROM hasoffer.clicksmobs
+        $query = "SELECT * FROM clicksmobs
         inner join offerpayouts_clicksmobs on offerpayouts_clicksmobs.offer_id = clicksmobs.id ";
         $query .= " order by ".$sort." desc";
         $query .= " limit " . $page_start . "," . $page_end;
@@ -78,7 +78,7 @@ class OfferpayoutsClicksmobs extends \yii\db\ActiveRecord
     public static function getCount()
     {
         $query = "SELECT count(*) as co
-            FROM hasoffer.clicksmobs
+            FROM clicksmobs
             inner join offerpayouts_clicksmobs on offerpayouts_clicksmobs.offer_id = clicksmobs.id ";
         try {
             $command = Yii::$app->db->createCommand($query);

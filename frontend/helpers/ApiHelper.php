@@ -38,6 +38,9 @@ class ApiHelper
     const API_GET_LIST_SEVEN = 'offer/get-list-seven';
     const API_GET_DETAIL_SEVEN = 'offer/get-detail-seven';
     const API_GET_LIST_SEVEN_EXPORT = 'offer/get-list-seven-export';
+    const API_GET_KEY = 'offer/get-key';
+    const API_DEL_HASOFFER = 'offer/del';
+    const API_ADD_HASOFFER = 'offer/add-new';
     /**
      * @param $apiResults - array (json decoded from api result)
      * @return bool

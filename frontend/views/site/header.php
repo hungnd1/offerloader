@@ -73,7 +73,8 @@
                                 class="title" data-reactid=".0.0.3.0.4.1.0">Offer Seven</span></a>
                     </li>
                     <li class="" data-reactid=".0.0.3.0.6"><span class="icon-thumbnail" data-reactid=".0.0.3.0.6.0"><i
-                                class="fa fa-cogs" data-reactid=".0.0.3.0.6.0.0"></i></span><a href="/support/"
+                                class="fa fa-cogs" data-reactid=".0.0.3.0.6.0.0"></i></span>
+                        <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/setting']) ?>"
                                                                                                data-reactid=".0.0.3.0.6.1"><span
                                 class="title" data-reactid=".0.0.3.0.6.1.0">Setting</span></a>
                     </li>
