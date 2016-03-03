@@ -24,7 +24,7 @@ AppAsset::register($this);
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 
     <meta charset="utf-8"/>
-    <title>MakeMassive.com</title>
+    <title><?= Html::encode($this->title ? $this->title : 'Massive')  ?></title>
     <link rel="shortcut icon" href="static/favicon.ico">
     <script src="static/js/jquery-2.1.3.min.js" type="text/javascript"></script>
     <script src="static/js/lazysizes.min.js" async></script>

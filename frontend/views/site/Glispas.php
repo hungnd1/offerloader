@@ -1,4 +1,5 @@
 <?php include("header.php"); ?>
+<?php $this->title = "GlisPas" ?>
     <div class="page-container" style="background-color:rgb(250, 250, 250);" data-reactid=".0.6">
     <div class="header" data-reactid=".0.6.0">
         <div class="pull-left full-height visible-sm visible-xs" data-reactid=".0.6.0.0">

@@ -1,6 +1,8 @@
 <?php include("header.php"); ?>
+<?php $this->title = "ArtOfClick" ?>
     <div class="page-container" style="background-color:rgb(250, 250, 250);" data-reactid=".0.6">
     <div class="header" data-reactid=".0.6.0">
+        <div><h2>aaa</h2></div>
         <div class="pull-left full-height visible-sm visible-xs" data-reactid=".0.6.0.0">
             <div class="sm-action-bar" data-reactid=".0.6.0.0.0"><a style="cursor:pointer;"
                                                                     class="btn-link toggle-sidebar"
