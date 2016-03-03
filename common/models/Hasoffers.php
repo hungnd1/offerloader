@@ -146,6 +146,21 @@ class Hasoffers extends \yii\db\ActiveRecord
         }
     }
 
+    public static function getListOfferExportDemo(){
+        $query = "SELECT hf.id,hf.name,hf.description,hf.preview_url,hf.currency,hf.default_payout,hf.status,
+            hf.expiration_date,hf.payout_type,fh.url,lh.click_url,lh.affiliate_id
+             FROM hasoffers hf
+             inner join file_hasoffers fh on fh.offer_id = hf.id
+             inner join link_hasoffers lh on lh.offer_id = hf.id and hf.id in (50621,51167) ";
+        try{
+            $command = Yii::$app->db->createCommand($query);
+            $rowCount = $command->execute();
+            $row = $command->queryAll();
+            return $row;
+        }catch(Exception $e){
+            return $e;
+        }
+    }
     public static function getDetailHasoffer($id){
         return Hasoffers::findOne(['id'=>$id]);
     }

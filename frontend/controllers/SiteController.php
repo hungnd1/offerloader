@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use arturoliveira\ExcelView;
+use common\models\Hasoffers;
 use frontend\helpers\ApiHelper;
 use frontend\models\ListArt;
 use frontend\models\ListClickSmobs;
@@ -265,7 +266,7 @@ class SiteController extends Controller
         $sort = $this->getParameter('id');
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 50);
-        $response_offer = ApiHelper::apiQuery([ApiHelper::API_OFFER_HASH, 'sort' => $sort,'page' => $page, 'rows_per_page' => $per_page]);
+        $response_offer = ApiHelper::apiQuery([ApiHelper::API_OFFER_HASH, 'sort' => $sort, 'page' => $page, 'rows_per_page' => $per_page]);
         if (ApiHelper::isResultSuccess($response_offer)) {
             $detail = $response_offer['data']['items'];
             $listOffer = new ListHasOffer();
@@ -278,25 +279,56 @@ class SiteController extends Controller
     public function actionGetHasofferExport()
     {
         $id = $this->getParameter('id');
-        $response_export = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_HASOFFER_EXPORT, 'id' => $id]);
-        if (ApiHelper::isResultSuccess($response_export)) {
-            $detail = $response_export['data'];
-            $filename = "website_data_" . date('Ymd') . ".xls";
+        $result = Hasoffers::getListOfferExport($id);
+        $objPHPExcel = new \PHPExcel();
+        $objPHPExcel->getProperties()->setCreator("Runnable.com");
+        $objPHPExcel->getProperties()->setLastModifiedBy("Runnable.com");
+        $objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX,generated using PHP classes.");
+        $objPHPExcel->setActiveSheetIndex(0);
+        $rowCount = 1;
+        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, 'ID');
+        $objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray(
+            array(
+                'fill' => array(
+                    'type' => \PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => array('rgb' => '00BCD4')
+                )
+            )
 
-            header("Content-Disposition: attachment; filename=\"$filename\"");
-            header("Content-Type: application/vnd.ms-excel");
-            header("Pragma: no-cache");
-            header("Expires: 0");
-            $de = $detail;
-            $flag = false;
-            $out = fopen("php://output", 'w');
-            foreach ($de as $data) {
-                fputcsv($out, $data, "\t");
-            }
-            fclose($out);
-        } else {
-            return $this->render('error');
+        );
+        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, 'Name');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, 'Description');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, 'Preview_url');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, 'Currency');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, 'Default_payout');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, 'Status');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, 'Expiration_date');
+        $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, 'Payout_type');
+        $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, 'url');
+        $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, 'click_url');
+        foreach ($result as $row) {
+            $rowCount++;
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $row['id']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $row['name']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $row['description']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $row['preview_url']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $row['currency']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $row['default_payout']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $row['status']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $row['expiration_date']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $row['payout_type']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $row['url']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $row['click_url']);
+
         }
+        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+
+//        return $this->redirect('index.xlsx');
+        $objWriter = new \PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('index.xlsx');
+        return $this->redirect("index.xlsx");
     }
 
     public function actionGetDetailHasoffer()
@@ -414,69 +446,123 @@ class SiteController extends Controller
 
     public function actionAddKey()
     {
-        $api = $this->getParameter('api','');
-        $network = $this->getParameter('network','');
-        $response = ApiHelper::apiQuery([ApiHelper::API_ADD_HASOFFER,'api'=>$api,'network'=>$network]);
-        if(ApiHelper::isResultSuccess($response)){
+        $api = $this->getParameter('api', '');
+        $network = $this->getParameter('network', '');
+        $response = ApiHelper::apiQuery([ApiHelper::API_ADD_HASOFFER, 'api' => $api, 'network' => $network]);
+        if (ApiHelper::isResultSuccess($response)) {
             return $this->redirect('?r=site/setting');
-        }else {
-            return $this->render('error');
-        }
-    }
-    public function actionUpdateArt(){
-        $api = $this->getParameter('api','');
-        $id = $this->getParameter('id',0);
-        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_ART,'api'=>$api,'id'=>$id]);
-        if(ApiHelper::isResultSuccess($response)){
-            return $this->redirect('?r=site/setting');
-        }else {
-            return $this->render('error');
-        }
-    }
-    public function actionUpdateClick(){
-        $api = $this->getParameter('userid','');
-        $id = $this->getParameter('id',0);
-        $userToken = $this->getParameter('usertoken','');
-        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_CLICK,'userid'=>$api,'id'=>$id,'usertoken'=>$userToken]);
-        if(ApiHelper::isResultSuccess($response)){
-            return $this->redirect('?r=site/setting');
-        }else {
-            return $this->render('error');
-        }
-    }
-    public function actionUpdateGlispas(){
-        $api = $this->getParameter('api','');
-        $id = $this->getParameter('id',0);
-        $cd = $this->getParameter('cd','');
-        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_GLISPAS,'api'=>$api,'id'=>$id,'cd'=>$cd]);
-        if(ApiHelper::isResultSuccess($response)){
-            return $this->redirect('?r=site/setting');
-        }else {
+        } else {
             return $this->render('error');
         }
     }
 
-    public function actionUpdateMatomy(){
-        $api = $this->getParameter('key','');
-        $id = $this->getParameter('id',0);
-        $utoken = $this->getParameter('account','');
-        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_MATOMY,'key'=>$api,'id'=>$id,'account'=>$utoken]);
-        if(ApiHelper::isResultSuccess($response)){
+    public function actionUpdateArt()
+    {
+        $api = $this->getParameter('api', '');
+        $id = $this->getParameter('id', 0);
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_ART, 'api' => $api, 'id' => $id]);
+        if (ApiHelper::isResultSuccess($response)) {
             return $this->redirect('?r=site/setting');
-        }else {
+        } else {
             return $this->render('error');
         }
     }
 
-    public function actionUpdateSeven(){
-        $api = $this->getParameter('token','');
-        $id = $this->getParameter('id',0);
-        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_SEVEN,'token'=>$api,'id'=>$id]);
-        if(ApiHelper::isResultSuccess($response)){
+    public function actionUpdateClick()
+    {
+        $api = $this->getParameter('userid', '');
+        $id = $this->getParameter('id', 0);
+        $userToken = $this->getParameter('usertoken', '');
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_CLICK, 'userid' => $api, 'id' => $id, 'usertoken' => $userToken]);
+        if (ApiHelper::isResultSuccess($response)) {
             return $this->redirect('?r=site/setting');
-        }else {
+        } else {
             return $this->render('error');
         }
+    }
+
+    public function actionUpdateGlispas()
+    {
+        $api = $this->getParameter('api', '');
+        $id = $this->getParameter('id', 0);
+        $cd = $this->getParameter('cd', '');
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_GLISPAS, 'api' => $api, 'id' => $id, 'cd' => $cd]);
+        if (ApiHelper::isResultSuccess($response)) {
+            return $this->redirect('?r=site/setting');
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionUpdateMatomy()
+    {
+        $api = $this->getParameter('key', '');
+        $id = $this->getParameter('id', 0);
+        $utoken = $this->getParameter('account', '');
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_MATOMY, 'key' => $api, 'id' => $id, 'account' => $utoken]);
+        if (ApiHelper::isResultSuccess($response)) {
+            return $this->redirect('?r=site/setting');
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionUpdateSeven()
+    {
+        $api = $this->getParameter('token', '');
+        $id = $this->getParameter('id', 0);
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_SEVEN, 'token' => $api, 'id' => $id]);
+        if (ApiHelper::isResultSuccess($response)) {
+            return $this->redirect('?r=site/setting');
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionExportDemo()
+    {
+        $result = Hasoffers::getListOfferExportDemo();
+        $objPHPExcel = new \PHPExcel();
+        $objPHPExcel->getProperties()->setCreator("Runnable.com");
+        $objPHPExcel->getProperties()->setLastModifiedBy("Runnable.com");
+        $objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX,
+generated using PHP classes.");
+        $objPHPExcel->setActiveSheetIndex(0);
+        $rowCount = 1;
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, 'Firstname');
+        $objPHPExcel->getActiveSheet()->getStyle('A1:F1')->applyFromArray(
+            array(
+                'fill' => array(
+                    'type' => \PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => array('rgb' => '00BCD4')
+                )
+            )
+
+        );
+        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, 'Lastname');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, 'Branch');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, 'Gender');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, 'Mobileno');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, 'Email');
+        foreach ($result as $row) {
+            $rowCount++;
+//            var_dump($row);exit;
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $row['id']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $row['name']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $row['description']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $row['preview_url']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $row['default_payout']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $row['expiration_date']);
+
+        }
+        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+
+//        return $this->redirect('index.xlsx');
+        $objWriter = new \PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('index.xlsx');
     }
 
 
