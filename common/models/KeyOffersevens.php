@@ -49,4 +49,14 @@ class KeyOffersevens extends \yii\db\ActiveRecord
     public static function getkey(){
         return KeyOffersevens::find()->asArray()->all();;
     }
+
+    public static function updateSeven($id,$token){
+        $seven = KeyOffersevens::findOne($id);
+        $seven->token = $token;
+        if($seven->update()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -52,4 +52,15 @@ class KeyClickSmobs extends \yii\db\ActiveRecord
     public static function getkey(){
         return KeyClickSmobs::find()->asArray()->all();;
     }
+
+    public static function updateClick($uid,$id,$utoken){
+        $glispas = KeyClickSmobs::findOne($id);
+        $glispas->user_id = $uid;
+        $glispas->user_token = $utoken;
+        if($glispas->update(false)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

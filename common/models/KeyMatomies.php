@@ -52,4 +52,15 @@ class KeyMatomies extends \yii\db\ActiveRecord
     public static function getkey(){
         return KeyMatomies::find()->asArray()->all();;
     }
+
+    public static function updateMatomy($key,$id,$account){
+        $click = KeyMatomies::findOne($id);
+        $click->key = $key;
+        $click->account = $account;
+        if($click->update(false)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -421,4 +421,61 @@ class SiteController extends Controller
             return $this->render('error');
         }
     }
+    public function actionUpdateArt(){
+        $api = $this->getParameter('api','');
+        $id = $this->getParameter('id',0);
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_ART,'api'=>$api,'id'=>$id]);
+        if(ApiHelper::isResultSuccess($response)){
+            return $this->redirect('?r=site/setting');
+        }else {
+            return $this->render('error');
+        }
+    }
+    public function actionUpdateClick(){
+        $api = $this->getParameter('userid','');
+        $id = $this->getParameter('id',0);
+        $userToken = $this->getParameter('usertoken','');
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_CLICK,'userid'=>$api,'id'=>$id,'usertoken'=>$userToken]);
+        if(ApiHelper::isResultSuccess($response)){
+            return $this->redirect('?r=site/setting');
+        }else {
+            return $this->render('error');
+        }
+    }
+    public function actionUpdateGlispas(){
+        $api = $this->getParameter('api','');
+        $id = $this->getParameter('id',0);
+        $cd = $this->getParameter('cd','');
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_GLISPAS,'api'=>$api,'id'=>$id,'cd'=>$cd]);
+        if(ApiHelper::isResultSuccess($response)){
+            return $this->redirect('?r=site/setting');
+        }else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionUpdateMatomy(){
+        $api = $this->getParameter('key','');
+        $id = $this->getParameter('id',0);
+        $utoken = $this->getParameter('account','');
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_MATOMY,'key'=>$api,'id'=>$id,'account'=>$utoken]);
+        if(ApiHelper::isResultSuccess($response)){
+            return $this->redirect('?r=site/setting');
+        }else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionUpdateSeven(){
+        $api = $this->getParameter('token','');
+        $id = $this->getParameter('id',0);
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_SEVEN,'token'=>$api,'id'=>$id]);
+        if(ApiHelper::isResultSuccess($response)){
+            return $this->redirect('?r=site/setting');
+        }else {
+            return $this->render('error');
+        }
+    }
+
+
 }

@@ -54,6 +54,11 @@ class KeyArtofclicks extends \yii\db\ActiveRecord
     public static function updateArt($id,$api){
         $art = KeyArtofclicks::findOne($id);
         $art->api_key = $api;
-        $art->update();
+        if($art->update()){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

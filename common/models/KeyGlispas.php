@@ -52,4 +52,14 @@ class KeyGlispas extends \yii\db\ActiveRecord
     public static function getkey(){
         return KeyGlispas::find()->asArray()->all();;
     }
+    public static function updateGlispas($api,$id,$cd){
+        $glispas = KeyGlispas::findOne($id);
+        $glispas->api_token = $api;
+        $glispas->cd_number = $cd;
+        if($glispas->update()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

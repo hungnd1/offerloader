@@ -55,7 +55,12 @@ class OfferController extends \api\controllers\ApiController{
             'get-list-seven',
             'get-detail-seven',
             'get-key',
-            'add-new'
+            'add-new',
+            'update-art',
+            'update-glispas',
+            'update-click',
+            'update-matomy',
+            'update-seven'
         ];
 
         return $behaviors;
@@ -259,6 +264,69 @@ class OfferController extends \api\controllers\ApiController{
         $api = $this->getParameter('api','');
         $network = $this->getParameter('network','');
         $check = KeyHasoffers::addnew($api,$network);
+        if($check){
+            return ['success'=>'success'];
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>'That bai'];
+        }
+    }
+    public function actionUpdateArt(){
+        $api = $this->getParameter('api','');
+        $id = $this->getParameter('id',0);
+        $check = KeyArtofclicks::updateArt($id,$api);
+        if($check){
+            return ['success'=>'success'];
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>'That bai'];
+        }
+    }
+
+    public function actionUpdateGlispas(){
+        $api = $this->getParameter('api','');
+        $id = $this->getParameter('id',0);
+        $cd = $this->getParameter('cd','');
+        $check = KeyGlispas::updateGlispas($api,$id,$cd);
+        if($check){
+            return ['success'=>'success'];
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>'That bai'];
+        }
+    }
+
+    public function actionUpdateClick(){
+        $userid = $this->getParameter('userid','');
+        $id = $this->getParameter('id',0);
+        $utoken = $this->getParameter('usertoken','');
+        $check = KeyClickSmobs::updateClick($userid,$id,$utoken);
+        if($check){
+            return ['success'=>'success'];
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>'That bai'];
+        }
+    }
+
+
+    public function actionUpdateMatomy(){
+        $userid = $this->getParameter('key','');
+        $id = $this->getParameter('id',0);
+        $utoken = $this->getParameter('account','');
+        $check = KeyMatomies::updateMatomy($userid,$id,$utoken);
+        if($check){
+            return ['success'=>'success'];
+        }else{
+            $this->setStatusCode(404);
+            return ['message'=>'That bai'];
+        }
+    }
+
+    public function actionUpdateSeven(){
+        $id = $this->getParameter('id',0);
+        $token = $this->getParameter('token','');
+        $check = KeyOffersevens::updateSeven($id,$token);
         if($check){
             return ['success'=>'success'];
         }else{

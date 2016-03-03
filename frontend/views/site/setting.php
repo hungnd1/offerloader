@@ -54,7 +54,7 @@
 
                                 API Key: <input type="text" title="API KEY" id="api">
                                 Network ID:<input type="text" title="Network ID" id="network">
-                                <input type="submit" onclick="submit();"  class="btn btn-primary" value="Add">
+                                <input type="button" onclick="submit();"  class="btn btn-primary" value="Add">
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
@@ -82,7 +82,23 @@
                                 </tbody>
                             </table>
                             <div><h2>ArtOfClick</h2></div>
-                            API Key : <input type="text" id="art" value="<?= $art['0']['api_key']?>"> <input type="submit" onclick="updateArt(<?= $art['0']['id']?>);"  class="btn btn-primary" value="Update">
+                            API Key : <input type="text" id="art" value="<?= $art['0']['api_key']?>">
+                            <input type="button" onclick="updateArt(<?= $art['0']['id']?>);"  class="btn btn-primary" value="Update">
+                            <div><h2>ClickSmobs</h2></div>
+                            User ID : <input type="text" id="clickId" value="<?= $click['0']['user_id']?>">
+                            User Token: <input type="text" id="clickToken" value="<?= $click['0']['user_token']?>">
+                            <input type="button" onclick="updateClick(<?= $click['0']['id']?>);"  class="btn btn-primary" value="Update">
+                            <div><h2>Glispas</h2></div>
+                            API Token : <input type="text" id="glispasToken" value="<?= $glispas['0']['api_token']?>">
+                            CD Number : <input type="text" id="glispasCD" value="<?= $glispas['0']['cd_number']?>">
+                            <input type="button" onclick="updateGlispas(<?= $glispas['0']['id']?>);"  class="btn btn-primary" value="Update">
+                            <div><h2>OfferSeven</h2></div>
+                            Token : <input type="text" id="seven" value="<?= $seven['0']['token']?>">
+                            <input type="button" onclick="updateSeven(<?= $seven['0']['id']?>);"  class="btn btn-primary" value="Update">
+                            <div><h2>Matomy</h2></div>
+                            Key : <input type="text" id="matomiesKey" value="<?= $matomies['0']['key']?>">
+                            Account : <input type="text" id="matomiesAccount" value="<?= $matomies['0']['account']?>">
+                            <input type="button" onclick="updateMatomies(<?= $matomies['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div class="clearfix" data-reactid=".0.6.1.0.0.0.1.0.1.1"></div>
                         </div>
                     </div>
@@ -91,14 +107,34 @@
         </div>
     </div>
 
-<script>
+<script >
     function submit(){
         var api = document.getElementById('api').value;
         var network = document.getElementById('network').value;
         window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/add-key&api='+api+"&network="+network);
     }
-    function updateArt($id){
-
+    function updateArt(id){
+        var api = document.getElementById('art').value;
+        window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-art&api='+api+"&id="+id);
+    }
+    function updateClick(id){
+        var api = document.getElementById('clickId').value;
+        var network = document.getElementById('clickToken').value;
+        window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-click&userid='+api+"&id="+id+"&usertoken="+network);
+    }
+    function updateGlispas(id){
+        var api = document.getElementById('glispasToken').value;
+        var network = document.getElementById('glispasCD').value;
+            window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-glispas&api='+api+"&id="+id+"&cd="+network);
+    }
+    function updateSeven(id){
+        var api = document.getElementById('seven').value;
+        window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-seven&token='+api+"&id="+id);
+    }
+    function updateMatomies(id){
+        var api = document.getElementById('matomiesKey').value;
+        var network = document.getElementById('matomiesAccount').value;
+        window.location.assign('http://localhost:8080/offerloader/frontend/web/?r=site/update-matomy&key='+api+"&id="+id+"&account="+network);
     }
 </script>
 <?php include("footer.php"); ?>

@@ -41,6 +41,11 @@ class ApiHelper
     const API_GET_KEY = 'offer/get-key';
     const API_DEL_HASOFFER = 'offer/del';
     const API_ADD_HASOFFER = 'offer/add-new';
+    const API_UDPATE_ART = 'offer/update-art';
+    const API_UDPATE_CLICK = 'offer/update-click';
+    const API_UDPATE_GLISPAS = 'offer/update-glispas';
+    const API_UDPATE_MATOMY = 'offer/update-matomy';
+    const API_UDPATE_SEVEN = 'offer/update-seven';
     /**
      * @param $apiResults - array (json decoded from api result)
      * @return bool
