@@ -60,14 +60,11 @@
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0"><select
                                                 id="sort"
                                                 class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0">
-                                                <option value="glispaID"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$0">ID
+                                                <option value="payout.desc"
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: DESC
                                                 </option>
-                                                <option value="name"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Name
-                                                </option>
-                                                <option value="payout"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: Low to high
+                                                <option value="payout.asc"
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: ASC
                                                 </option>
 
                                             </select>
@@ -100,12 +97,13 @@
                                 <tr>
                                     <th><input type="checkbox" id="checkAll" style="margin-left: -10px;"></th>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>APP ID</th>
-                                    <th>Payout</th>
-                                    <th>Type</th>
-                                    <th>Original</th>
-                                    <th>Currency</th>
+                                    <th>TITLE</th>
+                                    <th>PAYOUT</th>
+                                    <th>TYPE</th>
+                                    <th>COUNTRY</th>
+                                    <th>TAGS</th>
+                                    <th>PLATFORMS</th>
+                                    <th>DATA ADDED</th>
                                 </tr>
                                 </thead>
                                 <tbody class="searchable">
@@ -119,11 +117,18 @@
                                             <td>
                                                 <a onclick="getDetail(<?= $seven->ID ?>);"><?= $seven->Name ?></a>
                                             </td>
-                                            <td><?= $seven->APP_ID ?></td>
                                             <td><?= $seven->Payout ?></td>
                                             <td><?= $seven->Type ?></td>
-                                            <td><?= $seven->Original_name ?></td>
-                                            <td><?= $seven->Currency ?></td>
+                                            <?php $countries = explode(',',$seven->Countries); ?>
+                                            <?php if( count($countries) >= 4){  ?>
+                                            <td><?php echo count($countries) . " " . "Countries" ?></td>
+                                            <?php }else{ ?>
+                                            <td><?php echo $seven->Countries ?></td>
+                                            <?php } ?>
+                                            <td><?= $seven->Tags ?></td>
+                                            <td><?= $seven->Platforms ?></td>
+                                            <td><?= $seven->Expiration_date ?></td>
+
 
                                         </tr>
                                     <?php }
@@ -250,12 +255,10 @@
         function sortGlispas() {
             var sort = document.getElementById("sort");
             var strUser = sort.options[sort.selectedIndex].value;
-            if (strUser == 'payout') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/offer-seven", 'id' => 'Payout']) ?>');
-            } else if (strUser == 'name') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/offer-seven", 'id' => 'Name']) ?>');
+            if (strUser == 'payout.desc') {
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/offer-seven", 'id' => 'Payout', 'order' => 'desc']) ?>');
             } else {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/offer-seven", 'id' => 'ID']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/offer-seven", 'id' => 'Payout', 'order' => 'asc']) ?>');
             }
 
         }

@@ -19,9 +19,9 @@ class ListOfferSeven extends  Model
         if(!empty($data)) {
             $this->items = array();
             foreach($data as $it) {
-                $glispas = new OfferSeven();
-                $glispas->setAttributes($it, false);
-                array_push($this->items, $glispas);
+                $offersenvens = new OfferSeven();
+                $offersenvens->setAttributes($it, false);
+                array_push($this->items, $offersenvens);
             }
         }
     }

@@ -25,5 +25,6 @@ class OfferSeven extends Model
     public $Countries;
     public $Payout;
     public $active;
+    public $Expiration_date;
 
 }
