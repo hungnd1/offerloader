@@ -3,9 +3,8 @@
 namespace common\models;
 
 use Yii;
-use yii\base\Exception;
 use yii\data\ActiveDataProvider;
-use yii\db\Query;
+
 
 /**
  * This is the model class for table "glispas".
@@ -70,25 +69,40 @@ class Glispas extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getListGlispas($sort){
+    public static function getListGlispas($sort, $countries, $device){
         $query = Glispas::find();
-        $provider = new ActiveDataProvider([
-            'query' =>$query,
-            'sort'=>[
-                'defaultOrder' => [
-                    $sort=>SORT_DESC
+        if(!empty($countries)) {
+            $query->andWhere("countries like '%" . $countries . "%'");
+        }
+        if(!empty($device)) {
+            $query->andWhere("device Like '%" . $countries . "%'");
+        }
+        if($sort == '') {
+            $provider = new ActiveDataProvider(
+                [
+                    'query'      => $query,
+                    'sort'       => ['defaultOrder' => ['payout' => 'DESC']],
+                    'pagination' => [
+                        'defaultPageSize' => 30,
+                    ],
                 ]
-            ],
-//            'pagination' => false
-            'pagination' => [
-            'defaultPageSize' => 30,
-        ],
-        ]);
+            );
+        } else {
+            $provider = new ActiveDataProvider(
+                [
+                    'query'      => $query,
+                    'sort'       => ['defaultOrder' => ['payout' => 'ASC']],
+                    'pagination' => [
+                        'defaultPageSize' => 30,
+                    ],
+                ]
+            );
+        }
         return $provider;
     }
 
-    public static function getListGlispasExport($array){
-        $query = "select * from glispas where glispaID in (".$array.")";
+    public static function getListGlispasExport($id){
+        $query = "select * from glispas where glispaID in (".$id.")";
         try{
             $command = Yii::$app->db->createCommand($query);
             $rowCount = $command->execute();
@@ -98,6 +112,7 @@ class Glispas extends \yii\db\ActiveRecord
             return $e;
         }
     }
+
     public static function getDetailById($id = 0){
         $detail = \api\models\Glispas::findOne(['glispaID'=>$id]);
         return $detail;

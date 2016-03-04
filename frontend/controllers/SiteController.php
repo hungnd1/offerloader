@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use arturoliveira\ExcelView;
 use common\models\ArtOfClickModels;
 use common\models\Hasoffers;
+use common\models\Glispas;
 use frontend\helpers\ApiHelper;
 use frontend\models\ListArt;
 use frontend\models\ListClickSmobs;
@@ -114,23 +115,30 @@ class SiteController extends Controller
             $listCountries->setAttribute($countries);
             return $this->render('artofclick', ['listHasOffer' => $listHasOffer, 'pagination_' => $pagination, 'listCountries' => $listCountries]);
         } else {
+
             return $this->render('error');
         }
     }
 
     public function actionGlispas()
     {
+        $sort = $this->getParameter('id', '');
         $page = \Yii::$app->request->get('page', 1);
+        $filterCountries = $this->getParameter('countries', '');
+        $filterDevice = $this->getParameter('device', '');
         $per_page = \Yii::$app->request->get('per_page', 20);
-        $sort = Yii::$app->request->get('id', 'name');
+        $response_glispas = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_GLISPAS, 'page' => $page, 'per_page' => $per_page, 'sort' => $sort, 'countries' => $filterCountries, 'device' => $filterDevice], null, false);
 
-        $response_glispas = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_GLISPAS, 'page' => $page, 'per_page' => $per_page, 'sort' => $sort], null, false);
         if (ApiHelper::isResultSuccess($response_glispas)) {
             $glispas = $response_glispas['data']['items'];
             $listGlispas = new ListGlispas();
             $listGlispas->setAttribute($glispas);
             $pagination = new \yii\data\Pagination(['totalCount' => $response_glispas['data']['_meta']['totalCount'], 'pageSize' => $response_glispas['data']['_meta']['perPage']]);
-            return $this->render('glispas', ['listGlispas' => $listGlispas, 'pagination' => $pagination]);
+            $response_countries = ApiHelper::apiQuery([ApiHelper::API_GET_ALL_COUNTRY]);
+            $countries = $response_countries['data']['items'];
+            $listCountries = new ListCountries();
+            $listCountries->setAttribute($countries);
+            return $this->render('glispas', ['listGlispas' => $listGlispas, 'pagination' => $pagination, 'listCountries' => $listCountries]);
         } else {
             return $this->render('error');
         }
@@ -164,28 +172,61 @@ class SiteController extends Controller
         return \Yii::$app->request->post($param_name, $default);
     }
 
+
     public function actionGetGlispasExport()
     {
-        $id = $this->getParameter('id');
-        $response_export = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_GLISPAS_EXPORT, 'id' => $id]);
-        if (ApiHelper::isResultSuccess($response_export)) {
-            $detail = $response_export['data'];
-            $filename = "website_data_" . date('Ymd') . ".xls";
+        $id = $this->getParameter('id', 0);
+        $result = Glispas::getListGlispasExport($id);
+        $objPHPExcel = new \PHPExcel();
+        $objPHPExcel->getProperties()->setCreator("Runnable.com");
+        $objPHPExcel->getProperties()->setLastModifiedBy("Runnable.com");
+        $objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX,
+generated using PHP classes.");
+        $objPHPExcel->setActiveSheetIndex(0);
+        $rowCount = 1;
+        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, 'id');
+        $objPHPExcel->getActiveSheet()->getStyle('A1:J1')->applyFromArray(
+            array(
+                'fill' => array(
+                    'type' => \PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => array('rgb' => '00BCD4')
+                )
+            )
 
-            header("Content-Disposition: attachment; filename=\"$filename\"");
-            header("Content-Type: application/vnd.ms-excel");
-            header("Pragma: no-cache");
-            header("Expires: 0");
-            $de = $detail;
-            $flag = false;
-            $out = fopen("php://output", 'w');
-            foreach ($de as $data) {
-                fputcsv($out, $data, "\t");
-            }
-            fclose($out);
-        } else {
-            return $this->render('error');
+        );
+        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, 'name');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, 'category');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, 'acquisition');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, 'payout');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, 'summary');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, 'target');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, 'rules');
+        $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, 'tracking');
+        $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, 'countries');
+        foreach ($result as $row) {
+            $rowCount++;
+//            var_dump($row);exit;
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $row['id']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $row['name']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $row['category']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $row['acquisition']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $row['payout']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $row['summary']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $row['target']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $row['rules']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $row['tracking']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $row['countries']);
+
         }
+        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+
+//        return $this->redirect('index.xlsx');
+        $objWriter = new \PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('glispas_download.xlsx');
+        return $this->redirect("glispas_download.xlsx");
+
     }
 
     public function actionMatomies()
@@ -371,16 +412,24 @@ class SiteController extends Controller
     public function actionOfferSeven()
     {
         $page = \Yii::$app->request->get('page', 1);
+        $sort = $this->getParameter('id', 'desc');
+        $filterCountries = $this->getParameter('countries', '');
+        //$filterDevice = $this->getParameter('device', '');
+       // $filterCountries = \Yii::$app->request->get('countries', '');
+        $filterDevice = $this->getParameter('device', '');
         $per_page = \Yii::$app->request->get('per_page', 20);
-        $sort = Yii::$app->request->get('id', 'ID');
 
-        $response_seven = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_SEVEN, 'page' => $page, 'per_page' => $per_page, 'sort' => $sort], null, false);
+        $response_seven = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_SEVEN, 'page' => $page, 'per_page' => $per_page, 'sort' => $sort, 'countries' => $filterCountries, 'device' => $filterDevice], null, false);
         if (ApiHelper::isResultSuccess($response_seven)) {
             $seven = $response_seven['data']['items'];
             $listSeven = new ListOfferSeven();
             $listSeven->setAttribute($seven);
             $pagination = new \yii\data\Pagination(['totalCount' => $response_seven['data']['_meta']['totalCount'], 'pageSize' => $response_seven['data']['_meta']['perPage']]);
-            return $this->render('offerseven', ['listSeven' => $listSeven, 'pagination' => $pagination]);
+            $response_countries = ApiHelper::apiQuery([ApiHelper::API_GET_ALL_COUNTRY]);
+            $countries = $response_countries['data']['items'];
+            $listCountries = new ListCountries();
+            $listCountries->setAttribute($countries);
+            return $this->render('offerseven', ['listSeven' => $listSeven, 'pagination' => $pagination, 'listCountries' => $listCountries]);
         } else {
             return $this->render('error');
         }

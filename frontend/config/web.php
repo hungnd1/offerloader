@@ -57,8 +57,8 @@ $config = [
 
         'urlManagerPublic' => [
             'class' => 'yii\web\UrlManager',
-            'scriptUrl' => "http://localhost:8080/vgame-basic/web/",
-            'baseUrl' => "http://localhost:8080/vgame-basic/web/",
+            'scriptUrl' => "http://localhost/offerloader.git/frontend/web/",
+            'baseUrl' => "http://localhost/offerloader.git/frontend/web/",
 //            'scriptUrl' => "http://localhost/vgame-basic/web/index.php",
 //            'baseUrl' => "http://localhost/vgame-basic/web/index.php"
         ],

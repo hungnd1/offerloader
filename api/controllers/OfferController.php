@@ -87,8 +87,10 @@ class OfferController extends \api\controllers\ApiController{
 
     }
     public function actionGetListGlispas(){
+        $countries = $this->getParameter('countries','');
+        $device = $this->getParameter('device','');
         $sort = $this->getParameter('sort', 'name');
-        $status = Glispas::getListGlispas($sort);
+        $status = Glispas::getListGlispas($sort, $countries, $device);
         if(!empty($status)){
             return $status;
         }else{
@@ -119,11 +121,7 @@ class OfferController extends \api\controllers\ApiController{
         }
     }
 
-    public function actionGetListGlispasExport(){
-        $id = $this->getParameter('id');
-        $export = Glispas::getListGlispasExport($id);
-        return $export;
-    }
+   
 
     public function actionGetListMatomies(){
         $sort = $this->getParameter('sort','id');
@@ -217,7 +215,9 @@ class OfferController extends \api\controllers\ApiController{
 
     public function actionGetListSeven(){
         $sort = $this->getParameter('sort', 'ID');
-        $status = Offersevens::getListSevens($sort);
+        $countries = $this->getParameter('countries','');
+        $device = $this->getParameter('device','');
+        $status = Offersevens::getListSevens($sort, $countries, $device);
         if(!empty($status)){
             return $status;
         }else{

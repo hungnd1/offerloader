@@ -85,20 +85,35 @@ class Offersevens extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getListSevens($sort){
+    public static function getListSevens($sort, $countries, $device) {
         $query = Offersevens::find();
-        $provider = new ActiveDataProvider([
-            'query' =>$query,
-            'sort'=>[
-                'defaultOrder' => [
-                    $sort=>SORT_DESC
+        if(!empty($countries)) {
+            $query->andWhere("Countries Like '%" . $countries . "%'");
+        }
+        if(!empty($device)) {
+            $query->andWhere("Platforms Like '%" . $device . "%'");
+        }
+        if($sort == 'desc') {
+            $provider = new ActiveDataProvider(
+                [
+                    'query'      => $query,
+                    'sort'       => ['defaultOrder' => ['Payout' => 'DESC']],
+                    'pagination' => [
+                        'defaultPageSize' => 30,
+                    ],
                 ]
-            ],
-//            'pagination' => false
-            'pagination' => [
-                'defaultPageSize' => 30,
-            ],
-        ]);
+            );
+        } else {
+            $provider = new ActiveDataProvider(
+                [
+                    'query'      => $query,
+                    'sort'       => ['defaultOrder' => ['Payout' => 'ASC']],
+                    'pagination' => [
+                        'defaultPageSize' => 30,
+                    ],
+                ]
+            );
+        }
         return $provider;
     }
 

@@ -13,11 +13,13 @@ use yii\base\Model;
 
 class OfferSeven extends Model
 {
-    public $ID;
+    public $ID = 0;
     public $APP_ID;
     public $Name;
     public $Original_name;
     public $Description;
+    public $Preview_Url;
+    public $Tracking_url;
     public $Type;
     public $Currency;
     public $Tags;
