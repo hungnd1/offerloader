@@ -415,18 +415,18 @@
             if(vals == ''){
                 alert('You must choose checkbox to export');
             }else{
-                window.location.href = 'http://localhost/offerloader.git/frontend/web/?r=site/get-seven-export&id='+vals;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-seven-export&id='+vals;
             }
 
         }
         function Myfunction(){
             var x = document.getElementById("mySelect").value;
-            window.location.href = 'http://localhost/offerloader.git/frontend/web/?r=site/offer-seven&countries='+x;
+            window.location.href = 'http://45.32.54.195/frontend/web/?r=site/offer-seven&countries='+x;
 
         }
         function Myfunction1(){
             var y = document.getElementById("Deviceselect").value;
-            window.location.href = 'http://localhost/offerloader.git/frontend/web/?r=site/offer-seven&device='+y;
+            window.location.href = 'http://45.32.54.195/frontend/web/?r=site/offer-seven&device='+y;
 
         }
     </script>

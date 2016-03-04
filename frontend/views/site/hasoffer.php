@@ -356,7 +356,7 @@
             var x = document.getElementById("mySelect").value;
             var y = document.getElementById("Deviceselect").value;
 //            alert(x);
-            window.location.href = 'http://45.32.54.195/frontend/frontend/web/?r=site/get-list-has-offer&countries='+x+'&device='+y;
+            window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-has-offer&countries='+x+'&device='+y;
 
         }
         function reset(){
