@@ -47,6 +47,7 @@ class ApiHelper
     const API_UDPATE_MATOMY = 'offer/update-matomy';
     const API_UDPATE_SEVEN = 'offer/update-seven';
     const API_GET_ALL_COUNTRY = 'offer/get-all-country';
+    const API_GET_ARTOFCLICK_EXPORT = 'offer/get-list-artofclick-export';
     /**
      * @param $apiResults - array (json decoded from api result)
      * @return bool

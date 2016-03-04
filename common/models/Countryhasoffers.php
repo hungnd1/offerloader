@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "countryhasoffers".
@@ -50,7 +51,7 @@ class Countryhasoffers extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getCountryCode($offer_id)
+    public function getCountryCode($offer_id)
     {
         $query = Countries::find()
             ->select('c.code,chf.updated_at')
@@ -60,4 +61,6 @@ class Countryhasoffers extends \yii\db\ActiveRecord
             ->asArray()->all();
         return $query;
     }
+
+
 }

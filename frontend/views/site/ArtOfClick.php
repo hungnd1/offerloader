@@ -52,7 +52,7 @@
                 <div class="container-fluid" data-reactid=".0.6.1.0.0.0.1">
                     <div class="panel panel-transparent" data-reactid=".0.6.1.0.0.0.1.0">
                         <div class="panel-heading" data-reactid=".0.6.1.0.0.0.1.0.0">
-                            <div class="panel-title" data-reactid=".0.6.1.0.0.0.1.0.0.0">Sort</div>
+                            <div class="panel-title" data-reactid=".0.6.1.0.0.0.1.0.0.0"><h2>ArtOfClick</h2></div>
                         </div>
                         <div class="panel-body" data-reactid=".0.6.1.0.0.0.1.0.1">
                             <div class="row" data-reactid=".0.6.1.0.0.0.1.0.1.0:0">
@@ -180,7 +180,7 @@
                                             <td><?= $hasOffer->id ?></td>
                                             <td><a onclick="getDetail(<?= $hasOffer->id ?>);"><?= $hasOffer->name ?></a>
                                             </td>
-                                            <td><?= $hasOffer->payout ?></td>
+                                            <td>$<?= $hasOffer->payout ?></td>
                                             <td><?= $hasOffer->currency ?></td>
                                             <td><?= $hasOffer->payoutType ?></td>
                                             <td><?= $hasOffer->device ?></td>
@@ -363,7 +363,7 @@
             if (vals == '') {
                 alert("Please choose checkbox to export");
             } else {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-artofclick-export&id='+vals;
+                window.location.href = 'http://45.32.54.195/frontend/frontend/web/?r=site/get-artofclick-export&id='+vals;
             }
 
         }

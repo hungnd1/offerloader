@@ -38,6 +38,17 @@ class HasOffer extends Hasoffers
                 return null;
             }
         };
+        $fields['countries'] = function ($model) {
+            /*@var country Countryhasoffers */
+            /*@var $model Hasoffers */
+            $country = Countryhasoffers::getCountryCode($model->id);
+            if($country){
+                return $country[0]['code'];
+            }else{
+                return null;
+            }
+
+        };
         return $fields;
     }
 }

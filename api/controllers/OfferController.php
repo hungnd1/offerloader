@@ -61,7 +61,8 @@ class OfferController extends \api\controllers\ApiController{
             'update-click',
             'update-matomy',
             'update-seven',
-            'get-all-country'
+            'get-all-country',
+            'get-list-artofclick-export'
         ];
 
         return $behaviors;
@@ -85,6 +86,18 @@ class OfferController extends \api\controllers\ApiController{
             return ['message'=>"Page not found"];
         }
 
+    }
+    public function actionGetListHasOffer(){
+        $sort = $this->getParameter('sort','');
+        $countries = $this->getParameter('countries','');
+        $device = $this->getParameter('device','');
+        $check = Hasoffers::getListHasOffer($sort,$countries,$device);
+        if(!empty($check)){
+            return $check;
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
     }
     public function actionGetListGlispas(){
         $countries = $this->getParameter('countries','');
@@ -126,6 +139,13 @@ class OfferController extends \api\controllers\ApiController{
         $export = Glispas::getListGlispasExport($id);
         return $export;
     }
+
+    public function actionGetListArtofclickExport(){
+        $id = $this->getParameter('id');
+        $export = ArtOfClickModels::getListArtofclickExport($id);
+        return $export;
+    }
+
 
     public function actionGetListMatomies(){
         $sort = $this->getParameter('sort','id');
@@ -178,16 +198,7 @@ class OfferController extends \api\controllers\ApiController{
         $export = OfferpayoutsClicksmobs::getClickSmobsExport($id);
         return $export;
     }
-    public function actionGetListHasOffer(){
-        $sort = $this->getParameter('sort','id');
-        $check = Hasoffers::getListHasOffer($sort);
-        if(!empty($check)){
-            return $check;
-        }else{
-            $this->setStatusCode(404);
-            return ['message' => "Not found value"];
-        }
-    }
+
     public function actionGetListHasofferExport(){
         $id = $this->getParameter('id');
         $export = Hasoffers::getListOfferExport($id);
