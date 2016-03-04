@@ -5,6 +5,7 @@ use arturoliveira\ExcelView;
 use common\models\ArtOfClickModels;
 use common\models\Hasoffers;
 use common\models\Glispas;
+use common\models\Offersevens;
 use frontend\helpers\ApiHelper;
 use frontend\models\ListArt;
 use frontend\models\ListClickSmobs;
@@ -208,7 +209,7 @@ generated using PHP classes.");
         foreach ($result as $row) {
             $rowCount++;
 //            var_dump($row);exit;
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $row['id']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $row['glispaID']);
             $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $row['name']);
             $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $row['category']);
             $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $row['acquisition']);
@@ -414,8 +415,6 @@ generated using PHP classes.");
         $page = \Yii::$app->request->get('page', 1);
         $sort = $this->getParameter('id', 'desc');
         $filterCountries = $this->getParameter('countries', '');
-        //$filterDevice = $this->getParameter('device', '');
-       // $filterCountries = \Yii::$app->request->get('countries', '');
         $filterDevice = $this->getParameter('device', '');
         $per_page = \Yii::$app->request->get('per_page', 20);
 
@@ -450,26 +449,58 @@ generated using PHP classes.");
 
     public function actionGetSevenExport()
     {
-        $id = $this->getParameter('id');
-        $response_export = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_SEVEN_EXPORT, 'id' => $id]);
-        if (ApiHelper::isResultSuccess($response_export)) {
-            $detail = $response_export['data'];
-            $filename = "website_data_" . date('Ymd') . ".xls";
+        $id = $this->getParameter('id', 0);
+        $result = Offersevens::getListSevenExport($id);
+        $objPHPExcel = new \PHPExcel();
+        $objPHPExcel->getProperties()->setCreator("Runnable.com");
+        $objPHPExcel->getProperties()->setLastModifiedBy("Runnable.com");
+        $objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX,
+generated using PHP classes.");
+        $objPHPExcel->setActiveSheetIndex(0);
+        $rowCount = 1;
 
-            header("Content-Disposition: attachment; filename=\"$filename\"");
-            header("Content-Type: application/vnd.ms-excel");
-            header("Pragma: no-cache");
-            header("Expires: 0");
-            $de = $detail;
-            $flag = false;
-            $out = fopen("php://output", 'w');
-            foreach ($de as $data) {
-                fputcsv($out, $data, "\t");
-            }
-            fclose($out);
-        } else {
-            return $this->render('error');
+        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, 'id');
+        $objPHPExcel->getActiveSheet()->getStyle('A1:J1')->applyFromArray(
+            array(
+                'fill' => array(
+                    'type' => \PHPExcel_Style_Fill::FILL_SOLID,
+                    'color' => array('rgb' => '00BCD4')
+                )
+            )
+
+        );
+        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, 'name');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, 'previewUrl');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, 'description');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, 'payout');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, 'currency');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, 'Platforms');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, 'Tags');
+        $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, 'APP_ID');
+        $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, 'countries');
+        foreach ($result as $row) {
+            $rowCount++;
+//            var_dump($row);exit;
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $row['ID']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $row['Name']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $row['Preview_url']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $row['Description']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $row['Payout']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $row['Currency']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $row['Platforms']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $row['Tags']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $row['APP_ID']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $row['Countries']);
+
         }
+        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+
+//        return $this->redirect('index.xlsx');
+        $objWriter = new \PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('offersevens_download.xlsx');
+        return $this->redirect("offersevens_download.xlsx");
     }
 
     public function actionSetting()

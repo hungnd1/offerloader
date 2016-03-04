@@ -25,6 +25,7 @@
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-faker": "*",
         "arturoliveira/yii2-excelview": "*"
+		
     },
     "config": {
         "process-timeout": 1800

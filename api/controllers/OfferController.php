@@ -121,7 +121,11 @@ class OfferController extends \api\controllers\ApiController{
         }
     }
 
-   
+    public function actionGetListGlispasExport(){
+        $id = $this->getParameter('id');
+        $export = Glispas::getListGlispasExport($id);
+        return $export;
+    }
 
     public function actionGetListMatomies(){
         $sort = $this->getParameter('sort','id');

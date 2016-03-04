@@ -117,8 +117,8 @@ class Offersevens extends \yii\db\ActiveRecord
         return $provider;
     }
 
-    public static function getListSevenExport($array){
-        $query = "select * from offersevens where ID in (".$array.")";
+    public static function getListSevenExport($id){
+        $query = "select * from offersevens where ID in (".$id.")";
         try{
             $command = Yii::$app->db->createCommand($query);
             $rowCount = $command->execute();
