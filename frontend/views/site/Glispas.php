@@ -364,14 +364,14 @@
             if(vals == ''){
                 alert('You must choose checkbox to export');
             }else{
-                window.location.href = 'http://localhost/offerloader.git/frontend/web/?r=site/get-glispas-export&id='+vals;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-glispas-export&id='+vals;
             }
 
         }
         function Myfunction(){
             var x = document.getElementById("mySelect").value;
             /*var y = document.getElementById("Deviceselect").value;*/
-            window.location.href = 'http://localhost/offerloader.git/frontend/web/?r=site/glispas&countries='+x;
+            window.location.href = 'http://45.32.54.195/frontend/web/?r=site/glispas&countries='+x;
 
         }
         function reset(){
