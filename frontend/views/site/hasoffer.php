@@ -49,7 +49,7 @@
                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.0">Filter by country</h5>
                                     <div id="country-selector" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1">
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0">
-                                            <select id="mySelect"
+                                            <select id="mySelect" onchange="Myfunction();"
                                                     class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.0">
                                                 <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.0.0">Select
                                                     Country
@@ -60,7 +60,10 @@
                                                 <?php } ?>
                                             </select>
                                             <span class="input-group-btn"
-                                                  data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.1">
+                                                  data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.1"><button
+                                                    class="btn btn-default" type="submit" onclick="reset();"
+                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1.0">Reset
+                                                </button>
                                                 </span></div>
                                     </div>
                                 </div>
@@ -68,7 +71,7 @@
                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.0">Filter by platform</h5>
                                     <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1">
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0">
-                                            <select id="Deviceselect"
+                                            <select id="Deviceselect" onchange="Myfunction1();"
                                                     class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0">
                                                 <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Select
                                                     Device
@@ -92,7 +95,10 @@
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$5">Android
                                                 </option>
                                             </select><span class="input-group-btn"
-                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.1">
+                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.1"><button
+                                                    class="btn btn-default" type="submit" onclick="reset();"
+                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1.0">Reset
+                                                </button>
                                                 </span></div>
                                     </div>
                                 </div>
@@ -100,7 +106,7 @@
                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.0">Filter by Network</h5>
                                     <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1">
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0">
-                                            <select id="network"
+                                            <select id="network" onchange="Myfunction2();"
                                                     class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0">
                                                 <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Select
                                                     Device
@@ -113,7 +119,10 @@
                                                     </option>
                                                 <?php } ?>
                                             </select><span class="input-group-btn"
-                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.1">
+                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.1"><button
+                                                    class="btn btn-default" type="submit" onclick="reset();"
+                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1.0">Reset
+                                                </button>
                                                 </span></div>
                                     </div>
                                 </div>
@@ -122,7 +131,7 @@
                                     <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1">
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0">
                                             <select
-                                                id="sort"
+                                                id="sort" onchange="Myfunction3();"
                                                 class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0">
                                                 <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Sort By
                                                 </option>
@@ -135,7 +144,10 @@
                                                     high
                                                 </option>
                                             </select><span class="input-group-btn"
-                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1"></span></div>
+                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1"><button
+                                                    class="btn btn-default" type="submit" onclick="reset();"
+                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1.0">Reset
+                                                </button></span></div>
 
                                     </div>
                                 </div>
@@ -145,7 +157,7 @@
                                     <div style="display:inline-block;vertical-align:top;"
                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1">
                                         <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1">
-                                            <a href="#" onclick="Myfunction();" class="btn btn-primary">Filter</a>
+                                            <!--                                            <a href="#" onclick="Myfunction();" class="btn btn-primary">Filter</a>-->
                                             <a href="#" onclick="fnExcelReport1();" class="btn btn-primary">Export</a>
 
                                         </div>
@@ -289,7 +301,7 @@
                             <td id="msg12"></td>
                         </tr>
                         <tr>
-                            <td ><b>payout_type</b></td>
+                            <td><b>payout_type</b></td>
                             <td colspan="3" id="msg13"></td>
                         </tr>
                         </tbody>
@@ -420,29 +432,107 @@
 
         var x = "", y = "";
         function Myfunction() {
+            var check = getUrlVars()['countries'];
+            var device = getUrlVars()['device'];
+            var network = getUrlVars()['network'];
+            var sort = getUrlVars()['sort'];
+            url = window.location.href;
             x = document.getElementById("mySelect").value;
             y = document.getElementById("Deviceselect").value;
-//            alert(x);
             var z = document.getElementById("network").value;
             var c = document.getElementById("sort").value;
-////            alert(c);
-            if(c == 'asc'){
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + y+'&network='+z;
-            }else{
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + y+'&network='+z+'&sort='+c;
+            if (typeof  check == 'undefined' && typeof  device == 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x;
+            }
+            else if (typeof  check == 'undefined' && typeof  device != 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
+            }
+            else if (typeof  check != 'undefined' && typeof  device == 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x;
+            } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
+            } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&network=' + network;
             }
 
+        }
+
+        function Myfunction1() {
+            var check = getUrlVars()['countries'];
+            var device = getUrlVars()['device'];
+            var network = getUrlVars()['network'];
+            var sort = getUrlVars()['sort'];
+            url = window.location.href;
+            x = document.getElementById("mySelect").value;
+            y = document.getElementById("Deviceselect").value;
+            var z = document.getElementById("network").value;
+            var c = document.getElementById("sort").value;
+            if (typeof  device == 'undefined' && typeof check == 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&device=' + y;
+            } else if (typeof  device == 'undefined' && typeof check != 'undefined' && typeof network == 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y;
+            }
+            else if (typeof  device != 'undefined' && typeof  check == 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x;
+            } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network == 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y;
+            } else if (typeof  device == 'undefined' && typeof  check != 'undefined' && typeof  network != 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y + '&network=' + network;
+            } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network != 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y + '&network=' + network;
+            }
+        }
+        function Myfunction2() {
+            var check = getUrlVars()['countries'];
+            var device = getUrlVars()['device'];
+            var network = getUrlVars()['network'];
+            var sort = getUrlVars()['sort'];
+            url = window.location.href;
+            x = document.getElementById("mySelect").value;
+            y = document.getElementById("Deviceselect").value;
+            var z = document.getElementById("network").value;
+            var c = document.getElementById("sort").value;
+
+            if (typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&network=' + z;
+            } else if ((typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined') || (typeof  network != 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined')) {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + check + '&network=' + z;
+            } else if ((typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check == 'undefined') || (typeof  network != 'undefined' && typeof  check == 'undefined' && typeof  device != 'undefined')) {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&device=' + device + '&network=' + z;
+            } else if ((typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined') || (typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined')) {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&device=' + device + '&countries=' + check + '&network=' + z;
+            }
 
         }
         function reset() {
-            $('select').prop('selectedIndex', 0);
+            window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers';
+        }
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+        function Myfunction3() {
+            var c = document.getElementById("sort").value;
+            if (c == 'asc') {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers';
+            } else {
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&sort='+c;
+            }
+
         }
     </script>
-<!--    <script type="text/javascript">-->
-<!--        function displayActive(){-->
-<!--            $('.m-t-10').addClass("active");-->
-<!--            $('.m-t-11').removeClass("deactive");-->
-<!--            $('.m-t-12').removeClass("deactive");-->
-<!--        }-->
-<!--    </script>-->
+    <!--    <script type="text/javascript">-->
+    <!--        function displayActive(){-->
+    <!--            $('.m-t-10').addClass("active");-->
+    <!--            $('.m-t-11').removeClass("deactive");-->
+    <!--            $('.m-t-12').removeClass("deactive");-->
+    <!--        }-->
+    <!--    </script>-->
 <?php include("footer.php"); ?>
