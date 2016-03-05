@@ -138,4 +138,11 @@
         window.location.assign('http://45.32.54.195/frontend/web/?r=site/update-matomy&key='+api+"&id="+id+"&account="+network);
     }
 </script>
+<!--    <script type="text/javascript">-->
+<!--        function displayActive1(){-->
+<!--            $('.m-t-10').removeClass("deactive");-->
+<!--            $('.m-t-11').addClass("active");-->
+<!--            $('.m-t-12').removeClass("deactive");-->
+<!--        }-->
+<!--    </script>-->
 <?php include("footer.php"); ?>

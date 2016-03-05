@@ -5,7 +5,7 @@
         <!--START PAGE SIDEBAR-->
         <div class="page-sidebar" data-pages="sidebar" data-reactid=".0.0">
             <div id="appMenu" class="sidebar-overlay-slide from-top" data-reactid=".0.0.0"></div>
-            <div class="sidebar-header" data-reactid=".0.0.1" style="padding-top: 10px;">
+            <div class="sidebar-header" data-reactid=".0.0.1" style="padding-top: 30px;">
                 <a href="/" data-reactid=".0.0.1.0">
                     <img src="static/images/mm_sidebar.png" alt="Make Massive"
                          data-reactid=".0.0.1.0.0"></a></div>
@@ -27,7 +27,7 @@
                                 <!--                            <div data-reactid=".0.0.3.0.0.1.1">Guest</div>-->
                             </div>
                     </li>
-                    <li onclick="display('test',$(this));" class="m-t-10 active" data-reactid=".0.0.3.0.1"><span
+                    <li onclick="displayActive();" <?php if(isset($listOffer) && $listOffer != null ) {?> class="m-t-10 active" <?php }else{?> class="m-t-10" <?php } ?> data-reactid=".0.0.3.0.1"><span
                             class="icon-thumbnail"
                             data-reactid=".0.0.3.0.1.0">
                     <i class="fa fa-money" data-reactid=".0.0.3.0.1.0.0"></i></span>
@@ -37,13 +37,13 @@
                     </li>
 
 
-                    <li class="" data-reactid=".0.0.3.0.6"><span class="icon-thumbnail" data-reactid=".0.0.3.0.6.0"><i
+                    <li <?php  if(isset($seven) && $seven != null ){ ?> class="m-t-11 active" <?php }else {?> class="m-t-11" <?php } ?> onclick="displayActive1();" data-reactid=".0.0.3.0.6"><span class="icon-thumbnail" data-reactid=".0.0.3.0.6.0"><i
                                 class="fa fa-cogs" data-reactid=".0.0.3.0.6.0.0"></i></span>
                         <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/setting']) ?>"
                            data-reactid=".0.0.3.0.6.1"><span
                                 class="title" data-reactid=".0.0.3.0.6.1.0">Setting</span></a>
                     </li>
-                    <li class="" data-reactid=".0.0.3.0.5"><span class="icon-thumbnail" data-reactid=".0.0.3.0.5.0"><i
+                    <li <?php if(!isset($seven) && !isset($listOffer)) {?> class="m-t-12 active" <?php }else{?> class="m-t-12" <?php } ?>  onclick="displayActive3();" data-reactid=".0.0.3.0.5"><span class="icon-thumbnail" data-reactid=".0.0.3.0.5.0"><i
                                 class="fa fa-paperclip" data-reactid=".0.0.3.0.5.0.0"></i></span>
                         <a href="<?php echo \frontend\helpers\CUtils::createAbsoluteUrl(['site/error']) ?>"
                            data-reactid=".0.0.3.0.5.1"><span
@@ -89,6 +89,15 @@
     ga('create', 'UA-59080413-2', 'auto');
     ga('send', 'pageview');
 
+</script>
+<script type="text/javascript">
+
+
+//    function displayActive2(){
+//        $('.m-t-10').removeClass("deactive");
+//        $('.m-t-11').removeClass("deactive");
+//        $('.m-t-12').addClass("active");
+//    }
 </script>
 
 

@@ -15117,7 +15117,7 @@ body.menu-pin .page-container .page-content-wrapper .content {
 */
 .page-sidebar .sidebar-header {
     text-align: center;
-    height: 120px;
+    height: 150px;
     padding: 0px;
 }
 
@@ -15130,7 +15130,7 @@ body.menu-pin .page-container .page-content-wrapper .content {
 
 .page-sidebar .sidebar-menu .menu-items > li > a {
     padding-left: 0;
-    font-size: 13px;
+    font-size: 20px;
     font-weight: 600;
 }
 

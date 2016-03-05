@@ -438,4 +438,11 @@
             $('select').prop('selectedIndex', 0);
         }
     </script>
+<!--    <script type="text/javascript">-->
+<!--        function displayActive(){-->
+<!--            $('.m-t-10').addClass("active");-->
+<!--            $('.m-t-11').removeClass("deactive");-->
+<!--            $('.m-t-12').removeClass("deactive");-->
+<!--        }-->
+<!--    </script>-->
 <?php include("footer.php"); ?>
