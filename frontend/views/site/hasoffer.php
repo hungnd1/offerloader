@@ -448,7 +448,7 @@
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
             }
             else if (typeof  check != 'undefined' && typeof  device == 'undefined') {
-                window.location.href = http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x;
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined') {
