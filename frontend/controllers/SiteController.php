@@ -348,7 +348,7 @@ generated using PHP classes.");
         $id = $this->getParameter('id');
         $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_HASOFFER_EXPORT, 'id' => $id]);
         if (ApiHelper::isResultSuccess($response)) {
-            $result = $response['data']['itmes'];
+            $result = $response['data']['items'];
             $objPHPExcel = new \PHPExcel();
             $objPHPExcel->getProperties()->setCreator("Runnable.com");
             $objPHPExcel->getProperties()->setLastModifiedBy("Runnable.com");
