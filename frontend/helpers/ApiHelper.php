@@ -48,6 +48,8 @@ class ApiHelper
     const API_UDPATE_SEVEN = 'offer/update-seven';
     const API_GET_ALL_COUNTRY = 'offer/get-all-country';
     const API_GET_ARTOFCLICK_EXPORT = 'offer/get-list-artofclick-export';
+    const API_GET_ALL_NETWORK = 'offer/get-all-network';
+    const API_GET_LIST_OFFERS = 'offer/get-list-offers';
     /**
      * @param $apiResults - array (json decoded from api result)
      * @return bool

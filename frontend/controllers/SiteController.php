@@ -14,6 +14,8 @@ use frontend\models\ListGlispas;
 use frontend\models\ListHasOffer;
 use frontend\models\ListKeyHasOffer;
 use frontend\models\ListMatomies;
+use frontend\models\ListNetwork;
+use frontend\models\ListOffers;
 use frontend\models\ListOfferSeven;
 use Yii;
 use yii\helpers\Json;
@@ -80,17 +82,23 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $response_offer = \frontend\helpers\ApiHelper::apiQuery(ApiHelper::API_OFFER_HASH, null, false);
-        if (\frontend\helpers\ApiHelper::isResultSuccess($response_offer)) {
-            $listHasOffer_ = $response_offer['data']['items'];
-            $listHasOffer = new ListHasOffer();
-            $listHasOffer->setAttribute($listHasOffer_);
-            $pagination = new \yii\data\Pagination(['totalCount' => $response_offer['data']['_meta']['totalCount'], 'pageSize' => $response_offer['data']['_meta']['perPage']]);
+        $page = \Yii::$app->request->get('page', 1);
+        $per_page = \Yii::$app->request->get('per_page', 20);
+        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_OFFERS, 'page' => $page, 'per_page' => $per_page],null,false);
+        if(ApiHelper::isResultSuccess($response)){
+            $offer = $response['data']['items'];
+            $listOffer = new ListOffers();
+            $listOffer->setAttribute($offer);
+            $pagination = new \yii\data\Pagination(['totalCount' => $response['data']['_meta']['totalCount'], 'pageSize' => $response['data']['_meta']['perPage']]);
             $response_countries = ApiHelper::apiQuery([ApiHelper::API_GET_ALL_COUNTRY]);
             $countries = $response_countries['data']['items'];
             $listCountries = new ListCountries();
             $listCountries->setAttribute($countries);
-            return $this->render('hasoffer', ['listOffer' => $listHasOffer, 'pagination' => $pagination, 'listCountries' => $listCountries]);
+            $response_network = ApiHelper::apiQuery([ApiHelper::API_GET_ALL_NETWORK]);
+            $network = $response_network['data']['items'];
+            $listNetwork = new ListNetwork();
+            $listNetwork->setAttribute($network);
+            return $this->render('hasoffer', ['listOffer' => $listOffer, 'pagination' => $pagination, 'listCountries' => $listCountries,'listNetwork'=>$listNetwork]);
         } else {
             return $this->render('error');
         }
@@ -145,9 +153,9 @@ class SiteController extends Controller
     public function actionGlispas()
     {
         $sort = $this->getParameter('id', '');
-        $page = \Yii::$app->request->get('page', 1);
         $filterCountries = $this->getParameter('countries', '');
         $filterDevice = $this->getParameter('device', '');
+        $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 20);
         $response_glispas = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_GLISPAS, 'page' => $page, 'per_page' => $per_page, 'sort' => $sort, 'countries' => $filterCountries, 'device' => $filterDevice], null, false);
 
@@ -340,7 +348,7 @@ generated using PHP classes.");
         $id = $this->getParameter('id');
         $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_HASOFFER_EXPORT, 'id' => $id]);
         if (ApiHelper::isResultSuccess($response)) {
-            $result = $response['data'];
+            $result = $response['data']['itmes'];
             $objPHPExcel = new \PHPExcel();
             $objPHPExcel->getProperties()->setCreator("Runnable.com");
             $objPHPExcel->getProperties()->setLastModifiedBy("Runnable.com");
@@ -349,8 +357,8 @@ generated using PHP classes.");
             $objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX,generated using PHP classes.");
             $objPHPExcel->setActiveSheetIndex(0);
             $rowCount = 1;
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, 'ID');
-            $objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray(
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, 'Offer_id');
+            $objPHPExcel->getActiveSheet()->getStyle('A1:L1')->applyFromArray(
                 array(
                     'fill' => array(
                         'type' => \PHPExcel_Style_Fill::FILL_SOLID,
@@ -359,29 +367,33 @@ generated using PHP classes.");
                 )
 
             );
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, 'Name');
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, 'Description');
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, 'Network');
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, 'offer_name');
             $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, 'Preview_url');
-            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, 'Currency');
-            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, 'Default_payout');
-            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, 'Status');
-            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, 'Expiration_date');
-            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, 'Payout_type');
-            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, 'url');
-            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, 'click_url');
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, 'incent');
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, 'tracking_url');
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, 'payout');
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, 'description');
+            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, 'countries');
+            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, 'daily_cap');
+            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, 'currency');
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, 'os');
+            $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, 'payout_type');
             foreach ($result as $row) {
                 $rowCount++;
-                $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $row['id']);
-                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $row['name']);
-                $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $row['description']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $row['offer_id']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $row['network']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $row['offer_name']);
                 $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $row['preview_url']);
-                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $row['currency']);
-                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $row['default_payout']);
-                $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $row['status']);
-                $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $row['expiration_date']);
-                $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $row['payout_type']);
-                $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $row['url']);
-                $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $row['click_url']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $row['incent']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $row['tracking_url']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $row['payout']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $row['description']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $row['countries']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $row['daily_cap']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $row['currency']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $row['os']);
+                $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $row['payout_type']);
 
             }
             $objPHPExcel->getActiveSheet()->setTitle('Simple');
@@ -680,5 +692,32 @@ generated using PHP classes.");
         return $this->redirect("artoflcick_download.xlsx");
     }
 
+    public function actionGetListOffers(){
+        $page = \Yii::$app->request->get('page', 1);
+        $per_page = \Yii::$app->request->get('per_page', 20);
+        $country = $this->getParameter('countries','');
+        $device = $this->getParameter('device','');
+        $network = $this->getParameter('network','');
+        $sort = $this->getParameter('sort','');
+//        var_dump($countries);exi;
+        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_OFFERS, 'page' => $page, 'per_page' => $per_page,'countries'=>$country,'device'=>$device,'network'=>$network,'sort'=>$sort],null,false);
+        if(ApiHelper::isResultSuccess($response)){
+            $offer = $response['data']['items'];
+            $listOffer = new ListOffers();
+            $listOffer->setAttribute($offer);
+            $pagination = new \yii\data\Pagination(['totalCount' => $response['data']['_meta']['totalCount'], 'pageSize' => $response['data']['_meta']['perPage']]);
+            $response_countries = ApiHelper::apiQuery([ApiHelper::API_GET_ALL_COUNTRY]);
+            $countries = $response_countries['data']['items'];
+            $listCountries = new ListCountries();
+            $listCountries->setAttribute($countries);
+            $response_network = ApiHelper::apiQuery([ApiHelper::API_GET_ALL_NETWORK]);
+            $network = $response_network['data']['items'];
+            $listNetwork = new ListNetwork();
+            $listNetwork->setAttribute($network);
+            return $this->render('hasoffer', ['country'=>$country,'listOffer' => $listOffer, 'pagination' => $pagination, 'listCountries' => $listCountries,'listNetwork'=>$listNetwork]);
+        } else {
+            return $this->render('error');
+        }
+    }
 
 }

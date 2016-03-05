@@ -1,5 +1,5 @@
 <?php include("header.php"); ?>
-<?php $this->title = "HasOffer" ?>
+<?php $this->title = "OffersLoader" ?>
     <div class="page-container" style="background-color:rgb(250, 250, 250);" data-reactid=".0.6">
     <div class="header" data-reactid=".0.6.0">
         <div class="pull-left full-height visible-sm visible-xs" data-reactid=".0.6.0.0">
@@ -41,7 +41,7 @@
                 <div class="container-fluid" data-reactid=".0.6.1.0.0.0.1">
                     <div class="panel panel-transparent" data-reactid=".0.6.1.0.0.0.1.0">
                         <div class="panel-heading" data-reactid=".0.6.1.0.0.0.1.0.0">
-                            <div class="panel-title" data-reactid=".0.6.1.0.0.0.1.0.0.0"><h2>HasOffer</h2></div>
+                            <div class="panel-title" data-reactid=".0.6.1.0.0.0.1.0.0.0"><h2>OffersLoader</h2></div>
                         </div>
                         <div class="panel-body" data-reactid=".0.6.1.0.0.0.1.0.1">
                             <div class="row" data-reactid=".0.6.1.0.0.0.1.0.1.0:0">
@@ -49,83 +49,93 @@
                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.0">Filter by country</h5>
                                     <div id="country-selector" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1">
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0">
-                                            <select id="mySelect" onchange="Myfunction();"
+                                            <select id="mySelect"
                                                     class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.0">
                                                 <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.0.0">Select
                                                     Country
                                                 </option>
                                                 <?php foreach ($listCountries->items as $countries) { ?>
-                                                    <option value="<?= $countries->id ?>"><?= $countries->name ?>
+                                                    <option value="<?= $countries->code ?>"><?= $countries->name ?>
                                                     </option>
                                                 <?php } ?>
                                             </select>
                                             <span class="input-group-btn"
                                                   data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.1">
-                                                <button onclick="reset();"
-                                                        class="btn btn-default"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.0.1.0.1.0">Reset
-                                                </button></span></div>
+                                                </span></div>
                                     </div>
                                 </div>
                                 <div class="col-md-3" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1"><h5
-                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.0">Filter by device</h5>
+                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.0">Filter by platform</h5>
                                     <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1">
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0">
-                                            <select id="Deviceselect" onchange="Myfunction();"
+                                            <select id="Deviceselect"
                                                     class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0">
                                                 <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Select
                                                     Device
                                                 </option>
                                                 <option value="iPad" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$0">
-                                                    iPad (598)
+                                                    iPad
                                                 </option>
                                                 <option value="Mobile"
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$1">Mobile
-                                                    (11461)
                                                 </option>
                                                 <option value="iOS" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$2">
-                                                    iOS (3887)
+                                                    iOS
                                                 </option>
                                                 <option value="Desktop"
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$3">Desktop
-                                                    (16919)
                                                 </option>
                                                 <option value="iPhone"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$4">iPhone (719)
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$4">iPhone
                                                 </option>
                                                 <option value="Android"
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$5">Android
-                                                    (4711)
                                                 </option>
                                             </select><span class="input-group-btn"
                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.1">
-                                                <button onclick="reset();"
-                                                        class="btn btn-default"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.1.0">Reset
-                                                </button></span></div>
+                                                </span></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1"><h5
+                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.0">Filter by Network</h5>
+                                    <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1">
+                                        <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0">
+                                            <select id="network"
+                                                    class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0">
+                                                <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Select
+                                                    Device
+                                                </option>
+                                                <?php foreach ($listNetwork->items as $network) {
+                                                    ?>
+                                                    <option value="<?= $network->network ?>"
+                                                            data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.1:$0">
+                                                        <?= $network->network ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select><span class="input-group-btn"
+                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.1">
+                                                </span></div>
                                     </div>
                                 </div>
                                 <div class="col-md-3" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3">
                                     <h5 data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.0">Sort</h5>
                                     <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1">
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0">
-                                            <select onchange="sortGlispas();"
-                                                    id="sort"
-                                                    class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0">
+                                            <select
+                                                id="sort"
+                                                class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0">
                                                 <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Sort By
                                                 </option>
                                                 <option value="desc"
-                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Payout: High to low
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Payout: High to
+                                                    low
                                                 </option>
                                                 <option value="asc"
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: Low to
                                                     high
                                                 </option>
                                             </select><span class="input-group-btn"
-                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1"><button
-                                                    class="btn btn-default"  type="submit" onclick="reset();"
-                                                    data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1.0">Reset
-                                                </button></span></div>
+                                                           data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.1"></span></div>
 
                                     </div>
                                 </div>
@@ -136,6 +146,7 @@
                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1">
                                         <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1">
                                             <a href="#" onclick="fnExcelReport1();" class="btn btn-primary">Export</a>
+                                            <a href="#" onclick="Myfunction();" class="btn btn-primary">Filter</a>
                                         </div>
                                     </div>
                                 </div>
@@ -152,9 +163,12 @@
                                     <th>ID</th>
                                     <th>Title</th>
                                     <th>Payout</th>
+                                    <th>Currency</th>
                                     <th>Country</th>
                                     <th>Type</th>
-                                    <th>Date Added</th>
+                                    <th>Daily Cap</th>
+                                    <th>Os</th>
+
                                 </tr>
                                 </thead>
                                 <tbody class="searchable">
@@ -164,14 +178,43 @@
                                         <tr>
                                             <td><input type="checkbox" class="chk" name="glispas[]"
                                                        value="<?= $offer->id ?>"/></td>
-                                            <td><?= $offer->id ?></td>
+                                            <td><?= $offer->offer_id ?></td>
                                             <td>
-                                                <a onclick="getDetail(<?= $offer->id ?>);"><?= $offer->name ?></a>
+                                                <a onclick="getDetail(<?= $offer->id ?>);"><?= $offer->offer_name ?></a>
                                             </td>
-                                            <td>$<?= $offer->default_payout ?></td>
-                                            <td><?= $offer->country ?></td>
+                                            <td>$<?= $offer->payout ?></td>
+                                            <td><?= $offer->currency ?></td>
+                                            <?php if (strpos($offer->countries, ' ') !== false) {
+                                                $countries = explode(' ', $offer->countries);
+                                                if (count($countries) >= 8) {
+                                                    ?>
+                                                    <td><?php echo count($countries) . " " . "Countries" ?></td>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <td><?php echo $offer->countries ?></td>
+                                                    <?php
+                                                }
+                                            } else if (strpos($offer->countries, ',') !== false) {
+                                                $countries = explode(',', $offer->countries);
+                                                if (count($countries) >= 8) {
+                                                    ?>
+                                                    <td><?php echo count($countries) . " " . "Countries" ?></td>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <td><?php echo $offer->countries ?></td>
+                                                    <?php
+                                                }
+                                            } else {
+                                                ?>
+                                                <td><?php echo $offer->countries ?></td>
+                                                <?php
+                                            } ?>
                                             <td><?= $offer->payout_type ?></td>
-                                            <td><?= $offer->date_add ?></td>
+                                            <td><?= $offer->daily_cap ?></td>
+                                            <td><?= $offer->os ?></td>
+
                                         </tr>
                                     <?php }
                                 } ?>
@@ -209,28 +252,44 @@
                     <table class="table table-bordered" style="">
                         <tbody>
                         <tr>
-                            <td><b>ID</b></td>
+                            <td><b>Offer ID</b></td>
                             <td id="msg1"></td>
-                            <td><b>description</b></td>
+                            <td><b>Network</b></td>
                             <td id="msg2"></td>
                         </tr>
                         <tr>
-                            <td><b>Name</b></td>
+                            <td><b>Offer Name</b></td>
                             <td id="msg3"></td>
                             <td><b>preview_url</b></td>
                             <td id="msg4"></td>
                         </tr>
                         <tr>
-                            <td><b>default_payout</b></td>
+                            <td><b>incent</b></td>
                             <td id="msg5"></td>
-                            <td><b>currency</b></td>
+                            <td><b>tracking_url</b></td>
                             <td id="msg6"></td>
                         </tr>
                         <tr>
-                            <td><b>payout_type</b></td>
+                            <td><b>payout</b></td>
                             <td id="msg7"></td>
-                            <td><b>status</b></td>
+                            <td><b>payout_type</b></td>
                             <td id="msg8"></td>
+                        </tr>
+                        <tr>
+                            <td><b>countries</b></td>
+                            <td id="msg9"></td>
+                            <td><b>daily_cap</b></td>
+                            <td id="msg10"></td>
+                        </tr>
+                        <tr>
+                            <td><b>currency</b></td>
+                            <td id="msg11"></td>
+                            <td><b>os</b></td>
+                            <td id="msg12"></td>
+                        </tr>
+                        <tr>
+                            <td ><b>payout_type</b></td>
+                            <td colspan="3" id="msg13"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -258,15 +317,20 @@
 //                    alert(data.detail.link[0].link);
                     if (null != result && data['success']) {
                         //alert(data.detail.name);
-                        $('#msg').html(data.detail.name);
-                        $('#msg1').html(data.detail.id);
-                        $('#msg2').html(data.detail.description);
-                        $('#msg3').html(data.detail.name);
+                        $('#msg').html(data.detail.offer_name);
+                        $('#msg1').html(data.detail.offer_id);
+                        $('#msg2').html(data.detail.network);
+                        $('#msg3').html(data.detail.offer_name);
                         $('#msg4').html(data.detail.preview_url);
-                        $('#msg5').html(data.detail.default_payout);
-                        $('#msg6').html(data.detail.currency);
-                        $('#msg7').html(data.detail.payout_type);
-                        $('#msg8').html(data.detail.status);
+                        $('#msg5').html(data.detail.incent);
+                        $('#msg6').html(data.detail.tracking_url);
+                        $('#msg7').html(data.detail.payout);
+                        $('#msg8').html(data.detail.payout_type);
+                        $('#msg9').html(data.detail.countries);
+                        $('#msg10').html(data.detail.daily_cap);
+                        $('#msg11').html(data.detail.currency);
+                        $('#msg12').html(data.detail.os);
+                        $('#msg13').html(data.detail.description);
 //                        $('#test').html(getTable(data.detail.link));
 
                     }
@@ -298,7 +362,7 @@
             var sort = document.getElementById("sort");
             var strUser = sort.options[sort.selectedIndex].value;
             if (strUser == 'desc') {
-                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-list-has-offer",'id' => 'payout']) ?>');
+                window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-list-has-offer", 'id' => 'payout']) ?>');
             } else {
                 window.location.assign('<?= frontend\helpers\CUtils::createAbsoluteUrl(["site/get-list-has-offer"]) ?>');
             }
@@ -352,14 +416,24 @@
             }
 
         }
-        function Myfunction(){
-            var x = document.getElementById("mySelect").value;
-            var y = document.getElementById("Deviceselect").value;
+
+        var x = "", y = "";
+        function Myfunction() {
+            x = document.getElementById("mySelect").value;
+            y = document.getElementById("Deviceselect").value;
 //            alert(x);
-            window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-has-offer&countries='+x+'&device='+y;
+            var z = document.getElementById("network").value;
+            var c = document.getElementById("sort").value;
+////            alert(c);
+            if(c == 'asc'){
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + y+'&network='+z;
+            }else{
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + y+'&network='+z+'&sort='+c;
+            }
+
 
         }
-        function reset(){
+        function reset() {
             $('select').prop('selectedIndex', 0);
         }
     </script>

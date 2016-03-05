@@ -14,6 +14,7 @@ use common\models\KeyMatomies;
 use common\models\KeyOffersevens;
 use common\models\Matomies;
 use common\models\OfferpayoutsClicksmobs;
+use common\models\Offers;
 use common\models\Offersevens;
 use frontend\models\Art;
 
@@ -62,7 +63,9 @@ class OfferController extends \api\controllers\ApiController{
             'update-matomy',
             'update-seven',
             'get-all-country',
-            'get-list-artofclick-export'
+            'get-list-artofclick-export',
+            'get-all-network',
+            'get-list-offers'
         ];
 
         return $behaviors;
@@ -199,23 +202,6 @@ class OfferController extends \api\controllers\ApiController{
         return $export;
     }
 
-    public function actionGetListHasofferExport(){
-        $id = $this->getParameter('id');
-        $export = Hasoffers::getListOfferExport($id);
-        return $export;
-    }
-
-    public function actionGetDetailHasoffer(){
-        $id = $this->getParameter('id', 0);
-        $hasoffer = Hasoffers::getDetailHasoffer($id);
-        if(!empty($hasoffer)){
-            return $hasoffer;
-        }else{
-            $this->setStatusCode(404);
-            return ['message' => "Not found value"];
-        }
-    }
-
 
     public function actionGetDetailArtofclick(){
         $id = $this->getParameter('id', 0);
@@ -289,6 +275,7 @@ class OfferController extends \api\controllers\ApiController{
             return ['message'=>'That bai'];
         }
     }
+
     public function actionUpdateArt(){
         $api = $this->getParameter('api','');
         $id = $this->getParameter('id',0);
@@ -356,4 +343,33 @@ class OfferController extends \api\controllers\ApiController{
     public function actionGetAllCountry(){
         return Countries::getAllCountry();
     }
+
+    public function actionGetAllNetwork(){
+        return Offers::getAllNetwork();
+    }
+    public function actionGetListOffers(){
+        $countries = $this->getParameter('countries','');
+        $device = $this->getParameter('device','');
+        $network = $this->getParameter('network','');
+        $sort = $this->getParameter('sort','');
+        $offer = Offers::getListOffers($countries,$device,$network,$sort);
+        return $offer;
+    }
+    public function actionGetListHasofferExport(){
+        $id = $this->getParameter('id');
+        $export = Offers::getListOfferExport($id);
+        return $export;
+    }
+
+    public function actionGetDetailHasoffer(){
+        $id = $this->getParameter('id', 0);
+        $hasoffer = Offers::getDetailOffers($id);
+        if(!empty($hasoffer)){
+            return $hasoffer;
+        }else{
+            $this->setStatusCode(404);
+            return ['message' => "Not found value"];
+        }
+    }
+
 }
