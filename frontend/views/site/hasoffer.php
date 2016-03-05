@@ -145,8 +145,9 @@
                                     <div style="display:inline-block;vertical-align:top;"
                                          data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1">
                                         <div data-reactid=".0.6.1.0.0.0.1.0.1.0:1.0.1.1">
-                                            <a href="#" onclick="fnExcelReport1();" class="btn btn-primary">Export</a>
                                             <a href="#" onclick="Myfunction();" class="btn btn-primary">Filter</a>
+                                            <a href="#" onclick="fnExcelReport1();" class="btn btn-primary">Export</a>
+
                                         </div>
                                     </div>
                                 </div>
