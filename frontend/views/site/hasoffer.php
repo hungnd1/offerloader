@@ -502,7 +502,7 @@
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
 
-            if (typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined') {
+            if ((typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined') || (typeof  network != 'undefined' && typeof check == 'undefined' && typeof device == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&network=' + z;
             } else if ((typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined') || (typeof  network != 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&network=' + z;
