@@ -698,7 +698,7 @@ generated using PHP classes.");
         $country = $this->getParameter('countries','');
         $device = $this->getParameter('device','');
         $network = $this->getParameter('network','');
-        $sort = $this->getParameter('sort','');
+        $sort = $this->getParameter('sortPayout','');
 //        var_dump($countries);exi;
         $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_OFFERS, 'page' => $page, 'per_page' => $per_page,'countries'=>$country,'device'=>$device,'network'=>$network,'sort'=>$sort],null,false);
         if(ApiHelper::isResultSuccess($response)){

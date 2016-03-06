@@ -134,11 +134,14 @@
                                             <select
                                                 id="sortPayout" onchange="Myfunction3();"
                                                 class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0">
+                                                <option value=""
+                                                        data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Sort By Payout
+                                                </option>
                                                 <option value="desc"
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Payout: High to
                                                     low
                                                 </option>
-                                                <option value="asc" selected="true"
+                                                <option value="asc"
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: Low to
                                                     high
                                                 </option>
@@ -431,8 +434,8 @@
 
         }
 
-        var x = "", y = "";
-        $(document).ready(function () {
+        //        var x = "", y = "";
+        function onLoad() {
             var check = getUrlVars()['countries'];
             var device = getUrlVars()['device'];
             var network = getUrlVars()['network'];
@@ -450,16 +453,13 @@
             if (typeof sort != 'undefined') {
                 document.getElementById("sortPayout").value = sort;
             }
+            alert(sort);
 
-        });
+        }
         function Myfunction() {
             var check = getUrlVars()['countries'];
             var device = getUrlVars()['device'];
             var network = getUrlVars()['network'];
-//            alert(check);
-            if (typeof check != 'undefined') {
-                document.getElementById("mySelect").value = check;
-            }
             url = window.location.href;
             x = document.getElementById("mySelect").value;
             y = document.getElementById("Deviceselect").value;
@@ -477,7 +477,6 @@
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&network=' + network;
             }
-
         }
 
         function Myfunction1() {
@@ -489,7 +488,7 @@
             x = document.getElementById("mySelect").value;
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
-            if (typeof  device == 'undefined' && typeof check == 'undefined') {
+            if ((typeof  device == 'undefined' && typeof check == 'undefined' && typeof network == 'undefined') ||(typeof  device != 'undefined' && typeof check == 'undefined' && typeof network == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y;
             } else if (typeof  device == 'undefined' && typeof check != 'undefined' && typeof network == 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y;
@@ -502,7 +501,7 @@
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y + '&network=' + network;
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network != 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y + '&network=' + network;
-            }else if(typeof  check == 'undefined' && typeof  device == 'undefined' && typeof network != 'undefined'){
+            } else if (typeof  check == 'undefined' && typeof  device == 'undefined' && typeof network != 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y + '&network=' + network;
             }
         }
@@ -543,9 +542,9 @@
         function Myfunction3() {
             var c = document.getElementById("sortPayout").value;
             if (c == 'asc') {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers';
-            } else {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&sort=' + c;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&sortPayout='+c;
+            } else if(c == 'desc') {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&sortPayout=' + c;
             }
 
         }

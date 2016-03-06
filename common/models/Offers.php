@@ -98,7 +98,7 @@ class Offers extends \yii\db\ActiveRecord
         if (!empty($network)) {
             $query->andWhere("network like '%" . $network . "%'");
         }
-        if (!empty($sort)) {
+        if ($sort == 'desc') {
             $provider = new ActiveDataProvider([
                 'query' => $query,
                 'sort' => ['defaultOrder' => ['payout' => SORT_DESC]],
@@ -106,10 +106,17 @@ class Offers extends \yii\db\ActiveRecord
                     'defaultPageSize' => 60,
                 ],
             ]);
-        } else {
+        } else if($sort == 'asc')  {
             $provider = new ActiveDataProvider([
                 'query' => $query,
                 'sort' => ['defaultOrder' => ['payout' => SORT_ASC]],
+                'pagination' => [
+                    'defaultPageSize' => 60,
+                ],
+            ]);
+        }else {
+            $provider = new ActiveDataProvider([
+                'query' => $query,
                 'pagination' => [
                     'defaultPageSize' => 60,
                 ],

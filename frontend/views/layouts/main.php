@@ -52,7 +52,7 @@ AppAsset::register($this);
     </script>
 
 </head>
-<body class="fixed-header menu-pin">
+<body onload="onLoad();" class="fixed-header menu-pin">
 <?php $this->beginBody() ?>
 
 <div>
