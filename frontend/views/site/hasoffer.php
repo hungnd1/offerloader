@@ -494,8 +494,8 @@
             } else if (typeof  device == 'undefined' && typeof check != 'undefined' && typeof network == 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y;
             }
-            else if (typeof  device != 'undefined' && typeof  check == 'undefined') {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x;
+            else if (typeof  device != 'undefined' && typeof  check == 'undefined' && typeof network == 'undefined') {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y;
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network == 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y;
             } else if (typeof  device == 'undefined' && typeof  check != 'undefined' && typeof  network != 'undefined') {
