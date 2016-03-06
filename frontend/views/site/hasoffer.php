@@ -453,7 +453,7 @@
             if (typeof sort != 'undefined') {
                 document.getElementById("sortPayout").value = sort;
             }
-            alert(sort);
+//            alert(sort);
 
         }
         function Myfunction() {
