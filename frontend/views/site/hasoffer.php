@@ -460,17 +460,28 @@
             var check = getUrlVars()['countries'];
             var device = getUrlVars()['device'];
             var network = getUrlVars()['network'];
+            var sort = getUrlVars()['sortPayout'];
             url = window.location.href;
             x = document.getElementById("mySelect").value;
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
-            if ((typeof  check == 'undefined' && typeof  device == 'undefined' && typeof network == 'undefined') || (typeof  check != 'undefined' && typeof  device == 'undefined' && typeof network == 'undefined')) {
+            var s = document.getElementById("sortPayout").value;
+            if ((typeof  check == 'undefined' && typeof  device == 'undefined' && typeof network == 'undefined' && typeof sort == 'undefined') || (typeof  check != 'undefined' && typeof  device == 'undefined' && typeof network == 'undefined' && typeof sort == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x;
-            }
-            else if ((typeof  check == 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined') || (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined')) {
+            } else if ((typeof  check == 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined' && typeof sort == 'undefined' ) || (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined' && typeof sort == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
-            } else if ((typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined') || (typeof  check == 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined')) {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&network=' + network;
+            } else if ((typeof  check == 'undefined' && typeof  device == 'undefined' && typeof  network != 'undefined' && typeof sort == 'undefined' ) || (typeof  check != 'undefined' && typeof  device == 'undefined' && typeof  network != 'undefined' && typeof sort == 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&network=' + network;
+            }else if ((typeof  check == 'undefined' && typeof  device == 'undefined' && typeof  network == 'undefined' && typeof sort != 'undefined' ) || (typeof  check != 'undefined' && typeof  device == 'undefined' && typeof  network == 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&sortPayout=' + sort;
+            }else if ((typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined' && typeof  sort != 'undefined') || (typeof  check == 'undefined' && typeof  sort != 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&network=' + network+'&sortPayout='+s;
+            }else if ((typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined' && typeof  sort != 'undefined') || (typeof  check == 'undefined' && typeof  sort != 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&sortPayout='+sort;
+            }else if ((typeof  check != 'undefined' && typeof  device == 'undefined' && typeof  network != 'undefined' && typeof  sort != 'undefined') || (typeof  check == 'undefined' && typeof  sort != 'undefined' && typeof  device == 'undefined' && typeof  network != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&network=' + network + '&sortPayout='+sort;
+            }else if ((typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined' && typeof  sort == 'undefined') || (typeof  check == 'undefined' && typeof  sort !== 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&sortPayout='+sort;
             }
         }
 
@@ -478,38 +489,56 @@
             var check = getUrlVars()['countries'];
             var device = getUrlVars()['device'];
             var network = getUrlVars()['network'];
-
+            var sort = getUrlVars()['sortPayout'];
+            var s = document.getElementById("sortPayout").value;
             url = window.location.href;
             x = document.getElementById("mySelect").value;
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
-            if ((typeof  device == 'undefined' && typeof check == 'undefined' && typeof network == 'undefined') || (typeof  device != 'undefined' && typeof check == 'undefined' && typeof network == 'undefined')) {
+            if ((typeof  device == 'undefined' && typeof check == 'undefined' && typeof network == 'undefined' && typeof sort == 'undefined') || (typeof  device != 'undefined' && typeof check == 'undefined' && typeof network == 'undefined'  && typeof sort == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y;
-            } else if ((typeof  device == 'undefined' && typeof check != 'undefined' && typeof network == 'undefined') || (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network == 'undefined')) {
+            } else if ((typeof  device == 'undefined' && typeof check != 'undefined' && typeof network == 'undefined' && typeof sort == 'undefined') || (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network == 'undefined' && typeof sort == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y;
-            } else if ((typeof  device == 'undefined' && typeof  check != 'undefined' && typeof  network != 'undefined') || (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network != 'undefined')) {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y + '&network=' + network;
-            } else if ((typeof  check == 'undefined' && typeof  device == 'undefined' && typeof network != 'undefined') || (typeof  check == 'undefined' && typeof  device != 'undefined' && typeof network != 'undefined')) {
+            } else if ((typeof  device == 'undefined' && typeof  check != 'undefined' && typeof  network != 'undefined' && typeof sort != 'undefined') || (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network != 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y + '&network=' + network+ '&sortPayout=' + sort;
+            } else if ((typeof  check == 'undefined' && typeof  device == 'undefined' && typeof network != 'undefined' && typeof sort == 'undefined') || (typeof  check == 'undefined' && typeof  device != 'undefined' && typeof network != 'undefined' && typeof sort == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y + '&network=' + network;
+            }else if ((typeof  check == 'undefined' && typeof  device == 'undefined' && typeof network == 'undefined' && typeof sort != 'undefined') || (typeof  check == 'undefined' && typeof  device != 'undefined' && typeof network == 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y + '&sortPayout=' + sort;
+            }else if ((typeof  check != 'undefined' && typeof  device == 'undefined' && typeof network != 'undefined' && typeof sort == 'undefined') || (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network != 'undefined' && typeof sort == 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y + '&countries=' + check+'&network='+network;
+            }else if ((typeof  check == 'undefined' && typeof  device == 'undefined' && typeof network != 'undefined' && typeof sort != 'undefined') || (typeof  check == 'undefined' && typeof  device != 'undefined' && typeof network != 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y + '&sortPayout=' + sort+'&network='+network;
+            }else if ((typeof  check != 'undefined' && typeof  device == 'undefined' && typeof network == 'undefined' && typeof sort != 'undefined') || (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network == 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y + '&countries=' + check+'&sortPayout='+sort;
             }
         }
         function Myfunction2() {
             var check = getUrlVars()['countries'];
             var device = getUrlVars()['device'];
             var network = getUrlVars()['network'];
+            var sort = getUrlVars()['sortPayout'];
             url = window.location.href;
             x = document.getElementById("mySelect").value;
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
-
-            if ((typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined') || (typeof  network != 'undefined' && typeof check == 'undefined' && typeof device == 'undefined')) {
+            var s = document.getElementById("sortPayout").value;
+            if ((typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined' && typeof sort == 'undefined') || (typeof  network != 'undefined' && typeof check == 'undefined' && typeof device == 'undefined' && typeof sort == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&network=' + z;
-            } else if ((typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined') || (typeof  network != 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined')) {
+            } else if ((typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined' && typeof sort == 'undefined') || (typeof  network != 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined'&& typeof sort == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&network=' + z;
-            } else if ((typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check == 'undefined') || (typeof  network != 'undefined' && typeof  check == 'undefined' && typeof  device != 'undefined')) {
+            } else if ((typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check == 'undefined'&& typeof sort == 'undefined') || (typeof  network != 'undefined' && typeof sort == 'undefined' && typeof  check == 'undefined' && typeof  device != 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&network=' + z;
-            } else if ((typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined') || (typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined')) {
+            }else if ((typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check == 'undefined'&& typeof sort != 'undefined') || (typeof  network != 'undefined' && typeof sort != 'undefined' && typeof  check == 'undefined' && typeof  device == 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&network=' + device + '&sortPayout=' + sort;
+            } else if ((typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined'&& typeof sort != 'undefined') || (typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&countries=' + check + '&network=' + z+'&sortPayout='+sort;
+            }else if ((typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined'&& typeof sort == 'undefined') || (typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined' && typeof sort == 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&countries=' + check + '&network=' + z;
+            }else if ((typeof  network != 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined'&& typeof sort != 'undefined') || (typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&network=' + z+'&sortPayout='+sort;
+            }else if ((typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check == 'undefined'&& typeof sort != 'undefined') || (typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check == 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device +'&network=' + z+'&sortPayout='+sort;
             }
 
         }
@@ -528,11 +557,31 @@
         }
 
         function Myfunction3() {
-            var c = document.getElementById("sortPayout").value;
-            if (c == 'asc') {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&sortPayout=' + c;
-            } else if (c == 'desc') {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&sortPayout=' + c;
+            var check = getUrlVars()['countries'];
+            var device = getUrlVars()['device'];
+            var network = getUrlVars()['network'];
+            var sort = getUrlVars()['sortPayout'];
+            url = window.location.href;
+            x = document.getElementById("mySelect").value;
+            y = document.getElementById("Deviceselect").value;
+            var z = document.getElementById("network").value;
+            var s = document.getElementById("sortPayout").value;
+            if ((typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined' && typeof sort == 'undefined') || (typeof  network != 'undefined' && typeof check == 'undefined' && typeof device == 'undefined' && typeof sort == 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&sortPayout=' + s;
+            } else if ((typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined' && typeof sort == 'undefined') || (typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined'&& typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&sortPayout=' + s;
+            } else if ((typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check == 'undefined'&& typeof sort == 'undefined') || (typeof  network == 'undefined' && typeof sort != 'undefined' && typeof  check == 'undefined' && typeof  device != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&sortPayout=' + s;
+            }else if ((typeof  network != 'undefined' && typeof  device == 'undefined' && typeof check == 'undefined'&& typeof sort != 'undefined') || (typeof  network != 'undefined' && typeof sort != 'undefined' && typeof  check == 'undefined' && typeof  device == 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&network=' + network + '&sortPayout=' + s;
+            } else if ((typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined'&& typeof sort != 'undefined') || (typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined' && typeof sort == 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&countries=' + check + '&network=' + network+'&sortPayout='+s;
+            }else if ((typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check == 'undefined'&& typeof sort == 'undefined') || (typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check == 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&network=' + network + '&sortPayout=' + s;
+            }else if ((typeof  network != 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined'&& typeof sort == 'undefined') || (typeof  network != 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined' && typeof sort != 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + device+'&sortPayout='+s;
+            }else if ((typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined'&& typeof sort != 'undefined') || (typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined' && typeof sort == 'undefined')) {
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device +'&countries=' + check+'&sortPayout='+s;
             }
 
         }
