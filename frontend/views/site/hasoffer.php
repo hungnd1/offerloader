@@ -502,6 +502,8 @@
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y + '&network=' + network;
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof network != 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&device=' + y + '&network=' + network;
+            }else if(typeof  check == 'undefined' && typeof  device == 'undefined' && typeof network != 'undefined'){
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y + '&network=' + network;
             }
         }
         function Myfunction2() {
@@ -521,8 +523,6 @@
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&network=' + z;
             } else if ((typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined') || (typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&countries=' + check + '&network=' + z;
-            }else if(typeof  network != 'undefined' && typeof  device == 'undefined'){
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&network=' + z;
             }
 
         }
