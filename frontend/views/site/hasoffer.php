@@ -465,17 +465,17 @@
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
             if (typeof  check == 'undefined' && typeof  device == 'undefined') {
-                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x;
             }
             else if (typeof  check == 'undefined' && typeof  device != 'undefined') {
-                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
             }
             else if (typeof  check != 'undefined' && typeof  device == 'undefined') {
-                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x;
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined') {
-                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined') {
-                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&network=' + network;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&network=' + network;
             }
 
         }
