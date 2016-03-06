@@ -38,6 +38,7 @@
 
                     </div>
                 </div>
+                <input type="hidden" id="count" value="">
                 <div class="container-fluid" data-reactid=".0.6.1.0.0.0.1">
                     <div class="panel panel-transparent" data-reactid=".0.6.1.0.0.0.1.0">
                         <div class="panel-heading" data-reactid=".0.6.1.0.0.0.1.0.0">
@@ -131,7 +132,7 @@
                                     <div data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1">
                                         <div class="input-group" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0">
                                             <select
-                                                id="sort" onchange="Myfunction3();"
+                                                id="sortPayout" onchange="Myfunction3();"
                                                 class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0">
                                                 <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Sort By
                                                 </option>
@@ -175,6 +176,7 @@
                                     <th><input type="checkbox" id="checkAll" style="margin-left: -10px;"></th>
                                     <th>ID</th>
                                     <th>Title</th>
+                                    <th>Network</th>
                                     <th>Payout</th>
                                     <th>Currency</th>
                                     <th>Country</th>
@@ -195,6 +197,7 @@
                                             <td>
                                                 <a onclick="getDetail(<?= $offer->id ?>);"><?= $offer->offer_name ?></a>
                                             </td>
+                                            <td><?= $offer->network ?></td>
                                             <td>$<?= $offer->payout ?></td>
                                             <td><?= $offer->currency ?></td>
                                             <?php if (strpos($offer->countries, ' ') !== false) {
@@ -431,28 +434,50 @@
         }
 
         var x = "", y = "";
+        $(document).ready(function () {
+            var check = getUrlVars()['countries'];
+            var device = getUrlVars()['device'];
+            var network = getUrlVars()['network'];
+            var sort = getUrlVars()['sortPayout'];
+            alert(network);
+            if (typeof check != 'undefined') {
+                document.getElementById("mySelect").value = check;
+            }
+            if (typeof device != 'undefined') {
+                document.getElementById("Deviceselect").value = device;
+            }
+            if (typeof network != 'undefined') {
+                document.getElementById("network").value = network;
+            }
+            if (typeof sort != 'undefined') {
+                document.getElementById("sortPayout").value = sort;
+            }
+
+        });
         function Myfunction() {
             var check = getUrlVars()['countries'];
             var device = getUrlVars()['device'];
             var network = getUrlVars()['network'];
-            var sort = getUrlVars()['sort'];
+//            alert(check);
+            if (typeof check != 'undefined') {
+                document.getElementById("mySelect").value = check;
+            }
             url = window.location.href;
             x = document.getElementById("mySelect").value;
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
-            var c = document.getElementById("sort").value;
             if (typeof  check == 'undefined' && typeof  device == 'undefined') {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x;
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x;
             }
             else if (typeof  check == 'undefined' && typeof  device != 'undefined') {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
             }
             else if (typeof  check != 'undefined' && typeof  device == 'undefined') {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x;
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x;
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network == 'undefined') {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device;
             } else if (typeof  check != 'undefined' && typeof  device != 'undefined' && typeof  network != 'undefined') {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&network=' + network;
+                window.location.href = 'http://localhost:8080/offerloader/frontend/web/?r=site/get-list-offers&countries=' + x + '&device=' + device + '&network=' + network;
             }
 
         }
@@ -461,12 +486,11 @@
             var check = getUrlVars()['countries'];
             var device = getUrlVars()['device'];
             var network = getUrlVars()['network'];
-            var sort = getUrlVars()['sort'];
+
             url = window.location.href;
             x = document.getElementById("mySelect").value;
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
-            var c = document.getElementById("sort").value;
             if (typeof  device == 'undefined' && typeof check == 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + y;
             } else if (typeof  device == 'undefined' && typeof check != 'undefined' && typeof network == 'undefined') {
@@ -486,12 +510,10 @@
             var check = getUrlVars()['countries'];
             var device = getUrlVars()['device'];
             var network = getUrlVars()['network'];
-            var sort = getUrlVars()['sort'];
             url = window.location.href;
             x = document.getElementById("mySelect").value;
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
-            var c = document.getElementById("sort").value;
 
             if (typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&network=' + z;
@@ -519,13 +541,17 @@
         }
 
         function Myfunction3() {
-            var c = document.getElementById("sort").value;
+            var c = document.getElementById("sortPayout").value;
             if (c == 'asc') {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers';
             } else {
-                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&sort='+c;
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&sort=' + c;
             }
 
+        }
+        function SelectElement(valueToSelect, select) {
+            var element = document.getElementById(select);
+            element.value = valueToSelect;
         }
     </script>
     <!--    <script type="text/javascript">-->
