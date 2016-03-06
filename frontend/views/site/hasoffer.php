@@ -134,13 +134,11 @@
                                             <select
                                                 id="sortPayout" onchange="Myfunction3();"
                                                 class="form-control" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0">
-                                                <option value="" data-reactid=".0.6.1.0.0.0.1.0.1.0:0.1.1.0.0.0">Sort By
-                                                </option>
                                                 <option value="desc"
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$1">Payout: High to
                                                     low
                                                 </option>
-                                                <option value="asc"
+                                                <option value="asc" selected="true"
                                                         data-reactid=".0.6.1.0.0.0.1.0.1.0:0.3.1.0.0.$2">Payout: Low to
                                                     high
                                                 </option>
@@ -439,7 +437,7 @@
             var device = getUrlVars()['device'];
             var network = getUrlVars()['network'];
             var sort = getUrlVars()['sortPayout'];
-            alert(network);
+//            alert(network);
             if (typeof check != 'undefined') {
                 document.getElementById("mySelect").value = check;
             }
@@ -523,6 +521,8 @@
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&network=' + z;
             } else if ((typeof  network != 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined') || (typeof  network == 'undefined' && typeof  device != 'undefined' && typeof check != 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&countries=' + check + '&network=' + z;
+            }else if(typeof  network != 'undefined' && typeof  device == 'undefined'){
+                window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&device=' + device + '&network=' + z;
             }
 
         }
