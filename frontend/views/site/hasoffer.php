@@ -566,7 +566,7 @@
             y = document.getElementById("Deviceselect").value;
             var z = document.getElementById("network").value;
             var s = document.getElementById("sortPayout").value;
-            if ((typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined' && typeof sort == 'undefined') || (typeof  network != 'undefined' && typeof check == 'undefined' && typeof device == 'undefined' && typeof sort == 'undefined')) {
+            if ((typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined' && typeof sort == 'undefined') || (typeof  network == 'undefined' && typeof check == 'undefined' && typeof device == 'undefined' && typeof sort != 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&sortPayout=' + s;
             } else if ((typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined' && typeof sort == 'undefined') || (typeof  network == 'undefined' && typeof  device == 'undefined' && typeof check != 'undefined'&& typeof sort != 'undefined')) {
                 window.location.href = 'http://45.32.54.195/frontend/web/?r=site/get-list-offers&countries=' + check + '&sortPayout=' + s;
