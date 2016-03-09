@@ -357,7 +357,12 @@ class OfferController extends \api\controllers\ApiController{
     }
     public function actionGetListHasofferExport(){
         $id = $this->getParameter('id');
-        $export = Offers::getListOfferExport($id);
+        $all = $this->getParameter('all');
+        $country = $this->getParameter('country','');
+        $device = $this->getParameter('device','');
+        $network = $this->getParameter('network','');
+        $sort = $this->getParameter('payout','');
+        $export = Offers::getListOfferExport($id,$all,$country,$device,$network,$sort);
         return $export;
     }
 

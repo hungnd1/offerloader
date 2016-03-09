@@ -106,7 +106,7 @@ class Offers extends \yii\db\ActiveRecord
                     'defaultPageSize' => 60,
                 ],
             ]);
-        } else if($sort == 'asc')  {
+        } else if ($sort == 'asc') {
             $provider = new ActiveDataProvider([
                 'query' => $query,
                 'sort' => ['defaultOrder' => ['payout' => SORT_ASC]],
@@ -114,7 +114,7 @@ class Offers extends \yii\db\ActiveRecord
                     'defaultPageSize' => 60,
                 ],
             ]);
-        }else {
+        } else {
             $provider = new ActiveDataProvider([
                 'query' => $query,
                 'pagination' => [
@@ -126,25 +126,53 @@ class Offers extends \yii\db\ActiveRecord
         return $provider;
     }
 
-    public static function getListOfferExport($id)
+    public static function getListOfferExport($id, $all, $country, $device, $network, $sort)
     {
         $query = Offers::find();
-        if (!empty($id)) {
+        if (!empty($id) && empty($all)) {
             $query->andWhere("id in (" . $id . ")");
-        }
+            $provider = new ActiveDataProvider([
+                'query' => $query,
+                'sort' => ['defaultOrder' => ['payout' => SORT_DESC]],
+                'pagination' => false
+            ]);
+        } else if (!empty($all)) {
+            $provider = new ActiveDataProvider([
+                'query' => $query,
+                'sort' => ['defaultOrder' => ['payout' => SORT_DESC]],
+                'pagination' => false
+            ]);
+        } else {
+            if (!empty($country)) {
+                $query->andWhere("countries like '%" . $country . "%'");
+            }
+            if (!empty($device)) {
+                $query->andWhere("os like '%" . $device . "%'");
+            }
+            if (!empty($network)) {
+                $query->andWhere("network like '%" . $network . "%'");
+            }
+            if ($sort == 'desc') {
+                $provider = new ActiveDataProvider([
+                    'query' => $query,
+                    'sort' => ['defaultOrder' => ['payout' => SORT_DESC]],
+                    'pagination' => false
+                ]);
+            } else if ($sort == 'asc') {
+                $provider = new ActiveDataProvider([
+                    'query' => $query,
+                    'sort' => ['defaultOrder' => ['payout' => SORT_ASC]],
+                    'pagination' => false
+                ]);
+            }
 
-        $provider = new ActiveDataProvider([
-            'query' => $query,
-            'sort' => ['defaultOrder' => ['payout' => SORT_DESC]],
-            'pagination' => [
-                'defaultPageSize' => 60,
-            ],
-        ]);
+        }
 
         return $provider;
     }
 
-    public static function getDetailOffers($id){
-        return \api\models\Offers::findOne(['id'=>$id]);
+    public static function getDetailOffers($id)
+    {
+        return \api\models\Offers::findOne(['id' => $id]);
     }
 }

@@ -346,7 +346,12 @@ generated using PHP classes.");
     public function actionGetHasofferExport()
     {
         $id = $this->getParameter('id');
-        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_HASOFFER_EXPORT, 'id' => $id]);
+        $all = $this->getParameter('all','');
+        $country = $this->getParameter('countries','');
+        $device = $this->getParameter('device','');
+        $network = $this->getParameter('network','');
+        $sort = $this->getParameter('payout','');
+        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_HASOFFER_EXPORT, 'id' => $id,'all'=>$all,'country'=>$country,'device'=>$device,'network'=>$network,'payout'=>$sort]);
         if (ApiHelper::isResultSuccess($response)) {
             $result = $response['data']['items'];
             $objPHPExcel = new \PHPExcel();
