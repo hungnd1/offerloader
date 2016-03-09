@@ -40,7 +40,7 @@ AppAsset::register($this);
     <meta content="" name="author"/>
     <!-- BEGIN Vendor CSS-->
     <link rel="stylesheet" href="static/CACHE/css/50faabdc3ce3.css" type="text/css"/>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="static/CACHE/css/bootstrap.min.css" type="text/css"/>
 
     <!--    <script src="static/js/main.js"></script>-->
     <script type="text/javascript">
