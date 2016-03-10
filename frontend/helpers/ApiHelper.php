@@ -46,6 +46,9 @@ class ApiHelper
     const API_UDPATE_GLISPAS = 'offer/update-glispas';
     const API_UDPATE_MATOMY = 'offer/update-matomy';
     const API_UDPATE_SEVEN = 'offer/update-seven';
+    const API_UDPATE_KEY4GS = 'offer/update-keyags';
+    const API_UDPATE_APXES = 'offer/update-apxes';
+    const API_UDPATE_CAKES = 'offer/update-cakes';
     const API_GET_ALL_COUNTRY = 'offer/get-all-country';
     const API_GET_ARTOFCLICK_EXPORT = 'offer/get-list-artofclick-export';
     const API_GET_ALL_NETWORK = 'offer/get-all-network';

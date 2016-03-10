@@ -1,9 +1,6 @@
 <?php
 namespace frontend\controllers;
 
-use arturoliveira\ExcelView;
-use common\models\ArtOfClickModels;
-use common\models\Hasoffers;
 use common\models\Glispas;
 use common\models\Offersevens;
 use frontend\helpers\ApiHelper;
@@ -18,10 +15,10 @@ use frontend\models\ListNetwork;
 use frontend\models\ListOffers;
 use frontend\models\ListOfferSeven;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
  * Site controller
@@ -84,8 +81,8 @@ class SiteController extends Controller
     {
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 20);
-        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_OFFERS, 'page' => $page, 'per_page' => $per_page],null,false);
-        if(ApiHelper::isResultSuccess($response)){
+        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_OFFERS, 'page' => $page, 'per_page' => $per_page], null, false);
+        if (ApiHelper::isResultSuccess($response)) {
             $offer = $response['data']['items'];
             $listOffer = new ListOffers();
             $listOffer->setAttribute($offer);
@@ -98,7 +95,7 @@ class SiteController extends Controller
             $network = $response_network['data']['items'];
             $listNetwork = new ListNetwork();
             $listNetwork->setAttribute($network);
-            return $this->render('hasoffer', ['listOffer' => $listOffer, 'pagination' => $pagination, 'listCountries' => $listCountries,'listNetwork'=>$listNetwork]);
+            return $this->render('hasoffer', ['listOffer' => $listOffer, 'pagination' => $pagination, 'listCountries' => $listCountries, 'listNetwork' => $listNetwork]);
         } else {
             return $this->render('error');
         }
@@ -346,12 +343,12 @@ generated using PHP classes.");
     public function actionGetHasofferExport()
     {
         $id = $this->getParameter('id');
-        $all = $this->getParameter('all','');
-        $country = $this->getParameter('countries','');
-        $device = $this->getParameter('device','');
-        $network = $this->getParameter('network','');
-        $sort = $this->getParameter('payout','');
-        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_HASOFFER_EXPORT, 'id' => $id,'all'=>$all,'country'=>$country,'device'=>$device,'network'=>$network,'payout'=>$sort]);
+        $all = $this->getParameter('all', '');
+        $country = $this->getParameter('countries', '');
+        $device = $this->getParameter('device', '');
+        $network = $this->getParameter('network', '');
+        $sort = $this->getParameter('payout', '');
+        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_HASOFFER_EXPORT, 'id' => $id, 'all' => $all, 'country' => $country, 'device' => $device, 'network' => $network, 'payout' => $sort]);
         if (ApiHelper::isResultSuccess($response)) {
             $result = $response['data']['items'];
             $objPHPExcel = new \PHPExcel();
@@ -539,9 +536,14 @@ generated using PHP classes.");
             $glispas = $response_key['data']['glispa'];
             $matomies = $response_key['data']['matomies'];
             $seven = $response_key['data']['seven'];
+            $keyA4gs = $response_key['data']['keyA4gs'];
+            $keyApxes = $response_key['data']['keyApxes'];
+            $keyCakes = $response_key['data']['keyCakes'];
         }
         return $this->render('setting', ['listhas' => $listhas, 'art' => $art,
-                'click' => $click, 'glispas' => $glispas, 'matomies' => $matomies, 'seven' => $seven]
+                'click' => $click, 'glispas' => $glispas, 'matomies' => $matomies, 'seven' => $seven,
+                'keyA4gs' => $keyA4gs, 'keyApxes' => $keyApxes, 'keyCakes' => $keyCakes
+            ]
         );
     }
 
@@ -697,16 +699,17 @@ generated using PHP classes.");
         return $this->redirect("artoflcick_download.xlsx");
     }
 
-    public function actionGetListOffers(){
+    public function actionGetListOffers()
+    {
         $page = \Yii::$app->request->get('page', 1);
         $per_page = \Yii::$app->request->get('per_page', 20);
-        $country = $this->getParameter('countries','');
-        $device = $this->getParameter('device','');
-        $network = $this->getParameter('network','');
-        $sort = $this->getParameter('sortPayout','');
+        $country = $this->getParameter('countries', '');
+        $device = $this->getParameter('device', '');
+        $network = $this->getParameter('network', '');
+        $sort = $this->getParameter('sortPayout', '');
 //        var_dump($countries);exi;
-        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_OFFERS, 'page' => $page, 'per_page' => $per_page,'countries'=>$country,'device'=>$device,'network'=>$network,'sort'=>$sort],null,false);
-        if(ApiHelper::isResultSuccess($response)){
+        $response = ApiHelper::apiQuery([ApiHelper::API_GET_LIST_OFFERS, 'page' => $page, 'per_page' => $per_page, 'countries' => $country, 'device' => $device, 'network' => $network, 'sort' => $sort], null, false);
+        if (ApiHelper::isResultSuccess($response)) {
             $offer = $response['data']['items'];
             $listOffer = new ListOffers();
             $listOffer->setAttribute($offer);
@@ -719,10 +722,48 @@ generated using PHP classes.");
             $network = $response_network['data']['items'];
             $listNetwork = new ListNetwork();
             $listNetwork->setAttribute($network);
-            return $this->render('hasoffer', ['country'=>$country,'listOffer' => $listOffer, 'pagination' => $pagination, 'listCountries' => $listCountries,'listNetwork'=>$listNetwork]);
+            return $this->render('hasoffer', ['country' => $country, 'listOffer' => $listOffer, 'pagination' => $pagination, 'listCountries' => $listCountries, 'listNetwork' => $listNetwork]);
         } else {
             return $this->render('error');
         }
     }
 
+    public function actionUpdateKeygs()
+    {
+        $api = $this->getParameter('key', '');
+        $id = $this->getParameter('id', 0);
+        $affi = $this->getParameter('keya4gsAffi', 0);
+        $zone = $this->getParameter('keya4gsZone', 0);
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_KEY4GS, 'apiKey' => $api, 'id' => $id,'affi'=>$affi,'zone'=>$zone]);
+        if (ApiHelper::isResultSuccess($response)) {
+            return $this->redirect('?r=site/setting');
+        } else {
+            return $this->render('error');
+        }
+    }
+    public function actionUpdateApxes(){
+        $id = $this->getParameter('id',0);
+        $username = $this->getParameter('username','');
+        $password = $this->getParameter('password','');
+        $deviceType = $this->getParameter('devicetype');
+        $trafficsourceid = $this->getParameter('trafficsourceid',0);
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_APXES, 'username' => $username, 'id' => $id,'password'=>$password,'devicetype'=>$deviceType,'trafficsourceid'=>$trafficsourceid]);
+        if (ApiHelper::isResultSuccess($response)) {
+            return $this->redirect('?r=site/setting');
+        } else {
+            return $this->render('error');
+        }
+    }
+
+    public function actionUpdateCakes(){
+        $id = $this->getParameter('id',0);
+        $apikey = $this->getParameter('apikey','');
+        $affiliateid = $this->getParameter('affiliateid','');
+        $response = ApiHelper::apiQuery([ApiHelper::API_UDPATE_CAKES, 'apikey' => $apikey, 'id' => $id,'affiliateid'=>$affiliateid]);
+        if (ApiHelper::isResultSuccess($response)) {
+            return $this->redirect('?r=site/setting');
+        } else {
+            return $this->render('error');
+        }
+    }
 }

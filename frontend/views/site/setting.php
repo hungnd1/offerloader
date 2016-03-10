@@ -86,11 +86,11 @@
                             API Key : <input type="text" id="art" style="width: 600px;" value="<?= $art['0']['api_key']?>">
                             <input type="button" onclick="updateArt(<?= $art['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div><h2>ClickSmobs</h2></div>
-                            User ID : <input type="text" id="clickId" style="width: 120px;" value="<?= $click['0']['user_id']?>">
+                            User ID : <input type="number" id="clickId" style="width: 120px;" value="<?= $click['0']['user_id']?>">
                             User Token: <input type="text" id="clickToken" style="width: 400px;" value="<?= $click['0']['user_token']?>">
                             <input type="button" onclick="updateClick(<?= $click['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div><h2>Glispas</h2></div>
-                            CD Number : <input type="text" id="glispasCD" style="width: 100px;" value="<?= $glispas['0']['cd_number']?>">
+                            CD Number : <input type="number" id="glispasCD" style="width: 100px;" value="<?= $glispas['0']['cd_number']?>">
                             API Token : <input type="text" id="glispasToken" style="width: 400px;" value="<?= $glispas['0']['api_token']?>">
                             <input type="button" onclick="updateGlispas(<?= $glispas['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div><h2>OfferSeven</h2></div>
@@ -98,8 +98,33 @@
                             <input type="button" onclick="updateSeven(<?= $seven['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div><h2>Matomy</h2></div>
                             Key : <input type="text" id="matomiesKey" value="<?= $matomies['0']['key']?>">
-                            Account : <input type="text" id="matomiesAccount" value="<?= $matomies['0']['account']?>">
+                            Account : <input type="number" id="matomiesAccount" value="<?= $matomies['0']['account']?>">
                             <input type="button" onclick="updateMatomies(<?= $matomies['0']['id']?>);"  class="btn btn-primary" value="Update">
+                            <div><h2>Key A4GS</h2></div>
+                            ApiKey : <input type="text" id="keya4gsKey" style="width: 500px;" value="<?= $keyA4gs['0']['apiKey']?>">
+                            AfiliateId : <input type="number" id="keya4gsAffi" style="width: 100px;" value="<?= $keyA4gs['0']['affiliateId']?>">
+                            ZoneId : <input type="number" id="keya4gsZone" style="width: 100px;" value="<?= $keyA4gs['0']['zoneId']?>">
+                            <input type="button" onclick="updateKey4gs(<?= $keyA4gs['0']['id']?>);"  class="btn btn-primary" value="Update">
+
+                            <div><h2>Key APXES</h2></div>
+                            Username : <input type="text" id="username" style="width: 200px;" value="<?= $keyApxes['0']['username']?>">
+                            Password : <input type="password" id="password" style="width: 100px;" value="<?= $keyApxes['0']['password']?>">
+                            TrafficSourceId : <input type="number" id="trafficsourceid" style="width: 100px;" value="<?= $keyApxes['0']['trafficsourceid']?>">
+                            Device: <select id="device">
+                                        <option value="">Select device</option>
+                                        <option value="Mobile">Mobile</option>
+                                        <option value="Desktop">Desktop</option>
+                                        <option value="iPad">iPad</option>
+                                        <option value="iOS">iOS</option>
+                                        <option value="iPhone">iPhone</option>
+                                        <option value="Android">Android</option>
+                                    </select>
+                            <input type="button" onclick="updateApxes(<?= $keyApxes['0']['id']?>);"  class="btn btn-primary" value="Update">
+
+                            <div><h2>Key CAKES</h2></div>
+                            ApiKey : <input type="text" id="apicakes" style="width: 500px;" value="<?= $keyCakes['0']['api_key']?>">
+                            AfiliateId : <input type="number" id="affiliatecakes" style="width: 100px;" value="<?= $keyCakes['0']['affiliate_id']?>">
+                            <input type="button" onclick="updateCakes(<?= $keyCakes['0']['id']?>);"  class="btn btn-primary" value="Update">
                             <div class="clearfix" data-reactid=".0.6.1.0.0.0.1.0.1.1"></div>
                         </div>
                     </div>
@@ -136,6 +161,29 @@
         var api = document.getElementById('matomiesKey').value;
         var network = document.getElementById('matomiesAccount').value;
         window.location.assign('https://offers.nlo.vn/offerloader/frontend/web/?r=site/update-matomy&key='+api+"&id="+id+"&account="+network);
+    }
+
+    function updateKey4gs(id){
+        var api = document.getElementById('keya4gsKey').value;
+        var affiliateId = document.getElementById('keya4gsAffi').value;
+        var zone = document.getElementById('keya4gsZone').value;
+        window.location.assign('https://offers.nlo.vn/offerloader/frontend/web/?r=site/update-keygs&key='+api+"&id="+id+"&keya4gsAffi="+affiliateId+'&keya4gsZone='+zone);
+    }
+    $(document).ready(function(){
+       document.getElementById('device').value = "<?= $keyApxes['0']['devicetype'] ?>";
+
+    });
+    function updateApxes(id){
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var trafficsourceid = document.getElementById('trafficsourceid').value;
+        var device = document.getElementById('device').value;
+        window.location.assign('https://offers.nlo.vn/offerloader/frontend/web/?r=site/update-apxes&username='+username+"&id="+id+"&password="+password+'&devicetype='+device+'&trafficsourceid='+trafficsourceid);
+    }
+    function updateCakes(id){
+        var api = document.getElementById('apicakes').value;
+        var affiliateId = document.getElementById('affiliatecakes').value;
+        window.location.assign('https://offers.nlo.vn/offerloader/frontend/web/?r=site/update-cakes&apikey='+api+"&id="+id+"&affiliateid="+affiliateId);
     }
 </script>
 <!--    <script type="text/javascript">-->
